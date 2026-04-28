@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>COSSY 调研进展矩阵</title>
+<style>
+  :root {
+    --bg: #FAFAF9; --surface: #FFFFFF; --border: #E8E5E0; --border-light: #F0EDE8;
+    --text-primary: #1A1917; --text-secondary: #6B6760; --text-muted: #A8A49E;
+    --purple: #6B5CE7; --purple-bg: #F0EEFF;
+    --teal: #0F8B6A; --teal-bg: #E8F7F2;
+    --coral: #C4450F; --coral-bg: #FDF0EB;
+    --check-bg: #0F8B6A; --check-hover: #0A6B50; --empty-text: #D0CCC6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    font-family: -apple-system, 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+    color: var(--text-primary); min-height: 100vh; padding: 28px 16px 60px;
+  }
+  @media (min-width: 600px) { body { padding: 40px 32px 60px; } }
+  header { margin-bottom: 28px; }
+  .header-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; }
+  .header-title { font-size: 22px; font-weight: 600; color: var(--text-primary); letter-spacing: -0.02em; }
+  .header-meta { margin-top: 6px; font-size: 13px; color: var(--text-secondary); }
+  .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; min-width: 420px; border-collapse: collapse; }
+  thead th { padding: 11px 14px; font-size: 12px; font-weight: 500; color: var(--text-secondary); background: #F7F5F2; border-bottom: 1px solid var(--border); text-align: left; white-space: nowrap; }
+  thead th:not(:first-child) { text-align: center; width: 22%; }
+  thead th:first-child { width: 34%; }
+  tr.cat-row td { padding: 7px 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; border-bottom: 1px solid var(--border-light); }
+  tr.cat-beauty td { background: var(--purple-bg); color: var(--purple); border-left: 3px solid var(--purple); }
+  tr.cat-hair td   { background: var(--teal-bg);   color: var(--teal);   border-left: 3px solid var(--teal); }
+  tr.cat-groom td  { background: var(--coral-bg);  color: var(--coral);  border-left: 3px solid var(--coral); }
+  tr.product-row { border-bottom: 1px solid var(--border-light); transition: background 0.1s; }
+  tr.product-row:hover { background: #FDFCFB; }
+  tr.product-row:last-child { border-bottom: none; }
+  td.product-cell { padding: 14px 16px; vertical-align: middle; }
+  .product-name { font-size: 13px; font-weight: 600; color: var(--text-primary); line-height: 1.4; }
+  .product-sub  { font-size: 11px; color: var(--text-muted); margin-top: 3px; line-height: 1.4; }
+  td.data-cell { padding: 10px 8px; vertical-align: middle; text-align: center; border-left: 1px solid var(--border-light); }
+  .checks { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+  .chk { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; background: var(--check-bg); border-radius: 50%; text-decoration: none; transition: background 0.15s, transform 0.1s; flex-shrink: 0; }
+  .chk:hover { background: var(--check-hover); transform: scale(1.12); }
+  .chk svg { width: 14px; height: 14px; stroke: #fff; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .empty-cell { color: var(--empty-text); font-size: 18px; display: block; }
+  footer { margin-top: 18px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .legend { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--text-secondary); }
+  .leg-check { width: 18px; height: 18px; background: var(--check-bg); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+  .leg-check svg { width: 9px; height: 9px; stroke: #fff; stroke-width: 2.5; fill: none; }
+  .leg-empty { width: 18px; height: 18px; border: 1.5px solid var(--empty-text); border-radius: 50%; }
+  .footer-note { font-size: 11px; color: var(--text-muted); margin-left: auto; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-eyebrow">COSSY · 市场调研</div>
+  <div class="header-title">调研进展矩阵</div>
+  <div class="header-meta">点击 ● 跳转调研原文 · 2026.04</div>
+</header>
+
+<div class="table-wrap">
+<table>
+<thead>
+  <tr>
+    <th>品类 / 产品</th>
+    <th>🇺🇸 美国</th>
+    <th>🇪🇺 欧洲</th>
+    <th>🌏 东南亚</th>
+  </tr>
+</thead>
+<tbody>
+
+<!-- ── 美容美体 ── -->
+<tr class="cat-row cat-beauty"><td colspan="4">美容美体</td></tr>
+
+<!-- 美容面罩
+  US: Therapy-Mask(美国品类全链路) / differentshell(硬软壳对比) / Currentbody(品牌分析) / led-mask-global(全球用户洞察)
+  欧洲: led-mask-eu(欧洲5站) / led-mask-global(全球用户洞察)
+  东南亚: led-mask-global(全球用户洞察含东南亚章节)
+-->
+<tr class="product-row">
+  <td class="product-cell">
+    <div class="product-name">美容面罩</div>
+    <div class="product-sub">头戴式 LED · 硬壳 / 软壳</div>
+  </td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="https://xyczy07-ai.github.io/Therapy-Mask/" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+    <a class="chk" href="https://xyczy07-ai.github.io/differentshell/" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+    <a class="chk" href="https://xyczy07-ai.github.io/Currentbody/" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+    <a class="chk" href="led-mask-global.html" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="led-mask-eu.html" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+    <a class="chk" href="led-mask-global.html" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="led-mask-global.html" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+</tr>
+
+<!-- 手持美容仪
+  飞书ZvckdAGG = 全球美容仪市场格局&竞品&消费者需求分析，覆盖北美/欧洲/东南亚/日韩
+-->
+<tr class="product-row">
+  <td class="product-cell">
+    <div class="product-name">手持美容仪</div>
+    <div class="product-sub">射频 / 微电流</div>
+  </td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="https://dreametech.feishu.cn/docx/ZvckdAGGwofwSYxOWwAcBneqnDf" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="https://dreametech.feishu.cn/docx/ZvckdAGGwofwSYxOWwAcBneqnDf" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="https://dreametech.feishu.cn/docx/ZvckdAGGwofwSYxOWwAcBneqnDf" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+</tr>
+
+<!-- 脱毛仪
+  US: Hairremoval(全球多区综合含美国Amazon数据)
+  欧洲: Hairremoval(含GB/DE章节)
+  东南亚: Hairremoval(含TikTok MY/PH/ID) + ipl-sea(东南亚深度报告)
+-->
+<tr class="product-row">
+  <td class="product-cell">
+    <div class="product-name">脱毛仪</div>
+    <div class="product-sub">IPL / 激光</div>
+  </td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="https://xyczy07-ai.github.io/Hairremoval/" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="https://xyczy07-ai.github.io/Hairremoval/" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="https://xyczy07-ai.github.io/Hairremoval/" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+    <a class="chk" href="ipl-sea.html" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+</tr>
+
+<!-- 大排灯：无调研 -->
+<tr class="product-row">
+  <td class="product-cell">
+    <div class="product-name">大排灯</div>
+    <div class="product-sub">医用级手持大型光疗设备</div>
+  </td>
+  <td class="data-cell"><span class="empty-cell">—</span></td>
+  <td class="data-cell"><span class="empty-cell">—</span></td>
+  <td class="data-cell"><span class="empty-cell">—</span></td>
+</tr>
+
+<!-- ── 吹造 ── -->
+<tr class="cat-row cat-hair"><td colspan="4">吹造</td></tr>
+
+<!-- 造型器
+  US/欧洲/东南亚: htkw72qdnpnz(全球高端造型器市场) + 飞书IrPIdVco(SuperStyle竞品报告含各区策略)
+-->
+<tr class="product-row">
+  <td class="product-cell">
+    <div class="product-name">造型器</div>
+    <div class="product-sub">多功能 / Airwrap 类</div>
+  </td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="https://htkw72qdnpnz.space.minimax.io" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+    <a class="chk" href="https://dreametech.feishu.cn/docx/IrPIdVcoSoCl2qxYozjcVPEnnId" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="https://htkw72qdnpnz.space.minimax.io" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+    <a class="chk" href="https://dreametech.feishu.cn/docx/IrPIdVcoSoCl2qxYozjcVPEnnId" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="https://htkw72qdnpnz.space.minimax.io" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+    <a class="chk" href="https://dreametech.feishu.cn/docx/IrPIdVcoSoCl2qxYozjcVPEnnId" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+</tr>
+
+<!-- 吹风机
+  US/欧洲/东南亚: k80wyqmyrz3w(全球高速吹风机市场，含北美/欧洲/东南亚区域数据)
+-->
+<tr class="product-row">
+  <td class="product-cell">
+    <div class="product-name">吹风机</div>
+    <div class="product-sub">高速 / 专业</div>
+  </td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="https://k80wyqmyrz3w.space.minimax.io" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="https://k80wyqmyrz3w.space.minimax.io" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="https://k80wyqmyrz3w.space.minimax.io" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+</tr>
+
+<!-- ── 剃须理容 ── -->
+<tr class="cat-row cat-groom"><td colspan="4">剃须理容</td></tr>
+
+<!-- 剃须刀: shaver.html 覆盖 Amazon US / DE / GB / JP -->
+<tr class="product-row">
+  <td class="product-cell">
+    <div class="product-name">剃须刀</div>
+    <div class="product-sub">电动剃须</div>
+  </td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="shaver.html" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="shaver.html" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+  <td class="data-cell"><span class="empty-cell">—</span></td>
+</tr>
+
+<!-- 电推剪: hair-clipper.html 全球市场深度研究 -->
+<tr class="product-row">
+  <td class="product-cell">
+    <div class="product-name">电推剪</div>
+    <div class="product-sub">专业 / 家用</div>
+  </td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="hair-clipper.html" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="hair-clipper.html" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+  <td class="data-cell"><div class="checks">
+    <a class="chk" href="hair-clipper.html" target="_blank"><svg viewBox="0 0 14 14"><polyline points="2,7 5,10 12,3"/></svg></a>
+  </div></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<footer>
+  <div class="legend">
+    <span class="leg-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></span>
+    已完成，点击跳转
+  </div>
+  <div class="legend">
+    <span class="leg-empty"></span>
+    尚未覆盖
+  </div>
+  <div class="footer-note">飞书链接需登录 · COSSY 内部文件</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电动剃须刀 Amazon 全球市场调研 — US · DE · GB · JP 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+:root{
+  --bg:#FFFFFF;--bg2:#F8FAFC;--bg3:#F0F4F8;
+  --text-1:#111827;--text-2:#374151;--text-3:#6B7280;
+  --accent:#1A56DB;--accent-light:#EFF6FF;
+  --green:#059669;--green-light:#ECFDF5;
+  --purple:#7C3AED;--purple-light:#F5F3FF;
+  --orange:#D97706;--orange-light:#FFFBEB;
+  --red:#DC2626;--red-light:#FEF2F2;
+  --border:#E5E7EB;
+  --shadow:0 1px 4px rgba(0,0,0,.07),0 4px 16px rgba(0,0,0,.04);
+  --radius:12px;--radius-sm:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg2);color:var(--text-1);line-height:1.6}
+
+/* Header */
+.hdr{background:var(--bg);border-bottom:1px solid var(--border);padding:18px 40px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:100;box-shadow:var(--shadow)}
+.hdr-icon{width:36px;height:36px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
+.hdr-title{font-size:15px;font-weight:700;color:var(--text-1)}
+.hdr-sub{font-size:12px;color:var(--text-3);background:var(--bg3);padding:2px 10px;border-radius:20px;margin-left:8px}
+
+/* Layout */
+.wrap{max-width:1440px;margin:0 auto;padding:28px 36px}
+
+/* Hero */
+.hero{background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:32px 36px;margin-bottom:24px}
+.hero-title{font-size:24px;font-weight:800;color:var(--text-1);margin-bottom:6px}
+.hero-sub{font-size:13px;color:var(--text-3);margin-bottom:20px}
+.hero-meta{display:flex;gap:20px;flex-wrap:wrap}
+.hm{font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:5px}
+.hm strong{color:var(--text-1);font-weight:600}
+
+/* KPI grid */
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:14px;margin-bottom:24px}
+.kpi{background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:18px 20px}
+.kpi-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3);margin-bottom:5px}
+.kpi-val{font-size:24px;font-weight:800;line-height:1.1}
+.kpi-hint{font-size:11px;color:var(--text-3);margin-top:3px}
+.kv-blue{color:var(--accent)}
+.kv-green{color:var(--green)}
+.kv-orange{color:var(--orange)}
+.kv-purple{color:var(--purple)}
+
+/* Section */
+.sec{margin-bottom:28px}
+.sec-hd{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.sec-bar{width:6px;height:28px;border-radius:3px}
+.bar-blue{background:var(--accent)}
+.bar-green{background:var(--green)}
+.bar-orange{background:var(--orange)}
+.bar-purple{background:var(--purple)}
+.sec-hd h2{font-size:18px;font-weight:700;color:var(--text-1)}
+.tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
+.tag-blue{background:var(--accent-light);color:var(--accent)}
+.tag-green{background:var(--green-light);color:var(--green)}
+.tag-orange{background:var(--orange-light);color:var(--orange)}
+.tag-purple{background:var(--purple-light);color:var(--purple)}
+
+/* Grid layouts */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+
+/* Chart card */
+.cc{background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:18px}
+.cc-title{font-size:12px;font-weight:600;color:var(--text-2);margin-bottom:10px}
+.cc-sub{font-size:11px;color:var(--text-3);margin-bottom:8px}
+.chart{width:100%;height:280px}
+.chart-tall{width:100%;height:340px}
+.chart-sm{width:100%;height:200px}
+
+/* Market card */
+.mkt-card{background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:20px;border-top:4px solid var(--accent)}
+.mkt-card.green{border-top-color:var(--green)}
+.mkt-card.orange{border-top-color:var(--orange)}
+.mkt-card.purple{border-top-color:var(--purple)}
+.mkt-flag{font-size:22px;margin-bottom:6px}
+.mkt-name{font-size:15px;font-weight:700;margin-bottom:2px}
+.mkt-cat{font-size:11px;color:var(--text-3);margin-bottom:12px}
+.mkt-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ms{text-align:center;background:var(--bg2);border-radius:8px;padding:8px 4px}
+.ms-v{font-size:16px;font-weight:800}
+.ms-l{font-size:10px;color:var(--text-3);margin-top:1px}
+.mkt-brands{margin-top:12px;font-size:12px}
+.mkt-brands strong{font-weight:700;color:var(--text-1)}
+.brand-share-bar{margin-top:6px;height:7px;border-radius:4px;background:var(--bg3);overflow:hidden;display:flex;gap:1px}
+.bsb{height:100%;border-radius:2px}
+
+/* Table */
+.tw{background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;margin-bottom:20px}
+.tw-hd{padding:14px 18px;border-bottom:1px solid var(--border);background:var(--bg3);display:flex;align-items:center;gap:8px}
+.tw-hd h3{font-size:13px;font-weight:700;color:var(--text-1)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+thead th{background:var(--bg2);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--text-3);padding:9px 14px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+tbody td{padding:11px 14px;border-bottom:1px solid #F3F4F6;vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#FAFBFC}
+.rk{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:10px;font-weight:700}
+.rk1{background:#FEF9C3;color:#92400E}
+.rk2{background:#F3F4F6;color:#374151}
+.rk3{background:#FEE2E2;color:#B91C1C}
+.rkn{background:#F3F4F6;color:#9CA3AF}
+.brand-c{font-weight:700;color:var(--text-1);font-size:13px}
+.price-c{font-weight:700;color:var(--text-1);font-size:13px}
+.vol-c{font-weight:700;color:var(--accent)}
+.rev-c{font-weight:700;color:var(--green)}
+.star{color:#F59E0B}
+.ob{display:inline-block;padding:1px 6px;border-radius:4px;font-size:10px;font-weight:600}
+.ob-us{background:#EFF6FF;color:#1A56DB}
+.ob-de{background:#FFF7ED;color:#C2410C}
+.ob-jp{background:#F0FDF4;color:#15803D}
+.ob-gb{background:#F5F3FF;color:#7C3AED}
+.ob-cn{background:#FEF9C3;color:#92400E}
+.chips{display:flex;flex-wrap:wrap;gap:3px}
+.chip{font-size:10px;background:var(--bg3);color:var(--text-2);padding:1px 5px;border-radius:3px;white-space:nowrap}
+.chip-blue{background:var(--accent-light);color:var(--accent)}
+.chip-green{background:var(--green-light);color:var(--green)}
+.chip-orange{background:var(--orange-light);color:var(--orange)}
+.nb{display:inline-block;padding:1px 5px;border-radius:3px;font-size:9px;font-weight:700;background:#FEF9C3;color:#92400E;margin-left:3px}
+.hot{background:#FEE2E2;color:#991B1B}
+
+/* Insight */
+.ic{background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:18px 20px}
+.ic h4{font-size:13px;font-weight:700;color:var(--text-1);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.ic ul{list-style:none}
+.ic ul li{font-size:12.5px;color:var(--text-2);padding:4px 0 4px 14px;position:relative;border-bottom:1px solid #F9FAFB}
+.ic ul li:last-child{border-bottom:none}
+.ic ul li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:10px;top:6px}
+.ic ul li strong{color:var(--text-1)}
+
+/* Brand matrix */
+.bm-wrap{background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;margin-bottom:20px}
+.bm-table{width:100%;border-collapse:collapse;font-size:12px}
+.bm-table th{background:var(--bg3);font-size:11px;font-weight:700;padding:10px 14px;text-align:center;border:1px solid var(--border)}
+.bm-table th:first-child{text-align:left}
+.bm-table td{padding:10px 14px;border:1px solid #F3F4F6;text-align:center;vertical-align:middle}
+.bm-table tr:hover td{background:#FAFBFC}
+.pos1{font-size:13px;font-weight:800;color:var(--accent)}
+.pos2{font-size:12px;font-weight:700;color:var(--green)}
+.pos3{font-size:12px;font-weight:600;color:var(--orange)}
+.pos-weak{font-size:11px;color:var(--text-3)}
+.pos-none{color:#D1D5DB}
+.brand-nm{font-weight:700;font-size:13px;color:var(--text-1);text-align:left}
+.brand-nm small{display:block;font-size:10px;font-weight:400;color:var(--text-3)}
+
+/* Price tier */
+.pt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.pt-card{background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:16px}
+.pt-tier{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+.pt-range{font-size:16px;font-weight:800;color:var(--text-1);margin-bottom:6px}
+.pt-brands{font-size:11px;color:var(--text-2);line-height:1.6}
+.pt-brands strong{color:var(--accent)}
+
+/* Footer */
+.ftr{background:var(--bg);border-top:1px solid var(--border);padding:18px 36px;font-size:11px;color:var(--text-3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-top:32px}
+
+@media(max-width:900px){.wrap{padding:12px}.g2,.g3,.g4,.pt-grid{grid-template-columns:1fr 1fr}.chart{height:220px}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-icon">🪒</div>
+  <div>
+    <span class="hdr-title">电动剃须刀 Amazon 全球市场调研</span>
+    <span class="hdr-sub">US · DE · GB · JP · CA · FR · AU · 数据采集 2026-04-14</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-title">电动剃须刀全球 Amazon 市场全景报告</div>
+  <div class="hero-sub">基于 Sorftime MCP 实时数据 · 覆盖 US / DE / GB / JP 四大核心市场 Category Report · 分析品类节点合计 Top400+ 产品</div>
+  <div class="hero-meta">
+    <div class="hm">平台：<strong>Amazon</strong></div>
+    <div class="hm">覆盖市场：<strong>US / DE / GB / JP / CA / FR / AU</strong></div>
+    <div class="hm">核心类目：<strong>Men's Foil Shavers · Rotary Shavers · メンズシェーバー · Folienrasierer</strong></div>
+    <div class="hm">数据时间：<strong>2026年4月</strong></div>
+  </div>
+</div>
+
+<!-- Global KPIs -->
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-lbl">US 合并月销额（双类目）</div>
+    <div class="kpi-val kv-blue">$21.3M</div>
+    <div class="kpi-hint">Foil $11.72M + Rotary $9.57M</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-lbl">JP 月销额（USD 换算）</div>
+    <div class="kpi-val kv-green">$6.9M</div>
+    <div class="kpi-hint">¥1,028M · ¥149/USD</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-lbl">DE 月销额（EUR）</div>
+    <div class="kpi-val kv-orange">€3.0M</div>
+    <div class="kpi-hint">Top100 Folienrasierer</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-lbl">GB 月销额（GBP）</div>
+    <div class="kpi-val kv-purple">£1.1M</div>
+    <div class="kpi-hint">Top100 Foil Shavers</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-lbl">US 月销量（双类目合计）</div>
+    <div class="kpi-val kv-blue">304K</div>
+    <div class="kpi-hint">Foil 158K + Rotary 146K</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-lbl">JP 月销量</div>
+    <div class="kpi-val kv-green">113K</div>
+    <div class="kpi-hint">メンズシェーバー Top100</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-lbl">US 全球最大市场</div>
+    <div class="kpi-val kv-blue">#1</div>
+    <div class="kpi-hint">总规模约为 JP 的 3×、DE 的 7×</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-lbl">圣诞峰值（Dec 2025 US）</div>
+    <div class="kpi-val kv-orange">288K+</div>
+    <div class="kpi-hint">常规月的 1.75× 以上</div>
+  </div>
+</div>
+
+<!-- Overview Charts -->
+<div class="g2">
+  <div class="cc">
+    <div class="cc-title">全球四大市场月销额规模对比（USD 等值，Top100产品）</div>
+    <div class="cc-sub">DE 按 EUR×1.08、GB 按 GBP×1.26、JP 按 JPY÷149 换算</div>
+    <div class="chart" id="c-global-rev"></div>
+  </div>
+  <div class="cc">
+    <div class="cc-title">四大市场月销量对比（Top100产品，件）</div>
+    <div class="chart" id="c-global-vol"></div>
+  </div>
+</div>
+
+<!-- Market Cards -->
+<div class="g4">
+  <div class="mkt-card">
+    <div class="mkt-flag">🇺🇸</div>
+    <div class="mkt-name">美国 Amazon US</div>
+    <div class="mkt-cat">Foil Shavers + Rotary Shavers</div>
+    <div class="mkt-stats">
+      <div class="ms"><div class="ms-v kv-blue">$21.3M</div><div class="ms-l">月销额</div></div>
+      <div class="ms"><div class="ms-v kv-blue">304K</div><div class="ms-l">月销量（件）</div></div>
+      <div class="ms"><div class="ms-v">$67–$87</div><div class="ms-l">均价区间</div></div>
+      <div class="ms"><div class="ms-v">65%</div><div class="ms-l">Amazon自营占比</div></div>
+    </div>
+    <div class="mkt-brands">
+      <strong>Top Brands:</strong> Norelco(Philips) · Braun · Remington<br>
+      <div class="brand-share-bar" style="margin-top:6px">
+        <div class="bsb" style="width:28%;background:#1A56DB" title="Norelco 28%"></div>
+        <div class="bsb" style="width:25%;background:#059669" title="Braun 25%"></div>
+        <div class="bsb" style="width:8%;background:#D97706" title="Remington 8%"></div>
+        <div class="bsb" style="width:39%;background:#E5E7EB" title="Others 39%"></div>
+      </div>
+      <div style="font-size:10px;color:var(--text-3);margin-top:3px">Norelco 28% · Braun 25% · Remington 8% · 其他 39%</div>
+    </div>
+  </div>
+  <div class="mkt-card green">
+    <div class="mkt-flag">🇯🇵</div>
+    <div class="mkt-name">日本 Amazon JP</div>
+    <div class="mkt-cat">メンズシェーバー</div>
+    <div class="mkt-stats">
+      <div class="ms"><div class="ms-v kv-green">$6.9M</div><div class="ms-l">月销额(USD换算)</div></div>
+      <div class="ms"><div class="ms-v kv-green">113K</div><div class="ms-l">月销量（件）</div></div>
+      <div class="ms"><div class="ms-v">¥8,421</div><div class="ms-l">均价 (~$56)</div></div>
+      <div class="ms"><div class="ms-v">55%</div><div class="ms-l">Amazon自营占比</div></div>
+    </div>
+    <div class="mkt-brands">
+      <strong>Top Brands:</strong> Panasonic · Braun · Philips<br>
+      <div class="brand-share-bar" style="margin-top:6px">
+        <div class="bsb" style="width:34%;background:#059669" title="Panasonic 34%"></div>
+        <div class="bsb" style="width:19%;background:#1A56DB" title="Braun 19%"></div>
+        <div class="bsb" style="width:9%;background:#7C3AED" title="Philips 9%"></div>
+        <div class="bsb" style="width:38%;background:#E5E7EB" title="Others 38%"></div>
+      </div>
+      <div style="font-size:10px;color:var(--text-3);margin-top:3px">Panasonic 33.6% · Braun 19% · Philips 9% · 其他 38%</div>
+    </div>
+  </div>
+  <div class="mkt-card orange">
+    <div class="mkt-flag">🇩🇪</div>
+    <div class="mkt-name">德国 Amazon DE</div>
+    <div class="mkt-cat">Folienrasierer（网刀剃须刀）</div>
+    <div class="mkt-stats">
+      <div class="ms"><div class="ms-v kv-orange">€3.0M</div><div class="ms-l">月销额</div></div>
+      <div class="ms"><div class="ms-v kv-orange">38K</div><div class="ms-l">月销量（件）</div></div>
+      <div class="ms"><div class="ms-v">€73.7</div><div class="ms-l">均价</div></div>
+      <div class="ms"><div class="ms-v">69%</div><div class="ms-l">Amazon自营占比</div></div>
+    </div>
+    <div class="mkt-brands">
+      <strong>Top Brands:</strong> Braun（压倒性主导）<br>
+      <div class="brand-share-bar" style="margin-top:6px">
+        <div class="bsb" style="width:63%;background:#D97706" title="Braun 63%"></div>
+        <div class="bsb" style="width:8%;background:#6B7280" title="Wahl 8%"></div>
+        <div class="bsb" style="width:8%;background:#9CA3AF" title="Philips 8%"></div>
+        <div class="bsb" style="width:21%;background:#E5E7EB" title="Others 21%"></div>
+      </div>
+      <div style="font-size:10px;color:var(--text-3);margin-top:3px">Braun 63.3% · Wahl 8.2% · Philips 8.1% · 其他 20.4%</div>
+    </div>
+  </div>
+  <div class="mkt-card purple">
+    <div class="mkt-flag">🇬🇧</div>
+    <div class="mkt-name">英国 Amazon GB</div>
+    <div class="mkt-cat">Foil Shavers（网刀剃须刀）</div>
+    <div class="mkt-stats">
+      <div class="ms"><div class="ms-v kv-purple">£1.1M</div><div class="ms-l">月销额</div></div>
+      <div class="ms"><div class="ms-v kv-purple">25.7K</div><div class="ms-l">月销量（件）</div></div>
+      <div class="ms"><div class="ms-v">£47.3</div><div class="ms-l">均价</div></div>
+      <div class="ms"><div class="ms-v">28%</div><div class="ms-l">Amazon自营占比</div></div>
+    </div>
+    <div class="mkt-brands">
+      <strong>Top Brands:</strong> Braun · 中国白牌 · Panasonic<br>
+      <div class="brand-share-bar" style="margin-top:6px">
+        <div class="bsb" style="width:39%;background:#7C3AED" title="Braun 39%"></div>
+        <div class="bsb" style="width:11%;background:#F97316" title="VIKICON 11%"></div>
+        <div class="bsb" style="width:6%;background:#FBBF24" title="BTQCTM 6%"></div>
+        <div class="bsb" style="width:44%;background:#E5E7EB" title="Others 44%"></div>
+      </div>
+      <div style="font-size:10px;color:var(--text-3);margin-top:3px">Braun 38.7% · VIKICON 10.6% · BTQCTM 5.7% · 其他 45%</div>
+    </div>
+  </div>
+</div>
+
+<!-- US Deep Dive -->
+<div class="sec">
+  <div class="sec-hd">
+    <div class="sec-bar bar-blue"></div>
+    <h2>🇺🇸 美国市场深度分析</h2>
+    <span class="tag tag-blue">全球最大市场 · $21.3M/月 · Foil + Rotary 双类目</span>
+  </div>
+
+  <!-- US Overview Charts -->
+  <div class="g2">
+    <div class="cc">
+      <div class="cc-title">美国 Foil + Rotary 月销量趋势（2024年4月–2026年4月）</div>
+      <div class="cc-sub">Foil Shavers（节点 13271094011）+ Rotary Shavers（节点 13271096011），圣诞季明显峰值</div>
+      <div class="chart-tall" id="c-us-trend"></div>
+    </div>
+    <div class="cc">
+      <div class="cc-title">美国市场品牌月销额分布（Foil + Rotary 合计，USD）</div>
+      <div class="chart-tall" id="c-us-brands"></div>
+    </div>
+  </div>
+
+  <!-- US Foil Top Products -->
+  <div class="tw">
+    <div class="tw-hd">
+      <span style="font-size:14px">✂️</span>
+      <h3>美国 Foil Shavers Top 15 产品（月销额排名）</h3>
+      <span class="tag tag-blue" style="margin-left:auto">Top100 月销额 $11.72M · 月销量 158,480件</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>排名</th><th>品牌</th><th>ASIN</th><th>价格(USD)</th><th>月销量</th><th>月销额</th><th>评分/评论</th><th>来源</th><th>产品简述</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="rk rk1">1</span></td><td><span class="brand-c">Norelco<br><small>Philips</small></span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B0BZQTSBWZ" target="_blank">B0BZQTSBWZ</a></td><td class="price-c">$39.99</td><td class="vol-c">27,138</td><td class="rev-c">$1,085,249</td><td><span class="star">★</span>4.4 / 12,526条</td><td><span class="ob ob-us">US</span></td><td><div class="chips"><span class="chip">360 Hybrid</span><span class="chip">Foil+Rotary</span><span class="chip">5合1</span><span class="chip">入门爆款</span></div></td></tr>
+        <tr><td><span class="rk rk2">2</span></td><td><span class="brand-c">Braun</span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B0CDQFVY1J" target="_blank">B0CDQFVY1J</a></td><td class="price-c">$34.96</td><td class="vol-c">45,986</td><td class="rev-c">$1,607,900</td><td><span class="star">★</span>4.5 / —</td><td><span class="ob ob-de">DE/US</span></td><td><div class="chips"><span class="chip">替换刀头</span><span class="chip">Series配件</span><span class="chip chip-orange">配件爆款</span></div></td></tr>
+        <tr><td><span class="rk rk3">3</span></td><td><span class="brand-c">Braun</span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B0CDQFVY1J" target="_blank">B09SZ…</a></td><td class="price-c">$349.94</td><td class="vol-c">3,530</td><td class="rev-c">$1,235,288</td><td><span class="star">★</span>4.6 / 3,200+</td><td><span class="ob ob-de">DE/US</span></td><td><div class="chips"><span class="chip chip-blue">Series 9 PRO+</span><span class="chip">5+1刀头</span><span class="chip">顶级旗舰</span></div></td></tr>
+        <tr><td><span class="rk rkn">4</span></td><td><span class="brand-c">Norelco<br><small>Philips</small></span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B0CLX1573H" target="_blank">B0CLX1573H</a></td><td class="price-c">$84.96</td><td class="vol-c">11,373</td><td class="rev-c">$966,250</td><td><span class="star">★</span>4.4 / 33,448条</td><td><span class="ob ob-us">Amazon.com</span></td><td><div class="chips"><span class="chip">Series 3900</span><span class="chip">Wet & Dry</span><span class="chip">SkinGlide</span></div></td></tr>
+        <tr><td><span class="rk rkn">5</span></td><td><span class="brand-c">Norelco<br><small>Philips</small></span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B0BZQTSBWZ" target="_blank">B0CLW…</a></td><td class="price-c">$39.96</td><td class="vol-c">22,135</td><td class="rev-c">$884,515</td><td><span class="star">★</span>4.3 / 61,105条</td><td><span class="ob ob-us">Amazon.com</span></td><td><div class="chips"><span class="chip">Series 2400</span><span class="chip">Wet & Dry</span><span class="chip">入门款</span></div></td></tr>
+        <tr><td><span class="rk rkn">6</span></td><td><span class="brand-c">Panasonic</span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B09SZ" target="_blank">—</a></td><td class="price-c">$149.99</td><td class="vol-c">3,752</td><td class="rev-c">$562,762</td><td><span class="star">★</span>4.5 / 8,000+</td><td><span class="ob ob-jp">JP/US</span></td><td><div class="chips"><span class="chip chip-blue">ARC5</span><span class="chip">5叶片</span><span class="chip">Pop-Up Trimmer</span></div></td></tr>
+        <tr><td><span class="rk rkn">7</span></td><td><span class="brand-c">BaBylissPRO</span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B0CLX…" target="_blank">—</a></td><td class="price-c">$119.99</td><td class="vol-c">4,354</td><td class="rev-c">$522,436</td><td><span class="star">★</span>4.5 / 10,211条</td><td><span class="ob ob-us">US</span></td><td><div class="chips"><span class="chip">METALFX</span><span class="chip">Double Foil</span><span class="chip">美发专业品牌</span></div></td></tr>
+        <tr><td><span class="rk rkn">8</span></td><td><span class="brand-c">Andis</span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B09SZ" target="_blank">—</a></td><td class="price-c">$67.79</td><td class="vol-c">7,032</td><td class="rev-c">$476,699</td><td><span class="star">★</span>4.4 / 5,000+</td><td><span class="ob ob-us">US</span></td><td><div class="chips"><span class="chip">TS-1 Foil</span><span class="chip">Titanium</span><span class="chip">理发师专用</span></div></td></tr>
+        <tr><td><span class="rk rkn">9</span></td><td><span class="brand-c">MANSCAPED</span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B09SZ" target="_blank">—</a></td><td class="price-c">$63.99</td><td class="vol-c">5,458</td><td class="rev-c">$349,257</td><td><span class="star">★</span>4.3 / 8,000+</td><td><span class="ob ob-us">US</span></td><td><div class="chips"><span class="chip">Handyman</span><span class="chip">便携款</span><span class="chip">男性护理品牌</span></div></td></tr>
+        <tr><td><span class="rk rkn">10</span></td><td><span class="brand-c">Braun</span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B09SZ" target="_blank">—</a></td><td class="price-c">$49.97</td><td class="vol-c">4,935</td><td class="rev-c">$246,602</td><td><span class="star">★</span>4.4 / 15,000+</td><td><span class="ob ob-de">DE/US</span></td><td><div class="chips"><span class="chip">Series 3 3010s</span><span class="chip">Wet & Dry</span><span class="chip">入门经典</span></div></td></tr>
+        <tr><td><span class="rk rkn">11</span></td><td><span class="brand-c">Remington</span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B09SZ" target="_blank">—</a></td><td class="price-c">$32.99</td><td class="vol-c">7,251</td><td class="rev-c">$239,210</td><td><span class="star">★</span>4.2 / 5,000+</td><td><span class="ob ob-us">US</span></td><td><div class="chips"><span class="chip">WDF4825</span><span class="chip">女款 Silky</span><span class="chip">3刀片</span></div></td></tr>
+        <tr><td><span class="rk rkn">12</span></td><td><span class="brand-c">Braun</span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B09SZ" target="_blank">—</a></td><td class="price-c">$69.94</td><td class="vol-c">6,154</td><td class="rev-c">$430,411</td><td><span class="star">★</span>4.5 / 3,000+</td><td><span class="ob ob-de">DE/US</span></td><td><div class="chips"><span class="chip">Series 9 替换刀头</span><span class="chip chip-orange">高价配件</span></div></td></tr>
+        <tr><td><span class="rk rkn">13</span></td><td><span class="brand-c">Remington</span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B09SZ" target="_blank">—</a></td><td class="price-c">$55.99</td><td class="vol-c">3,580</td><td class="rev-c">$200,444</td><td><span class="star">★</span>4.3 / 8,000+</td><td><span class="ob ob-us">US</span></td><td><div class="chips"><span class="chip">F5 Power</span><span class="chip">Foil</span><span class="chip">中端款</span></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- US Rotary Top Products -->
+  <div class="tw">
+    <div class="tw-hd">
+      <span style="font-size:14px">🌀</span>
+      <h3>美国 Rotary Shavers Top 12 产品（月销量排名）</h3>
+      <span class="tag tag-blue" style="margin-left:auto">Top100 月销额 $9.57M · 月销量 145,960件</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th>排名</th><th>品牌</th><th>ASIN</th><th>价格(USD)</th><th>月销量</th><th>月销额</th><th>评分/评论</th><th>来源</th><th>产品简述</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="rk rk1">1</span></td><td><span class="brand-c">Norelco<br><small>Philips</small></span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B0CLWVH384" target="_blank">B0CLWVH384</a></td><td class="price-c">$39.96</td><td class="vol-c">22,135</td><td class="rev-c">$884,515</td><td><span class="star">★</span>4.3 / 61,105条</td><td><span class="ob ob-us">Amazon.com</span></td><td><div class="chips"><span class="chip">Series 2400</span><span class="chip">Wet & Dry</span><span class="chip chip-blue">#1 销量</span></div></td></tr>
+        <tr><td><span class="rk rk2">2</span></td><td><span class="brand-c">Freebird</span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B0CDQFVY1J" target="_blank">FlexSeries</a></td><td class="price-c">$59.95</td><td class="vol-c">15,871</td><td class="rev-c">$951,466</td><td><span class="star">★</span>4.0 / 27,758条</td><td><span class="ob ob-us">US</span></td><td><div class="chips"><span class="chip">头部剃须 Head Shaver</span><span class="chip">无线</span></div></td></tr>
+        <tr><td><span class="rk rk3">3</span></td><td><span class="brand-c">Norelco<br><small>Philips</small></span></td><td><a style="font-size:10px;color:var(--accent);font-family:monospace" href="https://www.amazon.com/dp/B0CLX1573H" target="_blank">B0CLX1573H</a></td><td class="price-c">$84.96</td><td class="vol-c">11,373</td><td class="rev-c">$966,250</td><td><span class="star">★</span>4.4 / 33,448条</td><td><span class="ob ob-us">Amazon.com</span></td><td><div class="chips"><span class="chip">Series 3900</span><span class="chip">Storm Blue</span><span class="chip">P-Cap设计</span></div></td></tr>
+        <tr><td><span class="rk rkn">4</span></td><td><span class="brand-c">SHPAVVER</span></td><td>—</td><td class="price-c">$65.99</td><td class="vol-c">6,025</td><td class="rev-c">$397,590</td><td><span class="star">★</span>4.3 / 4,270条</td><td><span class="ob ob-cn">CN</span></td><td><div class="chips"><span class="chip">5合1 Head Shaver</span><span class="chip">IPX7防水</span></div></td></tr>
+        <tr><td><span class="rk rkn">5</span></td><td><span class="brand-c">Cyruzi</span></td><td>—</td><td class="price-c">$49.99</td><td class="vol-c">5,137</td><td class="rev-c">$236,251</td><td><span class="star">★</span>4.7 / 299条</td><td><span class="ob ob-cn">CN</span></td><td><div class="chips"><span class="chip">7D Floating Razor</span><span class="chip">光头剃须</span></div></td></tr>
+        <tr><td><span class="rk rkn">6</span></td><td><span class="brand-c">Norelco</span></td><td>—</td><td class="price-c">$107.28</td><td class="vol-c">4,202</td><td class="rev-c">$450,791</td><td><span class="star">★</span>4.4 / 3,565条</td><td><span class="ob ob-us">Amazon.com</span></td><td><div class="chips"><span class="chip">Series 7200</span><span class="chip">Wet & Dry</span><span class="chip">中端</span></div></td></tr>
+        <tr><td><span class="rk rkn">7</span></td><td><span class="brand-c">Remington</span></td><td>—</td><td class="price-c">$59.94</td><td class="vol-c">3,834</td><td class="rev-c">$229,810</td><td><span class="star">★</span>4.2 / 16,743条</td><td><span class="ob ob-us">US</span></td><td><div class="chips"><span class="chip">XR7000 Balder Pro</span><span class="chip">Rotary防水</span></div></td></tr>
+        <tr><td><span class="rk rkn">8</span></td><td><span class="brand-c">BaBylissPRO</span></td><td>—</td><td class="price-c">$119.99</td><td class="vol-c">4,354</td><td class="rev-c">$522,436</td><td><span class="star">★</span>4.5 / 10,211条</td><td><span class="ob ob-us">US</span></td><td><div class="chips"><span class="chip">METALFX Double Foil</span></div></td></tr>
+        <tr><td><span class="rk rkn">9</span></td><td><span class="brand-c">Skull Shaver</span></td><td>—</td><td class="price-c">$77.75</td><td class="vol-c">3,421</td><td class="rev-c">$265,983</td><td><span class="star">★</span>4.2 / 1,477条</td><td><span class="ob ob-us">US</span></td><td><div class="chips"><span class="chip">Pitbull Silver PRO</span><span class="chip">头部专用</span></div></td></tr>
+        <tr><td><span class="rk rkn">10</span></td><td><span class="brand-c">Skull Shaver</span></td><td>—</td><td class="price-c">$120.99</td><td class="vol-c">3,278</td><td class="rev-c">$396,605</td><td><span class="star">★</span>4.2 / 877条</td><td><span class="ob ob-us">US</span></td><td><div class="chips"><span class="chip">Pitbull Gold PRO</span><span class="chip">高端头部</span></div></td></tr>
+        <tr><td><span class="rk rkn">11</span></td><td><span class="brand-c">Norelco</span></td><td>—</td><td class="price-c">$105.99</td><td class="vol-c">3,793</td><td class="rev-c">$402,020</td><td><span class="star">★</span>4.4 / 307条</td><td><span class="ob ob-us">Amazon.com</span></td><td><div class="chips"><span class="chip">Head Shaver Pro 7000</span></div></td></tr>
+        <tr><td><span class="rk rkn">12</span></td><td><span class="brand-c">Groomie</span></td><td>—</td><td class="price-c">$59.99</td><td class="vol-c">3,375</td><td class="rev-c">$202,466</td><td><span class="star">★</span>4.1 / 3,623条</td><td><span class="ob ob-us">US</span></td><td><div class="chips"><span class="chip">BaldiePro</span><span class="chip">光头专用</span></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="g2">
+    <div class="ic">
+      <h4>💡 美国市场洞察</h4>
+      <ul>
+        <li><strong>Norelco (Philips)</strong> 垄断 Rotary 品类，月销量50,029件占比34%；Foil 品类月销量40,297件，第一</li>
+        <li><strong>Braun</strong> 是 Foil 品类收入王——月销额$4.72M（vs Norelco $1.74M），靠高价 Series 9 PRO+（$349.94）贡献</li>
+        <li><strong>Head Shaver（光头剃须）</strong>是美国特色细分：Freebird、Skull Shaver、SHPAVVER、Groomie 均专注此市场，合计贡献数百万美元/月</li>
+        <li>圣诞季峰值明显：Dec 2025 Foil 288K件（常规月1.7×），Rotary 343K件（常规月2×）</li>
+        <li><strong>MANSCAPED</strong> 以男性体毛护理品牌进入剃须刀市场，月收$349K，说明品牌定位+内容营销是崛起路径</li>
+      </ul>
+    </div>
+    <div class="ic">
+      <h4>📊 美国价格段分析</h4>
+      <ul>
+        <li><strong>$20–$40 入门段</strong>：销量最高，Norelco 2400（$39.96, 22K件）、Braun S3（$49.97）为主力</li>
+        <li><strong>$50–$100 中端段</strong>：Norelco 3900（$84.96）、Freebird（$59.95）、SHPAVVER（$65.99）活跃</li>
+        <li><strong>$100–$200 高端段</strong>：BaBylissPRO（$119.99）、Panasonic ARC5（$149.99），专业/品牌溢价</li>
+        <li><strong>$200+ 旗舰段</strong>：Braun Series 9 PRO+（$349.94）是收入贡献最大的单品，月收$1.24M</li>
+        <li>中国品牌主要集中在 $30–$70 的头部剃须/入门区间，逐步蚕食美国中低端份额</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- DE Market -->
+<div class="sec">
+  <div class="sec-hd">
+    <div class="sec-bar bar-orange"></div>
+    <h2>🇩🇪 德国市场深度分析</h2>
+    <span class="tag tag-orange">Braun 主场 · €3.0M/月 · Top100月销63%被Braun占据</span>
+  </div>
+
+  <div class="g2">
+    <div class="cc">
+      <div class="cc-title">德国 Folienrasierer 月销量趋势（2024.4–2026.4）</div>
+      <div class="chart" id="c-de-trend"></div>
+    </div>
+    <div class="cc">
+      <div class="cc-title">德国品牌月销量占比</div>
+      <div class="chart" id="c-de-brands"></div>
+    </div>
+  </div>
+
+  <div class="tw">
+    <div class="tw-hd">
+      <span style="font-size:14px">🇩🇪</span>
+      <h3>德国 Folienrasierer Top 12 产品</h3>
+      <span class="tag tag-orange" style="margin-left:auto">Top100 月销额 €2.98M · Braun 月收 €2.41M（81%！）</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th>排名</th><th>品牌</th><th>价格(EUR)</th><th>月销量</th><th>月销额</th><th>评分/评论</th><th>产品型号</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="rk rk1">1</span></td><td><span class="brand-c">Braun</span></td><td class="price-c">€39.39</td><td class="vol-c">5,693</td><td class="rev-c">€224,247</td><td><span class="star">★</span>4.5 / 167条</td><td><div class="chips"><span class="chip chip-orange">Series 7 替换刀头</span><span class="chip">74s</span></div></td></tr>
+        <tr><td><span class="rk rk2">2</span></td><td><span class="brand-c">Braun</span></td><td class="price-c">€85.00</td><td class="vol-c">2,434</td><td class="rev-c">€206,890</td><td><span class="star">★</span>3.9 / 266条</td><td><div class="chips"><span class="chip chip-blue">Series 5</span><span class="chip">50分钟续航</span></div></td></tr>
+        <tr><td><span class="rk rk3">3</span></td><td><span class="brand-c">Braun</span></td><td class="price-c">€104.27</td><td class="vol-c">2,305</td><td class="rev-c">€240,342</td><td><span class="star">★</span>4.4 / 456条</td><td><div class="chips"><span class="chip">Series 3+</span><span class="chip">3枚刀片</span><span class="chip">MicroComb</span><span class="chip">Wet&Dry</span></div></td></tr>
+        <tr><td><span class="rk rkn">4</span></td><td><span class="brand-c">Wahl</span></td><td class="price-c">€15.88</td><td class="vol-c">2,260</td><td class="rev-c">€35,889</td><td><span class="star">★</span>4.0 / 21,164条</td><td><div class="chips"><span class="chip">Travel Shaver</span><span class="chip">低价入门</span></div></td></tr>
+        <tr><td><span class="rk rkn">5</span></td><td><span class="brand-c">Braun</span></td><td class="price-c">€48.90</td><td class="vol-c">1,626</td><td class="rev-c">€79,511</td><td><span class="star">★</span>4.1 / 391条</td><td><div class="chips"><span class="chip">Series 3</span><span class="chip">3枚刀片</span></div></td></tr>
+        <tr><td><span class="rk rkn">6</span></td><td><span class="brand-c">Braun</span></td><td class="price-c">€309.99</td><td class="vol-c">1,314</td><td class="rev-c">€407,327</td><td><span class="star">★</span>4.5 / 2,095条</td><td><div class="chips"><span class="chip chip-blue">Series 9 PRO+</span><span class="chip">5+1刀头</span><span class="chip">旗舰</span></div></td></tr>
+        <tr><td><span class="rk rkn">7</span></td><td><span class="brand-c">Braun</span></td><td class="price-c">€134.99</td><td class="vol-c">1,320</td><td class="rev-c">€178,187</td><td><span class="star">★</span>3.7 / 67条</td><td><div class="chips"><span class="chip">Series 5</span><span class="chip">50分钟</span></div></td></tr>
+        <tr><td><span class="rk rkn">8</span></td><td><span class="brand-c">Braun</span></td><td class="price-c">€334.95</td><td class="vol-c">1,071</td><td class="rev-c">€358,731</td><td><span class="star">★</span>4.5 / 1,442条</td><td><div class="chips"><span class="chip chip-blue">Series 9 Pro+</span><span class="chip">清洁充电站</span></div></td></tr>
+        <tr><td><span class="rk rkn">9</span></td><td><span class="brand-c">Philips</span></td><td class="price-c">€129.00</td><td class="vol-c">1,831</td><td class="rev-c">€236,199</td><td><span class="star">★</span>4.5 / 2,321条</td><td><div class="chips"><span class="chip">Series 7000</span><span class="chip">Wet & Dry</span></div></td></tr>
+        <tr><td><span class="rk rkn">10</span></td><td><span class="brand-c">Braun</span></td><td class="price-c">€91.99</td><td class="vol-c">1,157</td><td class="rev-c">€106,432</td><td><span class="star">★</span>4.5 / 2,741条</td><td><div class="chips"><span class="chip">Barttrimmer BT9440</span></div></td></tr>
+        <tr><td><span class="rk rkn">11</span></td><td><span class="brand-c">GRUNDIG</span></td><td class="price-c">€26.99</td><td class="vol-c">781</td><td class="rev-c">€21,079</td><td><span class="star">★</span>4.2 / 386条</td><td><div class="chips"><span class="chip">MS 6330</span><span class="chip">本土品牌</span></div></td></tr>
+        <tr><td><span class="rk rkn">12</span></td><td><span class="brand-c">Brightup</span></td><td class="price-c">€39.99</td><td class="vol-c">670</td><td class="rev-c">€24,113</td><td><span class="star">★</span>4.2 / 244条</td><td><div class="chips"><span class="chip">中国品牌</span><span class="chip">入门款</span></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="g2">
+    <div class="ic">
+      <h4>🇩🇪 德国市场洞察</h4>
+      <ul>
+        <li><strong>Braun 绝对垄断</strong>：月销量63.3%、月销额81% 均被 Braun 占据，竞争格局极度集中</li>
+        <li>P&G 通过 Braun 品牌在德国主场优势极强——本地品牌认知、德国制造背书加持</li>
+        <li>Philips/Norelco 在德国表现远弱于美国（月销仅3,083件 vs 美国数万件）</li>
+        <li><strong>Braun Series 9 PRO+（€310–335）</strong> 是高端旗舰收入引擎，两款合计月收超 €766K</li>
+        <li>中国品牌（Brightup等）仅有少量渗透，德国市场信任门槛高</li>
+        <li>Amazon自营占比高达69.15%，第三方卖家空间有限</li>
+      </ul>
+    </div>
+    <div class="ic">
+      <h4>🇬🇧 英国市场特点</h4>
+      <ul>
+        <li><strong>规模最小</strong>：月销额£1.1M，约为美国的1/19、德国的1/3</li>
+        <li>Braun 仍是第一品牌（38.7%量占比），但优势远不如德国（DE 63.3%）</li>
+        <li><strong>中国白牌品牌崛起明显</strong>：VIKICON（10.6%）、BTQCTM（5.7%）是第2、3大品牌</li>
+        <li>Amazon 自营占比仅 28%，第三方卖家空间最大的市场</li>
+        <li>Panasonic 在 GB 有一定存在感（ES-RF31, £59.99, 600件/月）</li>
+        <li>价格带较低：均价£47，中位价£100 — 市场多集中 £25–£75</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- JP Market -->
+<div class="sec">
+  <div class="sec-hd">
+    <div class="sec-bar bar-green"></div>
+    <h2>🇯🇵 日本市场深度分析</h2>
+    <span class="tag tag-green">Panasonic 主场 · ¥1,028M/月 ($6.9M) · 精工品质高溢价</span>
+  </div>
+
+  <div class="g2">
+    <div class="cc">
+      <div class="cc-title">日本 メンズシェーバー 月销量趋势（2024.4–2026.4）</div>
+      <div class="chart" id="c-jp-trend"></div>
+    </div>
+    <div class="cc">
+      <div class="cc-title">日本品牌月销量占比</div>
+      <div class="chart" id="c-jp-brands"></div>
+    </div>
+  </div>
+
+  <div class="tw">
+    <div class="tw-hd">
+      <span style="font-size:14px">🇯🇵</span>
+      <h3>日本 メンズシェーバー Top 15 产品</h3>
+      <span class="tag tag-green" style="margin-left:auto">Top100 月销额 ¥1,028M · 月销量 112,786件 · Panasonic ¥397M (38.6%)</span>
+    </div>
+    <table>
+      <thead>
+        <tr><th>排名</th><th>品牌</th><th>价格(JPY)</th><th>月销量</th><th>月销额(JPY)</th><th>评分/评论</th><th>产品简述</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="rk rk1">1</span></td><td><span class="brand-c">Braun</span></td><td class="price-c">¥15,800</td><td class="vol-c">8,950</td><td class="rev-c">¥141,410,000</td><td><span class="star">★</span>4.0 / 528条</td><td><div class="chips"><span class="chip chip-blue">Series 5 (52-M1200s)</span><span class="chip">ミント色</span><span class="chip">Amazon.co.jp限定</span></div></td></tr>
+        <tr><td><span class="rk rk2">2</span></td><td><span class="brand-c">Panasonic</span></td><td class="price-c">¥7,363</td><td class="vol-c">6,932</td><td class="rev-c">¥51,040,316</td><td><span class="star">★</span>4.3 / —</td><td><div class="chips"><span class="chip">ラムダッシュ 3枚刃</span><span class="chip">AC充電</span><span class="chip">ウォータースルー洗浄</span></div></td></tr>
+        <tr><td><span class="rk rk3">3</span></td><td><span class="brand-c">Panasonic</span></td><td class="price-c">¥4,100</td><td class="vol-c">6,814</td><td class="rev-c">¥27,937,400</td><td><span class="star">★</span>4.2 / —</td><td><div class="chips"><span class="chip">ボディシェーバー フェリエ</span><span class="chip">ドライ専用</span><span class="chip">全身用</span></div></td></tr>
+        <tr><td><span class="rk rkn">4</span></td><td><span class="brand-c">Panasonic</span></td><td class="price-c">¥6,566</td><td class="vol-c">5,902</td><td class="rev-c">¥38,752,532</td><td><span class="star">★</span>4.3 / —</td><td><div class="chips"><span class="chip">ボディトリマー VIO対応</span><span class="chip">お風呂剃り可</span></div></td></tr>
+        <tr><td><span class="rk rkn">5</span></td><td><span class="brand-c">Braun</span></td><td class="price-c">¥5,145</td><td class="vol-c">5,523</td><td class="rev-c">¥28,415,835</td><td><span class="star">★</span>4.0 / —</td><td><div class="chips"><span class="chip">Series 3 (310s)</span><span class="chip">3枚刃</span><span class="chip">入门款</span></div></td></tr>
+        <tr><td><span class="rk rkn">6</span></td><td><span class="brand-c">Philips</span></td><td class="price-c">¥13,200</td><td class="vol-c">4,564</td><td class="rev-c">¥60,244,800</td><td><span class="star">★</span>4.1 / 627条</td><td><div class="chips"><span class="chip">5000シリーズ</span><span class="chip">27枚刃</span><span class="chip">回転式</span><span class="chip">お風呂剃り</span></div></td></tr>
+        <tr><td><span class="rk rkn">7</span></td><td><span class="brand-c">Omniveo</span></td><td class="price-c">¥2,561</td><td class="vol-c">3,542</td><td class="rev-c">¥9,071,062</td><td><span class="star">★</span>4.2 / —</td><td><div class="chips"><span class="chip">CN品牌</span><span class="chip chip-orange">2026新型</span><span class="chip">360°回転</span></div></td></tr>
+        <tr><td><span class="rk rkn">8</span></td><td><span class="brand-c">Oliforu</span></td><td class="price-c">¥5,979</td><td class="vol-c">3,456</td><td class="rev-c">¥20,663,424</td><td><span class="star">★</span>4.1 / —</td><td><div class="chips"><span class="chip">CN品牌</span><span class="chip">メタル筐体</span><span class="chip">独立3ヘッド</span></div></td></tr>
+        <tr><td><span class="rk rkn">9</span></td><td><span class="brand-c">Panasonic</span></td><td class="price-c">¥31,150</td><td class="vol-c">3,021</td><td class="rev-c">¥94,104,150</td><td><span class="star">★</span>4.4 / 1,317条</td><td><div class="chips"><span class="chip chip-blue">ラムダッシュ PalmIn</span><span class="chip">5枚刃コンパクト</span><span class="chip chip-orange">高端¥31K</span></div></td></tr>
+        <tr><td><span class="rk rkn">10</span></td><td><span class="brand-c">Braun</span></td><td class="price-c">¥27,500</td><td class="vol-c">2,449</td><td class="rev-c">¥67,347,500</td><td><span class="star">★</span>3.9 / 288条</td><td><div class="chips"><span class="chip">Series 7 (72-C1500s)</span><span class="chip">洗浄機付</span><span class="chip">ゴールド限定</span></div></td></tr>
+        <tr><td><span class="rk rkn">11</span></td><td><span class="brand-c">Panasonic</span></td><td class="price-c">¥19,800</td><td class="vol-c">2,389</td><td class="rev-c">¥47,302,200</td><td><span class="star">★</span>4.3 / —</td><td><div class="chips"><span class="chip">ラムダッシュ PalmIn LITE</span><span class="chip">3枚刃</span></div></td></tr>
+        <tr><td><span class="rk rkn">12</span></td><td><span class="brand-c">Panasonic</span></td><td class="price-c">¥22,800</td><td class="vol-c">2,333</td><td class="rev-c">¥53,192,400</td><td><span class="star">★</span>4.5 / —</td><td><div class="chips"><span class="chip chip-blue">ラムダッシュPRO 5枚刃</span><span class="chip">AI⁺</span><span class="chip">旗舰</span></div></td></tr>
+        <tr><td><span class="rk rkn">13</span></td><td><span class="brand-c">WONSEFOO</span></td><td class="price-c">¥2,680</td><td class="vol-c">2,194</td><td class="rev-c">¥5,879,920</td><td><span class="star">★</span>4.1 / —</td><td><div class="chips"><span class="chip">CN品牌</span><span class="chip">54枚刃</span><span class="chip">低価格帯</span></div></td></tr>
+        <tr><td><span class="rk rkn">14</span></td><td><span class="brand-c">Panasonic</span></td><td class="price-c">¥32,486</td><td class="vol-c">1,757</td><td class="rev-c">¥57,077,902</td><td><span class="star">★</span>4.5 / 47条</td><td><div class="chips"><span class="chip chip-blue">ラムダッシュPRO 5枚刃 AI</span><span class="chip">全自動洗浄充電器</span><span class="chip">最高端</span></div></td></tr>
+        <tr><td><span class="rk rkn">15</span></td><td><span class="brand-c">MANSPOT</span></td><td class="price-c">¥3,980</td><td class="vol-c">2,053</td><td class="rev-c">¥8,170,940</td><td><span class="star">★</span>4.2 / —</td><td><div class="chips"><span class="chip">ボディシェーバー</span><span class="chip">VIO専用</span><span class="chip">セラミック刃</span></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="g2">
+    <div class="ic">
+      <h4>🇯🇵 日本市场洞察</h4>
+      <ul>
+        <li><strong>Panasonic 本土垄断</strong>：月销量37,890件（33.6%），月收¥396.9M（38.6%），远超其他品牌</li>
+        <li><strong>高价产品驱动收入</strong>：Panasonic ラムダッシュPalmIn（¥31,150 ~$209）月销3,021件收¥94M，是全球最高客单价爆款之一</li>
+        <li>Braun Amazon.co.jp限定款（¥15,800 Series 5）是单品销量第一，说明专属版本策略有效</li>
+        <li>中国品牌（Omniveo ¥2,561、WONSEFOO ¥2,680）在低价位渗透，但月销量仅3,000件级别</li>
+        <li>Amazon自营占比54.87%，日本市场自营渠道重要性高</li>
+      </ul>
+    </div>
+    <div class="ic">
+      <h4>🇯🇵 日本价格特征</h4>
+      <ul>
+        <li>均价¥8,421（~$56），是四大市场最高均价，反映日本消费者对品质的高支付意愿</li>
+        <li><strong>¥2,000–¥5,000 入门段</strong>：CN品牌（Omniveo、WONSEFOO）+ Braun Series 3（¥5,145）</li>
+        <li><strong>¥6,000–¥15,000 中端段</strong>：Panasonic 主力区间（¥6,566–¥15,800），Braun Series 5（¥15,800）</li>
+        <li><strong>¥20,000–¥35,000 高端段</strong>：Panasonic ラムダッシュPRO系列（¥22,800–¥32,486），月收贡献最大</li>
+        <li>日本是 Panasonic 全球最强阵地，其他市场均处劣势，表明本土优势非常关键</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Brand Power Matrix -->
+<div class="sec">
+  <div class="sec-hd">
+    <div class="sec-bar bar-purple"></div>
+    <h2>全球品牌竞争矩阵</h2>
+    <span class="tag tag-purple">各品牌在不同市场的排名与月销量份额</span>
+  </div>
+
+  <div class="bm-wrap">
+    <table class="bm-table">
+      <thead>
+        <tr>
+          <th style="width:160px">品牌</th>
+          <th>🇺🇸 美国 (Foil)</th>
+          <th>🇺🇸 美国 (Rotary)</th>
+          <th>🇩🇪 德国</th>
+          <th>🇬🇧 英国</th>
+          <th>🇯🇵 日本</th>
+          <th>总体评级</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="brand-nm">Norelco (Philips)<small>荷兰·Philips子品牌</small></div></td>
+          <td><span class="pos1">#1</span><br><small>$1.74M/月 · 25.4%量</small></td>
+          <td><span class="pos1">#1</span><br><small>$4.40M/月 · 34.3%量</small></td>
+          <td><span class="pos3">#3</span><br><small>€37K · 8.1%量</small></td>
+          <td><span class="pos-weak">弱势</span><br><small>少量</small></td>
+          <td><span class="pos3">#3</span><br><small>¥197M · 8.9%量</small></td>
+          <td><span class="tag tag-blue">美国绝对领导者</span></td>
+        </tr>
+        <tr>
+          <td><div class="brand-nm">Braun<small>德国·P&G旗下</small></div></td>
+          <td><span class="pos2">#2</span><br><small>$4.72M/月 · 22.8%量</small></td>
+          <td><span class="pos-weak">存在</span><br><small>少量</small></td>
+          <td><span class="pos1">#1</span><br><small>€2.41M · 63.3%量</small></td>
+          <td><span class="pos1">#1</span><br><small>£586K · 38.7%量</small></td>
+          <td><span class="pos2">#2</span><br><small>¥286M · 19%量</small></td>
+          <td><span class="tag tag-orange">欧洲之王·全球第二</span></td>
+        </tr>
+        <tr>
+          <td><div class="brand-nm">Panasonic<small>日本·松下电器</small></div></td>
+          <td><span class="pos3">#3*</span><br><small>$563K ARC5</small></td>
+          <td><span class="pos-weak">弱势</span><br><small>少量</small></td>
+          <td><span class="pos-weak">弱势</span><br><small>少量</small></td>
+          <td><span class="pos3">#4</span><br><small>£36K</small></td>
+          <td><span class="pos1">#1</span><br><small>¥397M · 33.6%量</small></td>
+          <td><span class="tag tag-green">日本本土之王</span></td>
+        </tr>
+        <tr>
+          <td><div class="brand-nm">Remington<small>美国·Spectrum Brands</small></div></td>
+          <td><span class="pos3">#3</span><br><small>$466K · 7.3%量</small></td>
+          <td><span class="pos3">#4</span><br><small>$230K</small></td>
+          <td><span class="pos-weak">弱势</span><br><small>少量</small></td>
+          <td><span class="pos3">#5</span><br><small>£17K</small></td>
+          <td><span class="pos-none">—</span></td>
+          <td><span class="tag tag-blue">美国专属品牌</span></td>
+        </tr>
+        <tr>
+          <td><div class="brand-nm">BaBylissPRO<small>美国·美发专业品牌</small></div></td>
+          <td><span class="pos2">#4</span><br><small>$522K · Foil专业</small></td>
+          <td><span class="pos2">#3</span><br><small>同款跨类目</small></td>
+          <td><span class="pos-none">—</span></td>
+          <td><span class="pos-weak">少量</span></td>
+          <td><span class="pos-none">—</span></td>
+          <td><span class="tag" style="background:#F3F4F6;color:#6B7280">美国专业美发圈</span></td>
+        </tr>
+        <tr>
+          <td><div class="brand-nm">Freebird<small>美国·Head Shaver专门</small></div></td>
+          <td><span class="pos-none">—</span></td>
+          <td><span class="pos2">#2</span><br><small>$951K · 10.9%量</small></td>
+          <td><span class="pos-none">—</span></td>
+          <td><span class="pos-none">—</span></td>
+          <td><span class="pos-none">—</span></td>
+          <td><span class="tag" style="background:#F3F4F6;color:#6B7280">美国头部剃须小众王</span></td>
+        </tr>
+        <tr>
+          <td><div class="brand-nm">中国白牌<small>SHPAVVER/VIKICON等</small></div></td>
+          <td><span class="pos3">#5+</span><br><small>$400K+ 低价头剃</small></td>
+          <td><span class="pos3">#4+</span><br><small>$400K+</small></td>
+          <td><span class="pos-weak">少量</span><br><small>Brightup等</small></td>
+          <td><span class="pos2">#2-3</span><br><small>VIKICON 10.6%</small></td>
+          <td><span class="pos-weak">渗透中</span><br><small>¥2K–¥6K段</small></td>
+          <td><span class="tag" style="background:#FEF9C3;color:#92400E">低价渗透 GB/US最明显</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Price Tier Analysis -->
+<div class="sec">
+  <div class="sec-hd">
+    <div class="sec-bar bar-blue"></div>
+    <h2>全球价格段分布分析</h2>
+    <span class="tag tag-blue">各市场主流价格带与代表品牌</span>
+  </div>
+
+  <div class="pt-grid">
+    <div class="pt-card" style="border-top:3px solid #6EE7B7">
+      <div class="pt-tier" style="color:var(--green)">入门段 ENTRY</div>
+      <div class="pt-range">US $20–$45<br>DE €20–€55<br>JP ¥2K–¥6K</div>
+      <div class="pt-brands">
+        <strong>代表品牌：</strong><br>
+        Norelco Series 2400（$39.96）<br>
+        Braun Series 3（€38–€50）<br>
+        Wahl Travel（€15.88）<br>
+        中国品牌（CN）¥2,500–¥5,000<br>
+        <span style="font-size:10px;color:var(--text-3);margin-top:4px;display:block">特点：销量最大，竞争最激烈</span>
+      </div>
+    </div>
+    <div class="pt-card" style="border-top:3px solid #60A5FA">
+      <div class="pt-tier" style="color:var(--accent)">中端段 MID</div>
+      <div class="pt-range">US $50–$100<br>DE €60–€120<br>JP ¥8K–¥18K</div>
+      <div class="pt-brands">
+        <strong>代表品牌：</strong><br>
+        Norelco 3900（$84.96）<br>
+        Braun Series 5（€85–€135）<br>
+        BaBylissPRO（$119.99）<br>
+        Panasonic ARC5（$149.99）<br>
+        Philips 5000（€129/¥13,200）<br>
+        <span style="font-size:10px;color:var(--text-3);margin-top:4px;display:block">特点：收入主力，性价比竞争</span>
+      </div>
+    </div>
+    <div class="pt-card" style="border-top:3px solid #FCD34D">
+      <div class="pt-tier" style="color:var(--orange)">高端段 PREMIUM</div>
+      <div class="pt-range">US $100–$200<br>DE €130–€200<br>JP ¥20K–¥25K</div>
+      <div class="pt-brands">
+        <strong>代表品牌：</strong><br>
+        Norelco Series 7200（$107）<br>
+        Braun Series 7（DE €140+）<br>
+        Panasonic ラムダッシュ PRO<br>
+        Skull Shaver Gold PRO（$121）<br>
+        <span style="font-size:10px;color:var(--text-3);margin-top:4px;display:block">特点：品牌护城河强，忠诚度高</span>
+      </div>
+    </div>
+    <div class="pt-card" style="border-top:3px solid #F87171">
+      <div class="pt-tier" style="color:var(--red)">旗舰段 FLAGSHIP</div>
+      <div class="pt-range">US $250–$450<br>DE €300–€400<br>JP ¥28K–¥35K+</div>
+      <div class="pt-brands">
+        <strong>代表品牌：</strong><br>
+        Braun Series 9 PRO+（€310–€335 / $349.94）<br>
+        Panasonic ラムダッシュPalmIn（¥31,150）<br>
+        Panasonic LambdaFlex PRO AI（¥32,486）<br>
+        <span style="font-size:10px;color:var(--text-3);margin-top:4px;display:block">特点：单品收入最高，但量少</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cc">
+    <div class="cc-title">四大市场 Top100 月销量季节趋势对比（2024.4–2026.4）</div>
+    <div class="cc-sub">注：JP 轴为件数（右轴），US/DE/GB 共用左轴。圣诞季 Dec 峰值在所有市场明显</div>
+    <div class="chart-tall" id="c-all-trend"></div>
+  </div>
+</div>
+
+<!-- Global Insights -->
+<div class="sec">
+  <div class="sec-hd">
+    <div class="sec-bar bar-purple"></div>
+    <h2>全球市场总结与机会分析</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div class="ic">
+      <h4>🌍 市场格局总结</h4>
+      <ul>
+        <li><strong>规模排名</strong>：美国（$21.3M）≫ 日本（$6.9M）> 德国（$3.2M）> 英国（$1.4M）</li>
+        <li>美国是全球最大且增长最活跃市场，圣诞季峰值可达常规月2倍以上</li>
+        <li>日本是高端消费潜力最强市场，均价最高（¥8,421 ~$56），愿意为科技溢价付款</li>
+        <li>德国是 Braun 的绝对主场，品类集中度极高（Braun 81%收入份额）</li>
+        <li>英国市场规模最小但中国品牌渗透最明显，是新进入者最易切入的欧洲市场</li>
+        <li>三大全球巨头分主场：Norelco/Philips（美）、Braun（欧）、Panasonic（日）</li>
+      </ul>
+    </div>
+    <div class="ic">
+      <h4>🎯 新卖家入局策略</h4>
+      <ul>
+        <li><strong>最易切入</strong>：英国（GB）——Amazon自营仅28%，中国品牌已有立足点（VIKICON），竞争格局最分散</li>
+        <li><strong>美国机会</strong>：Head Shaver（光头）细分是新品牌突围路径（Freebird、Skull Shaver均靠此成功）</li>
+        <li><strong>价格窗口</strong>：US $40–$70 区间；DE €30–€60 区间；JP ¥4,000–¥8,000 区间，竞争相对较弱</li>
+        <li><strong>产品差异化</strong>：多功能合1（头/脸/体毛合一）、旅行便携设计、快速充电是近年新品核心卖点</li>
+        <li><strong>圣诞备货</strong>：各市场均在 Nov–Dec 出现1.7-2倍峰值，需提前3个月备货</li>
+      </ul>
+    </div>
+    <div class="ic">
+      <h4>📈 市场趋势信号</h4>
+      <ul>
+        <li>美国2025全年（Apr-Dec）同比2024整体增长10–20%，市场持续扩大</li>
+        <li>德国2025年波动明显：Q1–Q2较弱，Q4圣诞大幅反弹（Dec 93,862件创新高）</li>
+        <li>日本市场相对稳定，季节性波动小，年均约110K件/月</li>
+        <li>中国品牌在美国（$20–$70段）和英国（£20–£35段）侵蚀明显，价格战加剧</li>
+        <li>高端旗舰款（Braun 9 PRO+、Panasonic AI款）逆势增长，消费分层明显</li>
+      </ul>
+    </div>
+    <div class="ic">
+      <h4>🚧 竞争壁垒分析</h4>
+      <ul>
+        <li><strong>高壁垒</strong>：德国/日本市场——本地品牌深度信任（Braun在DE、Panasonic在JP），中国品牌难以规模突破</li>
+        <li><strong>中壁垒</strong>：美国 Foil 市场——Braun 和 Norelco 双头垄断，但有 BaBylissPRO 等专业细分机会</li>
+        <li><strong>低壁垒</strong>：英国市场和美国 Rotary 中低端段（$20–$50），白牌品牌已打开缺口</li>
+        <li>Amazon 自营比例高的市场（DE 69%、US Foil 65%）第三方机会更少</li>
+        <li>评论壁垒：顶级产品评论数已达 60,000+（Norelco 2400 61,105条），新品突破需要大量广告投入</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .wrap -->
+
+<footer class="ftr">
+  <div>数据来源：Sorftime MCP 亚马逊数据服务 · 采集时间 2026-04-14 · 工具：claude-sonnet-4-6</div>
+  <div>类目节点：US Foil 13271094011 · US Rotary 13271096011 · DE Folienrasierer 3186365031 · GB Foil 3082190031 · JP メンズシェーバー 2145940051</div>
+  <div>所有数据均为 Sorftime 估算值，仅供参考 · 货币换算仅用于规模对比</div>
+</footer>
+
+<script>
+// ─── Chart 1: Global Revenue Comparison ────────────────────────────────────
+echarts.init(document.getElementById('c-global-rev')).setOption({
+  tooltip:{trigger:'axis',formatter:p=>`${p[0].axisValue}<br>${p.map(s=>`${s.marker}${s.seriesName}: $${s.value}M`).join('<br>')}`},
+  legend:{data:['美国 US(Foil)','美国 US(Rotary)','日本 JP','德国 DE','英国 GB'],bottom:0,textStyle:{fontSize:10}},
+  grid:{left:50,right:20,top:10,bottom:50},
+  xAxis:{type:'category',data:['美国(Foil)','美国(Rotary)','日本(JP)','德国(DE)','英国(GB)'],axisLabel:{fontSize:10}},
+  yAxis:{type:'value',name:'月销额(百万USD)',nameTextStyle:{fontSize:10},axisLabel:{formatter:v=>`$${v}M`,fontSize:10}},
+  series:[{
+    type:'bar',name:'月销额(M USD)',barMaxWidth:50,
+    data:[
+      {value:11.72,itemStyle:{color:'#1A56DB'}},
+      {value:9.57,itemStyle:{color:'#3B82F6'}},
+      {value:6.90,itemStyle:{color:'#059669'}},
+      {value:3.22,itemStyle:{color:'#D97706'}},
+      {value:1.40,itemStyle:{color:'#7C3AED'}}
+    ],
+    label:{show:true,position:'top',formatter:p=>`$${p.value}M`,fontSize:10,fontWeight:'bold'}
+  }]
+});
+
+// ─── Chart 2: Global Volume ─────────────────────────────────────────────────
+echarts.init(document.getElementById('c-global-vol')).setOption({
+  tooltip:{trigger:'axis'},
+  grid:{left:60,right:20,top:10,bottom:40},
+  xAxis:{type:'category',data:['美国(Foil)','美国(Rotary)','日本(JP)','德国(DE)','英国(GB)'],axisLabel:{fontSize:10}},
+  yAxis:{type:'value',name:'月销量(千件)',nameTextStyle:{fontSize:10},axisLabel:{formatter:v=>`${v/1000}K`,fontSize:10}},
+  series:[{
+    type:'bar',barMaxWidth:50,
+    data:[
+      {value:158480,itemStyle:{color:'#1A56DB'}},
+      {value:145960,itemStyle:{color:'#3B82F6'}},
+      {value:112786,itemStyle:{color:'#059669'}},
+      {value:38263,itemStyle:{color:'#D97706'}},
+      {value:25719,itemStyle:{color:'#7C3AED'}}
+    ],
+    label:{show:true,position:'top',formatter:p=>`${(p.value/1000).toFixed(0)}K`,fontSize:10,fontWeight:'bold'}
+  }]
+});
+
+// ─── Chart 3: US Trend ──────────────────────────────────────────────────────
+(function(){
+  const months=['2024-04','2024-05','2024-06','2024-07','2024-08','2024-09','2024-10','2024-11','2024-12',
+    '2025-01','2025-02','2025-03','2025-04','2025-05','2025-06','2025-07','2025-08','2025-09',
+    '2025-10','2025-11','2025-12','2026-01','2026-02','2026-03'];
+  const foil=[136582,152634,159479,171695,157357,150826,164142,247403,287037,175083,152131,166902,177219,188538,197926,243003,210542,191812,200010,225511,288025,170006,150795,163047];
+  const rot=[154071,144308,193196,179755,162561,165680,190629,296625,387851,187182,154335,174023,178635,198070,238865,242998,209613,184094,179821,229063,342878,177566,161305,170657];
+  echarts.init(document.getElementById('c-us-trend')).setOption({
+    tooltip:{trigger:'axis',axisPointer:{type:'cross'}},
+    legend:{data:['Foil Shavers','Rotary Shavers'],bottom:0,textStyle:{fontSize:10}},
+    grid:{left:60,right:20,top:10,bottom:50},
+    xAxis:{type:'category',data:months,axisLabel:{fontSize:9,rotate:45}},
+    yAxis:{type:'value',name:'月销量(件)',nameTextStyle:{fontSize:10},axisLabel:{formatter:v=>`${(v/1000).toFixed(0)}K`,fontSize:10}},
+    series:[
+      {name:'Foil Shavers',type:'line',data:foil,smooth:true,itemStyle:{color:'#1A56DB'},lineStyle:{width:2},areaStyle:{color:'rgba(26,86,219,.08)'}},
+      {name:'Rotary Shavers',type:'line',data:rot,smooth:true,itemStyle:{color:'#059669'},lineStyle:{width:2},areaStyle:{color:'rgba(5,150,105,.08)'}}
+    ]
+  });
+})();
+
+// ─── Chart 4: US Brand Revenue ──────────────────────────────────────────────
+echarts.init(document.getElementById('c-us-brands')).setOption({
+  tooltip:{trigger:'item',formatter:p=>`${p.name}<br>月销额: $${(p.value/1000).toFixed(0)}K`},
+  legend:{orient:'vertical',right:10,top:'middle',textStyle:{fontSize:10}},
+  series:[{
+    type:'pie',radius:['35%','65%'],center:['40%','50%'],
+    label:{formatter:'{b}\n{d}%',fontSize:10},
+    data:[
+      {name:'Norelco(Rotary)',value:4395084,itemStyle:{color:'#1A56DB'}},
+      {name:'Braun(Foil)',value:4719145,itemStyle:{color:'#D97706'}},
+      {name:'Norelco(Foil)',value:1742672,itemStyle:{color:'#3B82F6'}},
+      {name:'Freebird',value:951466,itemStyle:{color:'#059669'}},
+      {name:'BaBylissPRO',value:522436,itemStyle:{color:'#7C3AED'}},
+      {name:'Panasonic',value:562762,itemStyle:{color:'#10B981'}},
+      {name:'Remington',value:695595,itemStyle:{color:'#F59E0B'}},
+      {name:'其他',value:3528000,itemStyle:{color:'#E5E7EB'}}
+    ]
+  }]
+});
+
+// ─── Chart 5: DE Trend ──────────────────────────────────────────────────────
+(function(){
+  const months=['24-04','24-05','24-06','24-07','24-08','24-09','24-10','24-11','24-12',
+    '25-01','25-02','25-03','25-04','25-05','25-06','25-07','25-08','25-09',
+    '25-10','25-11','25-12','26-01','26-02','26-03'];
+  const de=[33757,38523,36625,49766,49999,43038,60241,81960,85603,47300,45010,36068,30353,31671,29704,41971,37921,45537,70840,68094,93862,52270,40933,49871];
+  echarts.init(document.getElementById('c-de-trend')).setOption({
+    tooltip:{trigger:'axis'},
+    grid:{left:55,right:20,top:10,bottom:50},
+    xAxis:{type:'category',data:months,axisLabel:{fontSize:9,rotate:45}},
+    yAxis:{type:'value',name:'月销量(件)',nameTextStyle:{fontSize:10},axisLabel:{formatter:v=>`${(v/1000).toFixed(0)}K`,fontSize:10}},
+    series:[{name:'DE Foil',type:'bar',data:de,itemStyle:{color:'#D97706'},barMaxWidth:24,
+      markLine:{data:[{type:'average',name:'均值',lineStyle:{color:'#9CA3AF',type:'dashed'},label:{formatter:'均值{c}'}}]}}]
+  });
+})();
+
+// ─── Chart 6: DE Brand Pie ──────────────────────────────────────────────────
+echarts.init(document.getElementById('c-de-brands')).setOption({
+  tooltip:{trigger:'item',formatter:p=>`${p.name}: ${p.value}件/月 (${p.percent}%)`},
+  legend:{bottom:0,textStyle:{fontSize:10}},
+  series:[{
+    type:'pie',radius:['30%','60%'],center:['50%','45%'],
+    label:{formatter:'{b}\n{c}件',fontSize:10},
+    data:[
+      {name:'Braun',value:24208,itemStyle:{color:'#D97706'}},
+      {name:'Wahl',value:3145,itemStyle:{color:'#6B7280'}},
+      {name:'Philips',value:3083,itemStyle:{color:'#1A56DB'}},
+      {name:'其他',value:7827,itemStyle:{color:'#E5E7EB'}}
+    ]
+  }]
+});
+
+// ─── Chart 7: JP Trend ──────────────────────────────────────────────────────
+(function(){
+  const months=['24-04','24-05','24-06','24-07','24-08','24-09','24-10','24-11','24-12',
+    '25-01','25-02','25-03','25-04','25-05','25-06','25-07','25-08','25-09',
+    '25-10','25-11','25-12','26-01','26-02','26-03'];
+  const jp=[89799,103886,111452,114516,97303,111621,110214,116373,173119,115344,104186,106208,102905,113049,105999,135577,126783,109807,105162,132738,138802,110197,73276,114677];
+  echarts.init(document.getElementById('c-jp-trend')).setOption({
+    tooltip:{trigger:'axis'},
+    grid:{left:55,right:20,top:10,bottom:50},
+    xAxis:{type:'category',data:months,axisLabel:{fontSize:9,rotate:45}},
+    yAxis:{type:'value',name:'月销量(件)',nameTextStyle:{fontSize:10},axisLabel:{formatter:v=>`${(v/1000).toFixed(0)}K`,fontSize:10}},
+    series:[{name:'JP メンズシェーバー',type:'line',data:jp,smooth:true,itemStyle:{color:'#059669'},lineStyle:{width:2.5},areaStyle:{color:'rgba(5,150,105,.1)'},
+      markLine:{data:[{type:'average',label:{formatter:'均{c}件'},lineStyle:{color:'#9CA3AF',type:'dashed'}}]}}]
+  });
+})();
+
+// ─── Chart 8: JP Brand Pie ──────────────────────────────────────────────────
+echarts.init(document.getElementById('c-jp-brands')).setOption({
+  tooltip:{trigger:'item',formatter:p=>`${p.name}: ${p.value.toLocaleString()}件/月 (${p.percent}%)`},
+  legend:{bottom:0,textStyle:{fontSize:10}},
+  series:[{
+    type:'pie',radius:['30%','60%'],center:['50%','45%'],
+    label:{formatter:'{b}\n{d}%',fontSize:10},
+    data:[
+      {name:'Panasonic',value:37890,itemStyle:{color:'#059669'}},
+      {name:'Braun',value:21389,itemStyle:{color:'#1A56DB'}},
+      {name:'Philips',value:10071,itemStyle:{color:'#7C3AED'}},
+      {name:'CN品牌',value:12000,itemStyle:{color:'#F59E0B'}},
+      {name:'其他',value:31436,itemStyle:{color:'#E5E7EB'}}
+    ]
+  }]
+});
+
+// ─── Chart 9: All Markets Trend ─────────────────────────────────────────────
+(function(){
+  const months=['24-04','24-05','24-06','24-07','24-08','24-09','24-10','24-11','24-12',
+    '25-01','25-02','25-03','25-04','25-05','25-06','25-07','25-08','25-09',
+    '25-10','25-11','25-12','26-01','26-02','26-03'];
+  const usTotal=[136582+154071,152634+144308,159479+193196,171695+179755,157357+162561,150826+165680,164142+190629,247403+296625,287037+387851,175083+187182,152131+154335,166902+174023,177219+178635,188538+198070,197926+238865,243003+242998,210542+209613,191812+184094,200010+179821,225511+229063,288025+342878,170006+177566,150795+161305,163047+170657];
+  const de=[33757,38523,36625,49766,49999,43038,60241,81960,85603,47300,45010,36068,30353,31671,29704,41971,37921,45537,70840,68094,93862,52270,40933,49871];
+  const jp=[89799,103886,111452,114516,97303,111621,110214,116373,173119,115344,104186,106208,102905,113049,105999,135577,126783,109807,105162,132738,138802,110197,73276,114677];
+  echarts.init(document.getElementById('c-all-trend')).setOption({
+    tooltip:{trigger:'axis',axisPointer:{type:'cross'}},
+    legend:{data:['美国(Foil+Rotary)','日本 JP','德国 DE'],bottom:0,textStyle:{fontSize:10}},
+    grid:{left:60,right:70,top:10,bottom:50},
+    xAxis:{type:'category',data:months,axisLabel:{fontSize:9,rotate:45}},
+    yAxis:[
+      {type:'value',name:'US+DE月销量',nameTextStyle:{fontSize:10},axisLabel:{formatter:v=>`${(v/1000).toFixed(0)}K`,fontSize:9}},
+      {type:'value',name:'JP月销量',nameTextStyle:{fontSize:10},axisLabel:{formatter:v=>`${(v/1000).toFixed(0)}K`,fontSize:9},position:'right'}
+    ],
+    series:[
+      {name:'美国(Foil+Rotary)',type:'line',yAxisIndex:0,data:usTotal,smooth:true,itemStyle:{color:'#1A56DB'},lineStyle:{width:2.5},areaStyle:{color:'rgba(26,86,219,.07)'}},
+      {name:'德国 DE',type:'line',yAxisIndex:0,data:de,smooth:true,itemStyle:{color:'#D97706'},lineStyle:{width:2}},
+      {name:'日本 JP',type:'line',yAxisIndex:1,data:jp,smooth:true,itemStyle:{color:'#059669'},lineStyle:{width:2},areaStyle:{color:'rgba(5,150,105,.07)'}}
+    ]
+  });
+})();
+
+// Resize handler
+window.addEventListener('resize',()=>{
+  ['c-global-rev','c-global-vol','c-us-trend','c-us-brands','c-de-trend','c-de-brands',
+   'c-jp-trend','c-jp-brands','c-all-trend'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) echarts.getInstanceByDom(el)?.resize();
+  });
+});
+</script>
+</body>
+</html>

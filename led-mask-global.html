@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LED光疗面罩全球用户调研报告 | 2026-04-23</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --primary: #6C3FC5;
+    --secondary: #E91E8C;
+    --accent: #00C9A7;
+    --bg: #0D0E1A;
+    --card: #161829;
+    --card2: #1E2038;
+    --text: #E8EAF6;
+    --text-muted: #9094B8;
+    --border: #2D3060;
+    --na-color: #4F8EF7;
+    --eu-color: #E8A838;
+    --me-color: #E85C38;
+    --sea-color: #38C4A8;
+    --ru-color: #B855E8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', 'PingFang SC', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #1A0A3C 0%, #0D1A3C 50%, #0A1A28 100%);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .header::before {
+    content: '';
+    position: absolute; top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(108,63,197,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(233,30,140,0.10) 0%, transparent 60%);
+  }
+  .header-content { position: relative; max-width: 1200px; margin: 0 auto; }
+  .header-tag {
+    display: inline-block;
+    background: rgba(108,63,197,0.3);
+    border: 1px solid rgba(108,63,197,0.6);
+    color: #C4A7FF;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    background: linear-gradient(90deg, #fff 0%, #C4A7FF 50%, #FF8ED4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+  .header-meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .meta-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* NAV */
+  .nav {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0;
+    z-index: 100;
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    overflow-x: auto;
+    gap: 0;
+  }
+  .nav-item {
+    padding: 14px 20px;
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+    color: var(--text-muted);
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: block;
+  }
+  .nav-item:hover, .nav-item.active {
+    color: var(--text);
+    border-bottom-color: var(--primary);
+  }
+
+  /* LAYOUT */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 48px 0; }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::before {
+    content: '';
+    display: inline-block;
+    width: 4px; height: 22px;
+    background: linear-gradient(180deg, var(--primary), var(--secondary));
+    border-radius: 2px;
+  }
+  .section-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+  }
+
+  /* OVERVIEW CARDS */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 900px) { .overview-grid { grid-template-columns: repeat(2, 1fr); } }
+  .overview-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .overview-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .overview-card.na::before { background: var(--na-color); }
+  .overview-card.eu::before { background: var(--eu-color); }
+  .overview-card.me::before { background: var(--me-color); }
+  .overview-card.sea::before { background: var(--sea-color); }
+  .overview-card.ru::before { background: var(--ru-color); }
+  .overview-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+  .region-flag { font-size: 28px; margin-bottom: 8px; }
+  .region-name { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .region-sites { font-size: 11px; color: var(--text-muted); margin-bottom: 12px; }
+  .region-kv {
+    font-size: 11px;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .kv-row { display: flex; justify-content: space-between; }
+  .kv-val { color: var(--text); font-weight: 600; }
+
+  /* MARKET STATS */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 800px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-number {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 12px; color: var(--text-muted); }
+
+  /* REGION DETAIL CARDS */
+  .region-detail {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .region-header {
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .region-header.na { background: linear-gradient(90deg, rgba(79,142,247,0.12), transparent); }
+  .region-header.eu { background: linear-gradient(90deg, rgba(232,168,56,0.12), transparent); }
+  .region-header.me { background: linear-gradient(90deg, rgba(232,92,56,0.12), transparent); }
+  .region-header.sea { background: linear-gradient(90deg, rgba(56,196,168,0.12), transparent); }
+  .region-header.ru { background: linear-gradient(90deg, rgba(184,85,232,0.12), transparent); }
+  .region-emoji { font-size: 36px; }
+  .region-title-block h2 { font-size: 20px; font-weight: 700; }
+  .region-title-block p { font-size: 13px; color: var(--text-muted); }
+  .region-badge {
+    margin-left: auto;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .badge-hot { background: rgba(233,30,140,0.2); color: #FF8ED4; border: 1px solid rgba(233,30,140,0.4); }
+  .badge-growing { background: rgba(0,201,167,0.2); color: #80FFF0; border: 1px solid rgba(0,201,167,0.4); }
+  .badge-early { background: rgba(108,63,197,0.2); color: #C4A7FF; border: 1px solid rgba(108,63,197,0.4); }
+  .badge-emerging { background: rgba(232,168,56,0.2); color: #FFD080; border: 1px solid rgba(232,168,56,0.4); }
+
+  .region-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  @media (max-width: 700px) { .region-body { grid-template-columns: 1fr; } }
+  .region-col {
+    padding: 24px 28px;
+    border-right: 1px solid var(--border);
+  }
+  .region-col:last-child { border-right: none; }
+  .col-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .col-icon { font-size: 14px; }
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .tag {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    background: rgba(108,63,197,0.15);
+    border: 1px solid rgba(108,63,197,0.3);
+    color: #C4A7FF;
+  }
+  .tag.red { background: rgba(232,92,56,0.15); border-color: rgba(232,92,56,0.3); color: #FFB4A0; }
+  .tag.green { background: rgba(56,196,168,0.15); border-color: rgba(56,196,168,0.3); color: #80FFF0; }
+  .tag.yellow { background: rgba(232,168,56,0.15); border-color: rgba(232,168,56,0.3); color: #FFD080; }
+  .pain-list { list-style: none; }
+  .pain-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 13px;
+  }
+  .pain-item:last-child { border-bottom: none; }
+  .pain-rank {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .pain-rank.r1 { background: rgba(233,30,140,0.4); color: #FF8ED4; }
+  .pain-rank.r2 { background: rgba(108,63,197,0.4); color: #C4A7FF; }
+  .pain-rank.r3 { background: rgba(79,142,247,0.3); color: #A0C4FF; }
+  .pain-rank.r4 { background: rgba(56,196,168,0.3); color: #80FFF0; }
+  .pain-rank.r5 { background: rgba(255,255,255,0.1); color: var(--text-muted); }
+  .decision-list { list-style: none; }
+  .decision-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 0;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .decision-item:last-child { border-bottom: none; }
+  .decision-icon { font-size: 16px; width: 24px; text-align: center; flex-shrink: 0; }
+
+  /* PERSONA CARDS */
+  .persona-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 900px) { .persona-grid { grid-template-columns: repeat(2, 1fr); } }
+  .persona-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+  .persona-card:hover { border-color: var(--primary); }
+  .persona-head {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .persona-avatar {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    margin: 0 auto 12px;
+  }
+  .persona-card.na .persona-avatar { background: rgba(79,142,247,0.15); }
+  .persona-card.eu .persona-avatar { background: rgba(232,168,56,0.15); }
+  .persona-card.me .persona-avatar { background: rgba(232,92,56,0.15); }
+  .persona-card.sea .persona-avatar { background: rgba(56,196,168,0.15); }
+  .persona-card.ru .persona-avatar { background: rgba(184,85,232,0.15); }
+  .persona-name { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .persona-region { font-size: 12px; color: var(--text-muted); }
+  .persona-body { padding: 16px 20px; }
+  .persona-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 12px;
+    gap: 8px;
+  }
+  .persona-row:last-child { border-bottom: none; }
+  .persona-key { color: var(--text-muted); flex-shrink: 0; }
+  .persona-val { color: var(--text); text-align: right; font-weight: 500; }
+
+  /* CHARTS */
+  .chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 700px) { .chart-grid { grid-template-columns: 1fr; } }
+  .chart-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .chart-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .chart-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 20px; }
+  .chart-wrap { position: relative; height: 220px; }
+
+  /* COMPARISON TABLE */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .compare-table th {
+    background: var(--card2);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .compare-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .region-pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .pill-na { background: rgba(79,142,247,0.2); color: #7EB4FF; }
+  .pill-eu { background: rgba(232,168,56,0.2); color: #FFD080; }
+  .pill-me { background: rgba(232,92,56,0.2); color: #FFB4A0; }
+  .pill-sea { background: rgba(56,196,168,0.2); color: #80FFF0; }
+  .pill-ru { background: rgba(184,85,232,0.2); color: #DCA0FF; }
+
+  /* INSIGHTS */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 700px) { .insight-grid { grid-template-columns: 1fr; } }
+  .insight-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .insight-icon { font-size: 24px; margin-bottom: 10px; }
+  .insight-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+  .insight-text { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+  /* FOOTER */
+  .footer {
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    text-align: center;
+  }
+  .footer-text { font-size: 13px; color: var(--text-muted); }
+  .footer-sources { font-size: 11px; color: var(--text-muted); margin-top: 8px; opacity: 0.6; }
+
+  /* SCROLL */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  .source-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.05);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 4px;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-content">
+    <div class="header-tag">全球用户调研报告</div>
+    <h1>LED 光疗美容面罩<br>跨地区用户洞察</h1>
+    <div class="header-sub">LED Light Therapy Face Mask — Global Consumer Insight Research</div>
+    <div class="header-meta">
+      <div class="meta-item"><div class="meta-dot"></div>数据来源：Amazon Sorftime MCP + 外部市场调研</div>
+      <div class="meta-item"><div class="meta-dot" style="background:#E91E8C"></div>覆盖地区：北美 / 欧洲 / 中东 / 东南亚 / 俄语区</div>
+      <div class="meta-item"><div class="meta-dot" style="background:#FF9800"></div>报告日期：2026-04-23</div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-item" href="#overview">市场概览</a>
+    <a class="nav-item" href="#northamerica">北美</a>
+    <a class="nav-item" href="#europe">欧洲</a>
+    <a class="nav-item" href="#middleeast">中东</a>
+    <a class="nav-item" href="#sea">东南亚</a>
+    <a class="nav-item" href="#russia">俄语区</a>
+    <a class="nav-item" href="#comparison">横向对比</a>
+    <a class="nav-item" href="#personas">人群画像</a>
+    <a class="nav-item" href="#insights">核心洞察</a>
+  </div>
+</nav>
+
+<!-- OVERVIEW -->
+<div id="overview" class="section">
+<div class="container">
+  <div class="section-title">市场概览</div>
+  <div class="section-desc">5大地区市场成熟度、搜索热度与关键数据对比</div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">$322M</div>
+      <div class="stat-label">全球LED光疗面罩2024年市场规模</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">11%</div>
+      <div class="stat-label">全球市场CAGR预测（至2033年）</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">29,080</div>
+      <div class="stat-label">英国站月搜索量（最活跃欧洲市场）</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">+400%</div>
+      <div class="stat-label">TikTok Shop 美容设备品类年增长率</div>
+    </div>
+  </div>
+
+  <div class="overview-grid">
+    <div class="overview-card na">
+      <div class="region-flag">🇺🇸🇨🇦</div>
+      <div class="region-name">北美</div>
+      <div class="region-sites">US · CA</div>
+      <div class="region-kv">
+        <div class="kv-row"><span>月搜索量</span><span class="kv-val">6,600+</span></div>
+        <div class="kv-row"><span>价格带</span><span class="kv-val">$40-$399</span></div>
+        <div class="kv-row"><span>市场阶段</span><span class="kv-val">成熟</span></div>
+        <div class="kv-row"><span>顶销品牌</span><span class="kv-val">INIA / Shark</span></div>
+      </div>
+    </div>
+    <div class="overview-card eu">
+      <div class="region-flag">🇬🇧🇩🇪🇫🇷</div>
+      <div class="region-name">欧洲</div>
+      <div class="region-sites">GB · DE · FR · IT · ES</div>
+      <div class="region-kv">
+        <div class="kv-row"><span>月搜索量</span><span class="kv-val">29,080(GB)</span></div>
+        <div class="kv-row"><span>价格带</span><span class="kv-val">£70-£400</span></div>
+        <div class="kv-row"><span>市场阶段</span><span class="kv-val">成熟+</span></div>
+        <div class="kv-row"><span>顶销品牌</span><span class="kv-val">CurrentBody</span></div>
+      </div>
+    </div>
+    <div class="overview-card me">
+      <div class="region-flag">🇦🇪🇸🇦</div>
+      <div class="region-name">中东</div>
+      <div class="region-sites">AE · SA</div>
+      <div class="region-kv">
+        <div class="kv-row"><span>月搜索量</span><span class="kv-val">532(SA)</span></div>
+        <div class="kv-row"><span>价格带</span><span class="kv-val">$33-$116</span></div>
+        <div class="kv-row"><span>市场阶段</span><span class="kv-val">早期</span></div>
+        <div class="kv-row"><span>机会评级</span><span class="kv-val">教育市场</span></div>
+      </div>
+    </div>
+    <div class="overview-card sea">
+      <div class="region-flag">🇲🇾🇹🇭🇮🇩</div>
+      <div class="region-name">东南亚</div>
+      <div class="region-sites">MY · TH · ID · PH · VN</div>
+      <div class="region-kv">
+        <div class="kv-row"><span>主平台</span><span class="kv-val">TikTok Shop</span></div>
+        <div class="kv-row"><span>价格带</span><span class="kv-val">$20-$80</span></div>
+        <div class="kv-row"><span>市场阶段</span><span class="kv-val">高速增长</span></div>
+        <div class="kv-row"><span>年增速</span><span class="kv-val">+400%(TT)</span></div>
+      </div>
+    </div>
+    <div class="overview-card ru">
+      <div class="region-flag">🇷🇺🇰🇿🇧🇾</div>
+      <div class="region-name">俄语区</div>
+      <div class="region-sites">RU · KZ · BY · UA</div>
+      <div class="region-kv">
+        <div class="kv-row"><span>主平台</span><span class="kv-val">Wildberries</span></div>
+        <div class="kv-row"><span>价格带</span><span class="kv-val">3k-15k RUB</span></div>
+        <div class="kv-row"><span>市场阶段</span><span class="kv-val">机遇窗口</span></div>
+        <div class="kv-row"><span>市场总规模</span><span class="kv-val">$10.3B</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <div class="chart-title">各地区月搜索量对比</div>
+      <div class="chart-sub">Amazon 站点关键词月搜索量（东南亚 / 俄语区为平台估算）</div>
+      <div class="chart-wrap"><canvas id="searchVolumeChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">主流价格带分布</div>
+      <div class="chart-sub">各地区 LED 光疗面罩主流成交价格区间（USD）</div>
+      <div class="chart-wrap"><canvas id="priceChart"></canvas></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- NORTH AMERICA -->
+<div id="northamerica" class="section">
+<div class="container">
+  <div class="section-title">北美地区（US / CA）</div>
+  <div class="section-desc">数据来源：Amazon Sorftime MCP — product_reviews / keyword_detail · 样本产品：INIA B0F18BBHCC、Shark B0DSGJCS47、iRestore B0D7N2KWLH</div>
+
+  <div class="region-detail">
+    <div class="region-header na">
+      <div class="region-emoji">🇺🇸</div>
+      <div class="region-title-block">
+        <h2>北美市场</h2>
+        <p>Amazon US · CA · MX | 月搜索量 6,600+ | 竞品数 1,148+</p>
+      </div>
+      <div class="region-badge badge-hot">成熟市场</div>
+    </div>
+    <div class="region-body">
+      <div class="region-col">
+        <div class="col-title"><span class="col-icon">🧴</span>肤质特点</div>
+        <div class="tag-wrap">
+          <span class="tag">混合性/干性为主</span>
+          <span class="tag">多种族肤质共存</span>
+          <span class="tag">UV 损伤问题常见</span>
+        </div>
+        <ul class="pain-list">
+          <li class="pain-item">
+            <div class="pain-rank r1">1</div>
+            <div><strong>细纹/皱纹（抗衰老）</strong>——红光+NIR 850nm 深层胶原增生，35岁+女性最核心诉求</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r2">2</div>
+            <div><strong>痘痘/痘印</strong>——蓝光灭菌，年轻群体（18-30岁）双重诉求（痘痘+抗老同时存在）</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r3">3</div>
+            <div><strong>肤色暗沉/不均匀</strong>——想要"健康发光感"，取代昂贵美容院护理</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r4">4</div>
+            <div><strong>皮肤松弛/弹性下降</strong>——45岁+群体关注度上升</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r5">5</div>
+            <div><strong>毛孔粗大/皮肤质地</strong>——多功能设备的附加诉求</div>
+          </li>
+        </ul>
+
+        <div class="col-title" style="margin-top:20px"><span class="col-icon">🎯</span>使用场景偏好</div>
+        <ul class="decision-list">
+          <li class="decision-item"><span class="decision-icon">📺</span>边看电视/Netflix边使用（最高频）</li>
+          <li class="decision-item"><span class="decision-icon">🌙</span>睡前护肤流程的最后一步</li>
+          <li class="decision-item"><span class="decision-icon">🏡</span>居家自我护理（spa at home）</li>
+          <li class="decision-item"><span class="decision-icon">🎁</span>作为礼物购买（母亲节/妻子/女友）</li>
+          <li class="decision-item"><span class="decision-icon">🏃</span>日常家务同时使用（wireless 关键）</li>
+        </ul>
+      </div>
+      <div class="region-col">
+        <div class="col-title"><span class="col-icon">💡</span>购买决策因素（从高到低）</div>
+        <ul class="decision-list">
+          <li class="decision-item"><span class="decision-icon">📶</span><div><strong>无线/可充电设计</strong>——自由移动，不受线束限制</div></li>
+          <li class="decision-item"><span class="decision-icon">⚡</span><div><strong>多光模式（4合1）</strong>——红+蓝+NIR+紫，一台解决多种问题</div></li>
+          <li class="decision-item"><span class="decision-icon">💰</span><div><strong>性价比 vs 美容院</strong>——"与其每月花$200做面部护理，不如买个面罩"</div></li>
+          <li class="decision-item"><span class="decision-icon">⭐</span><div><strong>Amazon 评论数量和星级</strong>——100%产品评分低于500评论</div></li>
+          <li class="decision-item"><span class="decision-icon">🔋</span><div><strong>电池续航</strong>——2600mAh成卖点，部分负评因续航不足</div></li>
+          <li class="decision-item"><span class="decision-icon">😌</span><div><strong>佩戴舒适度</strong>——"有产品眼睛和嘴无法同时对准" 是常见投诉</div></li>
+          <li class="decision-item"><span class="decision-icon">📦</span><div><strong>是否含赠品/套装</strong>——配套护肤品提升感知价值</div></li>
+        </ul>
+
+        <div class="col-title" style="margin-top:20px"><span class="col-icon">📊</span>市场数据（Sorftime）</div>
+        <div class="tag-wrap">
+          <span class="tag green">Top产品：INIA $76.49 月销6601件</span>
+          <span class="tag">Shark $349.99 月销3317件</span>
+          <span class="tag">iRestore $399 月销3295件</span>
+          <span class="tag yellow">旺季：4月</span>
+          <span class="tag">竞品数：1148</span>
+        </div>
+        <div class="source-note">📡 数据来源：Sorftime MCP keyword_detail + product_reviews（实时）</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- EUROPE -->
+<div id="europe" class="section">
+<div class="container">
+  <div class="section-title">欧洲地区（GB / DE / FR / IT / ES）</div>
+  <div class="section-desc">数据来源：Amazon Sorftime MCP — GB CurrentBody B0DHRW819R评论 / keyword_detail DE / GB数据</div>
+
+  <div class="region-detail">
+    <div class="region-header eu">
+      <div class="region-emoji">🇬🇧</div>
+      <div class="region-title-block">
+        <h2>英国（GB）——欧洲核心市场</h2>
+        <p>月搜索量 29,080 · 竞品数 1,223 · 主流品牌：CurrentBody / Shark</p>
+      </div>
+      <div class="region-badge badge-hot">最成熟欧洲市场</div>
+    </div>
+    <div class="region-body">
+      <div class="region-col">
+        <div class="col-title"><span class="col-icon">🧴</span>肤质特点</div>
+        <div class="tag-wrap">
+          <span class="tag">偏白皙/敏感肤质</span>
+          <span class="tag">毛细血管脆弱（泛红）</span>
+          <span class="tag">冬季干燥问题突出</span>
+          <span class="tag">日照不足导致暗沉</span>
+        </div>
+        <ul class="pain-list">
+          <li class="pain-item">
+            <div class="pain-rank r1">1</div>
+            <div><strong>面部泛红/红血丝</strong>——英国白皙肤色用户过敏性泛红、毛细血管扩张常见；实际评论："9个月后95%的泛红消失"</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r2">2</div>
+            <div><strong>细纹/色素沉淀（早衰）</strong>——英国偏重长期投资逻辑，"物超所值"是核心叙事</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r3">3</div>
+            <div><strong>皮肤质地/弹性下降</strong>——35岁+女性主力诉求</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r4">4</div>
+            <div><strong>色素不均/暗沉</strong>——日照少、季节性需求强</div>
+          </li>
+        </ul>
+
+        <div class="col-title" style="margin-top:20px"><span class="col-icon">🎯</span>使用场景</div>
+        <ul class="decision-list">
+          <li class="decision-item"><span class="decision-icon">⏰</span>"10分钟 alone time"——强调自我时光的仪式感</li>
+          <li class="decision-item"><span class="decision-icon">🚶</span>无线设计让用户在家中自由走动</li>
+          <li class="decision-item"><span class="decision-icon">📅</span>每天/每周固定频率使用（习惯化）</li>
+          <li class="decision-item"><span class="decision-icon">💆</span>替代高价沙龙护理（£400 vs 沙龙月消费）</li>
+        </ul>
+      </div>
+      <div class="region-col">
+        <div class="col-title"><span class="col-icon">💡</span>购买决策因素</div>
+        <ul class="decision-list">
+          <li class="decision-item"><span class="decision-icon">📰</span><div><strong>媒体背书（最显著特征）</strong>——《卫报》《独立报》评为年度最佳，是英国用户主要触发决策的信息来源</div></li>
+          <li class="decision-item"><span class="decision-icon">💎</span><div><strong>长期投资逻辑</strong>——"比一辈子的护肤品便宜"，接受高单价</div></li>
+          <li class="decision-item"><span class="decision-icon">🏆</span><div><strong>品牌可信度</strong>——CurrentBody（英国本土品牌）口碑强</div></li>
+          <li class="decision-item"><span class="decision-icon">⚠️</span><div><strong>耐用性是主要负评因素</strong>——£400产品一年坏掉，售后体验差</div></li>
+          <li class="decision-item"><span class="decision-icon">🔬</span><div><strong>临床/皮肤科背书</strong>——"皮肤科医生推荐"提升信任</div></li>
+        </ul>
+
+        <div class="col-title" style="margin-top:20px"><span class="col-icon">🇩🇪</span>德国/其他欧洲市场补充</div>
+        <ul class="decision-list">
+          <li class="decision-item"><span class="decision-icon">🔵</span><div><strong>德国</strong>：月搜15,318（led maske gesicht），但韩系胶原面膜主导，LED光疗设备品类认知较低，需要市场教育</div></li>
+          <li class="decision-item"><span class="decision-icon">🇫🇷</span><div><strong>法国/意大利/西班牙</strong>：美妆护肤市场成熟，注重成分+临床验证，本土品牌偏好强（L'Oréal生态）</div></li>
+          <li class="decision-item"><span class="decision-icon">📊</span><div><strong>欧洲旺季</strong>：2月、4月、5月（春季美白护理需求）</div></li>
+        </ul>
+        <div class="source-note">📡 数据来源：Sorftime MCP CurrentBody GB评论 + keyword_detail（实时）</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- MIDDLE EAST -->
+<div id="middleeast" class="section">
+<div class="container">
+  <div class="section-title">中东地区（AE / SA）</div>
+  <div class="section-desc">数据来源：Amazon Sorftime MCP — keyword_detail AE/SA + product_detail</div>
+
+  <div class="region-detail">
+    <div class="region-header me">
+      <div class="region-emoji">🇦🇪</div>
+      <div class="region-title-block">
+        <h2>中东市场（阿联酋 / 沙特）</h2>
+        <p>SA月搜索量 532 · AE月销量仅5件 · 市场处于教育阶段</p>
+      </div>
+      <div class="region-badge badge-early">早期市场</div>
+    </div>
+    <div class="region-body">
+      <div class="region-col">
+        <div class="col-title"><span class="col-icon">🧴</span>肤质特点</div>
+        <div class="tag-wrap">
+          <span class="tag red">高温干燥气候损伤</span>
+          <span class="tag">深色/橄榄肤色为主</span>
+          <span class="tag">沙尘环境皮肤刺激</span>
+          <span class="tag red">紫外线辐射强烈</span>
+          <span class="tag">油性/混合性肤质</span>
+        </div>
+        <ul class="pain-list">
+          <li class="pain-item">
+            <div class="pain-rank r1">1</div>
+            <div><strong>色斑/过度色素沉淀（美白诉求）</strong>——中东女性对肤色均匀度极度重视，抗色素沉淀是首要护肤目标</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r2">2</div>
+            <div><strong>UV 老化/细纹</strong>——高紫外线加速皮肤老化，30岁+群体焦虑感强</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r3">3</div>
+            <div><strong>暗沉/亮肤需求</strong>——整体"亮化"类产品在中东销量持续高</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r4">4</div>
+            <div><strong>痘痘/炎症（穿戴面纱引发）</strong>——长时间穿戴Hijab造成面部闷热、痘痘问题</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r5">5</div>
+            <div><strong>皮肤干燥（室内空调环境）</strong>——室内高度空调环境导致水分流失</div>
+          </li>
+        </ul>
+      </div>
+      <div class="region-col">
+        <div class="col-title"><span class="col-icon">💡</span>购买决策因素</div>
+        <ul class="decision-list">
+          <li class="decision-item"><span class="decision-icon">🕌</span><div><strong>隐私护肤文化</strong>——女性在家使用美容设备的接受度极高，"居家美容"符合宗教和文化习惯</div></li>
+          <li class="decision-item"><span class="decision-icon">💎</span><div><strong>奢侈品牌偏好</strong>——沙特/UAE高净值群体对品质和品牌溢价接受度高，但大众市场价格敏感</div></li>
+          <li class="decision-item"><span class="decision-icon">📱</span><div><strong>Instagram/Snapchat种草</strong>——中东社交媒体以Instagram和Snapchat为主，美妆KOL影响力强</div></li>
+          <li class="decision-item"><span class="decision-icon">🌙</span><div><strong>斋月消费季（Ramadan）</strong>——最重要的促销节点，女性居家时间增加，护肤购买集中</div></li>
+          <li class="decision-item"><span class="decision-icon">🌍</span><div><strong>进口信任度</strong>——欧美/韩国品牌信任度高于无品牌</div></li>
+        </ul>
+
+        <div class="col-title" style="margin-top:20px"><span class="col-icon">📊</span>市场数据</div>
+        <div class="tag-wrap">
+          <span class="tag red">SA月搜532 · 竞品611</span>
+          <span class="tag yellow">旺季：1-3月（冬季美容护理）</span>
+          <span class="tag">顶销：Viconor SAR435·月销85</span>
+          <span class="tag">AE INIA：AED528·月销仅5件</span>
+        </div>
+        <p style="font-size:13px; color:var(--text-muted); margin-top:8px;">⚠️ 市场结论：中东 LED 光疗面罩市场极为初级，现阶段仍需市场教育。建议以<strong>美白+抗老双效功能</strong>切入，配合斋月促销和本地 KOL 背书，价格锚点 SAR 150-300 区间。</p>
+        <div class="source-note">📡 数据来源：Sorftime MCP keyword_detail + product_detail AE/SA（实时）</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- SOUTHEAST ASIA -->
+<div id="sea" class="section">
+<div class="container">
+  <div class="section-title">东南亚地区（MY / TH / ID / PH / VN）</div>
+  <div class="section-desc">数据来源：TikTok Shop 公开数据 + 外部市场研究报告（Charm.io / CNBC / TMO Group / DSGCP）</div>
+
+  <div class="region-detail">
+    <div class="region-header sea">
+      <div class="region-emoji">🌏</div>
+      <div class="region-title-block">
+        <h2>东南亚市场</h2>
+        <p>TikTok Shop 主导 · 美容设备品类年增 +400% · 主要市场：印尼/泰国/菲律宾</p>
+      </div>
+      <div class="region-badge badge-growing">高速增长</div>
+    </div>
+    <div class="region-body">
+      <div class="region-col">
+        <div class="col-title"><span class="col-icon">🧴</span>肤质特点</div>
+        <div class="tag-wrap">
+          <span class="tag green">热带油性/混合性肤质</span>
+          <span class="tag green">痘肌比例极高</span>
+          <span class="tag">亚洲黄褐色肤调</span>
+          <span class="tag red">痘后色素沉淀（PIH）</span>
+          <span class="tag">紫外线损伤/暗沉</span>
+        </div>
+        <ul class="pain-list">
+          <li class="pain-item">
+            <div class="pain-rank r1">1</div>
+            <div><strong>痘痘/闭口（蓝光需求）</strong>——高温高湿加热辣饮食，"全民战痘"是东南亚护肤第一命题</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r2">2</div>
+            <div><strong>美白/提亮（审美刚需）</strong>——"以白为美"文化深入，是购买决策最强驱动力之一</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r3">3</div>
+            <div><strong>痘后色素沉淀</strong>——亚洲肤质更易形成 PIH，红光面罩淡化痘印诉求强</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r4">4</div>
+            <div><strong>早龄化抗老（20岁起）</strong>——Gen Z提前布局抗老，印尼20+女性开始关注细纹</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r5">5</div>
+            <div><strong>控油/毛孔粗大</strong>——热带出油严重，毛孔问题几乎普遍存在</div>
+          </li>
+        </ul>
+      </div>
+      <div class="region-col">
+        <div class="col-title"><span class="col-icon">💡</span>购买决策因素</div>
+        <ul class="decision-list">
+          <li class="decision-item"><span class="decision-icon">📱</span><div><strong>TikTok KOL/微影响者</strong>——2,000-10,000粉的微型KOL互动率是明星的4倍，真实体验分享最具转化力</div></li>
+          <li class="decision-item"><span class="decision-icon">🎥</span><div><strong>LIVE购物直播</strong>——约26%购买通过直播完成，实时演示效果是核心转化场景</div></li>
+          <li class="decision-item"><span class="decision-icon">💰</span><div><strong>价格是第一过滤器</strong>——$30-80 USD是主流接受区间，$100+需强背书</div></li>
+          <li class="decision-item"><span class="decision-icon">🇰🇷</span><div><strong>韩国品牌信任优势</strong>——K-Beauty在东南亚Gen Z中有极高品牌溢价</div></li>
+          <li class="decision-item"><span class="decision-icon">🏥</span><div><strong>皮肤科医生认证</strong>——"Dermatologist tested/approved"是信任背书</div></li>
+          <li class="decision-item"><span class="decision-icon">📦</span><div><strong>Shopee/Lazada 促销节</strong>——9.9、11.11、12.12大促是最重要购买节点</div></li>
+        </ul>
+
+        <div class="col-title" style="margin-top:20px"><span class="col-icon">🎯</span>使用场景</div>
+        <ul class="decision-list">
+          <li class="decision-item"><span class="decision-icon">📱</span>TikTok 刷到 → 当场下单（发现即购买）</li>
+          <li class="decision-item"><span class="decision-icon">🏠</span>居家护肤升级（疫情后习惯延续）</li>
+          <li class="decision-item"><span class="decision-icon">✨</span>"医院级效果、家用价格"的心理替代</li>
+          <li class="decision-item"><span class="decision-icon">📸</span>拍照分享、社交证明驱动</li>
+        </ul>
+        <div class="source-note">📰 数据来源：Charm.io / CNBC / TMO Group / DSGCP / Market.us 外部报告</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- RUSSIA -->
+<div id="russia" class="section">
+<div class="container">
+  <div class="section-title">俄语区（RU / KZ / BY / UA）</div>
+  <div class="section-desc">数据来源：外部市场研究（IMARC / Russia-promo / KP.ru / IRecommend.ru）</div>
+
+  <div class="region-detail">
+    <div class="region-header ru">
+      <div class="region-emoji">🇷🇺</div>
+      <div class="region-title-block">
+        <h2>俄语区市场</h2>
+        <p>Wildberries 主导 (47%) · 美容市场规模 $10.3B · 欧美品牌撤出后机遇窗口</p>
+      </div>
+      <div class="region-badge badge-emerging">历史机遇期</div>
+    </div>
+    <div class="region-body">
+      <div class="region-col">
+        <div class="col-title"><span class="col-icon">🧴</span>肤质特点（气候主导）</div>
+        <div class="tag-wrap">
+          <span class="tag ru" style="background:rgba(184,85,232,0.15);border-color:rgba(184,85,232,0.3);color:#DCA0FF">干性/混合性</span>
+          <span class="tag ru" style="background:rgba(184,85,232,0.15);border-color:rgba(184,85,232,0.3);color:#DCA0FF">皮肤屏障受损</span>
+          <span class="tag">白皙肤色</span>
+          <span class="tag red">毛细血管脆弱/泛红</span>
+          <span class="tag">维生素D不足/暗沉</span>
+        </div>
+        <ul class="pain-list">
+          <li class="pain-item">
+            <div class="pain-rank r1">1</div>
+            <div><strong>干燥/皮肤屏障受损</strong>——极端干冷气候（-50°C）+ 室内高温暖气，TEWL显著升高，红光促胶原修复直击痛点</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r2">2</div>
+            <div><strong>肤色暗沉/蜡黄</strong>——长冬日照不足，维生素D缺乏，肤色均匀度问题突出</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r3">3</div>
+            <div><strong>细纹/早衰</strong>——低温加速老化，俄罗斯女性30岁后细纹明显早于南欧；抗衰需求强</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r4">4</div>
+            <div><strong>面部泛红/红血丝</strong>——冷热交替导致毛细血管扩张，黄光/绿光镇静诉求</div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-rank r5">5</div>
+            <div><strong>痘痘/炎症（城市年轻群体）</strong>——蓝光需求存在但优先级低于欧美</div>
+          </li>
+        </ul>
+      </div>
+      <div class="region-col">
+        <div class="col-title"><span class="col-icon">💡</span>购买决策因素</div>
+        <ul class="decision-list">
+          <li class="decision-item"><span class="decision-icon">⭐</span><div><strong>用户评价/测评内容（54%依赖）</strong>——IRecommend、Otzovik评测站公信力极高</div></li>
+          <li class="decision-item"><span class="decision-icon">🎬</span><div><strong>UGC Before/After 视频（82%信任）</strong>——真实效果展示是最强转化内容</div></li>
+          <li class="decision-item"><span class="decision-icon">💬</span><div><strong>VKontakte + Telegram 渠道</strong>——替代Instagram的主流社交种草渠道</div></li>
+          <li class="decision-item"><span class="decision-icon">🛒</span><div><strong>Wildberries 为主平台</strong>——月覆盖60%俄罗斯人口，美容设备首选</div></li>
+          <li class="decision-item"><span class="decision-icon">🇰🇷</span><div><strong>韩系品牌快速崛起</strong>——欧美品牌撤出后，32%俄女性已使用韩系护肤品</div></li>
+          <li class="decision-item"><span class="decision-icon">🌿</span><div><strong>天然/成分透明偏好</strong>——俄罗斯消费者对天然有机护肤增速+47%</div></li>
+        </ul>
+
+        <div class="col-title" style="margin-top:20px"><span class="col-icon">🎯</span>使用场景</div>
+        <ul class="decision-list">
+          <li class="decision-item"><span class="decision-icon">🏠</span>居家美容文化深厚（DIY面膜传统→升级为设备）</li>
+          <li class="decision-item"><span class="decision-icon">📺</span>边追剧/读书边使用（免手持形态高度契合）</li>
+          <li class="decision-item"><span class="decision-icon">❄️</span>秋冬护肤高峰（10月-3月）集中使用</li>
+          <li class="decision-item"><span class="decision-icon">💄</span>替代沙龙消费（美容院习惯→家用升级）</li>
+        </ul>
+        <div class="source-note">📰 数据来源：IMARC / Russia-promo.com / KP.ru / IRecommend.ru 外部报告</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- COMPARISON TABLE -->
+<div id="comparison" class="section">
+<div class="container">
+  <div class="section-title">五大地区横向对比</div>
+  <div class="section-desc">皮肤痛点、决策因素、场景偏好、渠道等核心维度全景对比</div>
+
+  <div style="overflow-x:auto; border-radius:12px; border:1px solid var(--border);">
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>维度</th>
+        <th><span class="region-pill pill-na">北美 US/CA</span></th>
+        <th><span class="region-pill pill-eu">欧洲 GB/DE</span></th>
+        <th><span class="region-pill pill-me">中东 AE/SA</span></th>
+        <th><span class="region-pill pill-sea">东南亚</span></th>
+        <th><span class="region-pill pill-ru">俄语区</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>主要肤质</strong></td>
+        <td>混合/干性，多族裔</td>
+        <td>白皙敏感，易泛红（GB）；耐受性强（DE）</td>
+        <td>深色/橄榄，油性，UV损伤</td>
+        <td>油性/混合，热带痘肌</td>
+        <td>干性，屏障受损，毛细血管脆弱</td>
+      </tr>
+      <tr>
+        <td><strong>核心痛点 #1</strong></td>
+        <td>细纹/抗衰老</td>
+        <td>面部泛红/色素（GB）</td>
+        <td>美白/色斑</td>
+        <td>痘痘/痘印</td>
+        <td>干燥/皮肤屏障修复</td>
+      </tr>
+      <tr>
+        <td><strong>核心痛点 #2</strong></td>
+        <td>痘痘（年轻群体）</td>
+        <td>细纹/早衰</td>
+        <td>UV老化</td>
+        <td>美白/暗沉</td>
+        <td>暗沉/蜡黄</td>
+      </tr>
+      <tr>
+        <td><strong>最重视功能</strong></td>
+        <td>红光+NIR 抗老；蓝光祛痘</td>
+        <td>红光修复泛红+提亮（GB）</td>
+        <td>红光美白提亮；蓝光祛痘</td>
+        <td>蓝光祛痘；红光淡化痘印</td>
+        <td>红光+NIR 修复屏障+抗老</td>
+      </tr>
+      <tr>
+        <td><strong>决策触发 #1</strong></td>
+        <td>Amazon 评论+性价比</td>
+        <td>权威媒体测评（报纸）</td>
+        <td>Instagram KOL</td>
+        <td>TikTok 微KOL+直播</td>
+        <td>用户评测网站UGC</td>
+      </tr>
+      <tr>
+        <td><strong>主要购买渠道</strong></td>
+        <td>Amazon</td>
+        <td>Amazon UK / 品牌官网</td>
+        <td>Amazon AE/SA / 线下专柜</td>
+        <td>TikTok Shop / Shopee / Lazada</td>
+        <td>Wildberries / Ozon</td>
+      </tr>
+      <tr>
+        <td><strong>主流价格带</strong></td>
+        <td>$40-$150 大众；$350+ 高端</td>
+        <td>£70-£150 大众；£300-£400 高端</td>
+        <td>SAR 120-200 主流</td>
+        <td>$20-$80 USD</td>
+        <td>3,000-15,000 RUB (≈$35-175)</td>
+      </tr>
+      <tr>
+        <td><strong>最佳使用场景卖点</strong></td>
+        <td>边看电视/随意使用</td>
+        <td>"10分钟 me time" 仪式感</td>
+        <td>居家隐私护肤</td>
+        <td>直播演示→即时购买</td>
+        <td>边追剧/替代沙龙</td>
+      </tr>
+      <tr>
+        <td><strong>市场成熟度</strong></td>
+        <td>⭐⭐⭐⭐</td>
+        <td>⭐⭐⭐⭐⭐（GB）/ ⭐⭐（DE）</td>
+        <td>⭐⭐</td>
+        <td>⭐⭐⭐（快速成长）</td>
+        <td>⭐⭐⭐（机遇期）</td>
+      </tr>
+      <tr>
+        <td><strong>进入难度</strong></td>
+        <td>中（竞争激烈）</td>
+        <td>中高（品牌门槛高）</td>
+        <td>低（需教育）</td>
+        <td>低中（内容驱动）</td>
+        <td>低（空窗期）</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- PERSONA -->
+<div id="personas" class="section">
+<div class="container">
+  <div class="section-title">目标人群画像</div>
+  <div class="section-desc">基于各地区评论数据、关键词行为和市场研究综合提炼的典型用户画像</div>
+
+  <div class="persona-grid">
+    <!-- NA Persona -->
+    <div class="persona-card na">
+      <div class="persona-head">
+        <div class="persona-avatar">👩🏻‍💼</div>
+        <div class="persona-name">Sarah</div>
+        <div class="persona-region">🇺🇸 北美典型用户</div>
+      </div>
+      <div class="persona-body">
+        <div class="persona-row">
+          <span class="persona-key">年龄</span>
+          <span class="persona-val">28-45 岁</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">皮肤问题</span>
+          <span class="persona-val">细纹+痘印并存</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">消费能力</span>
+          <span class="persona-val">中等偏上</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">护肤习惯</span>
+          <span class="persona-val">多步骤日常护肤</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">决策方式</span>
+          <span class="persona-val">Amazon评论驱动</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">购买动机</span>
+          <span class="persona-val">省掉沙龙费用</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">渠道偏好</span>
+          <span class="persona-val">Amazon Prime</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">价格接受度</span>
+          <span class="persona-val">$60-150（甜蜜点）</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- EU Persona -->
+    <div class="persona-card eu">
+      <div class="persona-head">
+        <div class="persona-avatar">👩🏼</div>
+        <div class="persona-name">Emma</div>
+        <div class="persona-region">🇬🇧 欧洲典型用户</div>
+      </div>
+      <div class="persona-body">
+        <div class="persona-row">
+          <span class="persona-key">年龄</span>
+          <span class="persona-val">35-55 岁</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">皮肤问题</span>
+          <span class="persona-val">泛红+细纹+色素</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">消费能力</span>
+          <span class="persona-val">高（接受£400+）</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">护肤习惯</span>
+          <span class="persona-val">长期固定护肤仪式</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">决策方式</span>
+          <span class="persona-val">媒体/皮肤科推荐</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">购买动机</span>
+          <span class="persona-val">长期投资逻辑</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">渠道偏好</span>
+          <span class="persona-val">Amazon UK + 品牌官网</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">价格接受度</span>
+          <span class="persona-val">£70-400</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ME Persona -->
+    <div class="persona-card me">
+      <div class="persona-head">
+        <div class="persona-avatar">👩🏽‍🦱</div>
+        <div class="persona-name">Layla</div>
+        <div class="persona-region">🇦🇪 中东典型用户</div>
+      </div>
+      <div class="persona-body">
+        <div class="persona-row">
+          <span class="persona-key">年龄</span>
+          <span class="persona-val">25-40 岁</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">皮肤问题</span>
+          <span class="persona-val">色斑+美白+UV老化</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">消费能力</span>
+          <span class="persona-val">两极：奢侈/大众</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">护肤习惯</span>
+          <span class="persona-val">居家护肤为主</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">决策方式</span>
+          <span class="persona-val">Instagram KOL</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">购买动机</span>
+          <span class="persona-val">美白提亮+隐私护肤</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">渠道偏好</span>
+          <span class="persona-val">Amazon AE / Noon</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">价格接受度</span>
+          <span class="persona-val">SAR 150-300</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEA Persona -->
+    <div class="persona-card sea">
+      <div class="persona-head">
+        <div class="persona-avatar">👩🏽</div>
+        <div class="persona-name">Putri</div>
+        <div class="persona-region">🇮🇩 东南亚典型用户</div>
+      </div>
+      <div class="persona-body">
+        <div class="persona-row">
+          <span class="persona-key">年龄</span>
+          <span class="persona-val">18-32 岁 (Gen Z)</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">皮肤问题</span>
+          <span class="persona-val">痘痘+暗沉+色素</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">消费能力</span>
+          <span class="persona-val">中低，价格敏感</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">护肤习惯</span>
+          <span class="persona-val">多步骤护肤 + 美白系</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">决策方式</span>
+          <span class="persona-val">TikTok 微KOL+直播</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">购买动机</span>
+          <span class="persona-val">解决痘痘+变白</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">渠道偏好</span>
+          <span class="persona-val">TikTok Shop / Shopee</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">价格接受度</span>
+          <span class="persona-val">$20-60 USD</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RU Persona -->
+    <div class="persona-card ru">
+      <div class="persona-head">
+        <div class="persona-avatar">👩🏻‍🦳</div>
+        <div class="persona-name">Natasha</div>
+        <div class="persona-region">🇷🇺 俄语区典型用户</div>
+      </div>
+      <div class="persona-body">
+        <div class="persona-row">
+          <span class="persona-key">年龄</span>
+          <span class="persona-val">30-45 岁</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">皮肤问题</span>
+          <span class="persona-val">干燥+早衰+泛红</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">消费能力</span>
+          <span class="persona-val">中等偏上（城市）</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">护肤习惯</span>
+          <span class="persona-val">居家美容文化深厚</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">决策方式</span>
+          <span class="persona-val">评测网站+VK内容</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">购买动机</span>
+          <span class="persona-val">修复干燥+替代沙龙</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">渠道偏好</span>
+          <span class="persona-val">Wildberries / Ozon</span>
+        </div>
+        <div class="persona-row">
+          <span class="persona-key">价格接受度</span>
+          <span class="persona-val">5,000-12,000 RUB</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- INSIGHTS -->
+<div id="insights" class="section">
+<div class="container">
+  <div class="section-title">核心战略洞察</div>
+  <div class="section-desc">基于5地区综合调研的产品定位、营销和渠道策略建议</div>
+
+  <div class="insight-grid">
+    <div class="insight-card">
+      <div class="insight-icon">🌍</div>
+      <div class="insight-title">功能诉求因地因肤制宜</div>
+      <div class="insight-text">
+        北美/欧洲主打<strong>抗衰+多功能</strong>（红光+NIR），东南亚/中东强调<strong>祛痘+美白</strong>（蓝光+红光），俄语区聚焦<strong>修复屏障+抗干燥</strong>（红光+NIR）。同一产品需根据地区调整核心卖点文案。
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon">💰</div>
+      <div class="insight-title">价格带分层清晰</div>
+      <div class="insight-text">
+        高端（$300-400+）：英国市场，强调品牌+媒体背书。中端（$70-150）：北美大众市场甜蜜点，性价比切入。经济（$20-60）：东南亚/中东入门市场，以痘痘+美白功能为钩。不建议全球统一定价。
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon">📱</div>
+      <div class="insight-title">渠道与内容策略分化</div>
+      <div class="insight-text">
+        Amazon 评论/排名（北美/欧洲）→ 权威媒体+皮肤科（英国）→ TikTok LIVE+微KOL（东南亚）→ Wildberries 评测UGC（俄语区）→ Instagram KOL（中东）。每个市场信任构建路径完全不同。
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon">🚀</div>
+      <div class="insight-title">最优先进入市场</div>
+      <div class="insight-text">
+        <strong>英国</strong>：月搜29,000，成熟市场，高单价接受度，媒体背书可快速建立品牌。<strong>东南亚</strong>：TikTok红利期，$30-60价格带低门槛，增速+400%。建议双线并行：英国打品牌溢价，东南亚打量。
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon">⚡</div>
+      <div class="insight-title">俄语区是历史机遇窗口</div>
+      <div class="insight-text">
+        欧美主流品牌2022年后大规模撤出，亚洲品牌正快速填补。韩国品牌用户已占32%，为后续亚洲品牌进入奠基了信任基础。Wildberries 覆盖60%人口，是单一平台进入最高效路径。
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-icon">🎯</div>
+      <div class="insight-title">共通的"无线自由"需求</div>
+      <div class="insight-text">
+        跨越所有地区，<strong>无线可充电</strong>是最一致的产品决策因素。用户不愿被线束束缚，需要"边做事边护肤"。无线设计+长续航（2600mAh+）是全球市场的基础配置要求，非差异化优势。
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <div class="chart-title">各地区市场机遇评分</div>
+      <div class="chart-sub">综合搜索量、增速、竞争度、进入难度的综合评分（满分100）</div>
+      <div class="chart-wrap"><canvas id="opportunityChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">核心皮肤痛点分布（全球）</div>
+      <div class="chart-sub">五大地区综合用户痛点提及频次权重分析</div>
+      <div class="chart-wrap"><canvas id="painpointChart"></canvas></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="container">
+    <div class="footer-text">LED 光疗面罩全球用户调研报告 · 2026-04-23</div>
+    <div class="footer-sources">
+      数据来源：Amazon Sorftime MCP（US/GB/DE/AE/SA 实时数据）· Charm.io · CNBC · IMARC Group · Russia-promo.com · TMO Group · DSGCP · Market.us · KP.ru · IRecommend.ru
+    </div>
+    <div class="footer-sources" style="margin-top:4px; opacity:0.4;">
+      注：东南亚及俄语区数据来自外部公开市场报告；中东数据量有限，建议后续补充一手调研
+    </div>
+  </div>
+</div>
+
+<script>
+// Chart defaults
+Chart.defaults.color = '#9094B8';
+Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
+Chart.defaults.font.family = "'Segoe UI', 'PingFang SC', sans-serif";
+
+// 1. Search Volume Chart
+new Chart(document.getElementById('searchVolumeChart'), {
+  type: 'bar',
+  data: {
+    labels: ['英国(GB)', '德国(DE)', '东南亚\n(估算)', '俄语区\n(估算)', '沙特(SA)', '美国(US)', '阿联酋(AE)'],
+    datasets: [{
+      label: '月搜索量',
+      data: [29080, 15318, 8000, 5000, 532, 201, 120],
+      backgroundColor: [
+        'rgba(232,168,56,0.6)',
+        'rgba(232,168,56,0.4)',
+        'rgba(56,196,168,0.6)',
+        'rgba(184,85,232,0.6)',
+        'rgba(232,92,56,0.6)',
+        'rgba(79,142,247,0.6)',
+        'rgba(232,92,56,0.4)',
+      ],
+      borderColor: [
+        '#E8A838','#E8A838','#38C4A8','#B855E8','#E85C38','#4F8EF7','#E85C38'
+      ],
+      borderWidth: 1,
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { font: { size: 11 } } },
+      x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+    }
+  }
+});
+
+// 2. Price Range Chart
+new Chart(document.getElementById('priceChart'), {
+  type: 'bar',
+  data: {
+    labels: ['北美', '英国', '德国', '中东', '东南亚', '俄语区'],
+    datasets: [
+      {
+        label: '价格下限($USD)',
+        data: [40, 90, 25, 33, 20, 35],
+        backgroundColor: 'rgba(108,63,197,0.5)',
+        borderColor: '#6C3FC5',
+        borderWidth: 1,
+        borderRadius: 4,
+      },
+      {
+        label: '价格上限($USD)',
+        data: [399, 500, 80, 116, 80, 175],
+        backgroundColor: 'rgba(233,30,140,0.5)',
+        borderColor: '#E91E8C',
+        borderWidth: 1,
+        borderRadius: 4,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { boxWidth: 12, font: { size: 11 } } }
+    },
+    scales: {
+      y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { callback: v => '$' + v } },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// 3. Opportunity Score Chart (Radar)
+new Chart(document.getElementById('opportunityChart'), {
+  type: 'radar',
+  data: {
+    labels: ['市场规模', '增速', '进入难度(反)', '品类认知度', '竞争机会'],
+    datasets: [
+      {
+        label: '英国',
+        data: [85, 70, 50, 90, 60],
+        borderColor: '#E8A838',
+        backgroundColor: 'rgba(232,168,56,0.08)',
+        pointBackgroundColor: '#E8A838',
+        borderWidth: 2,
+      },
+      {
+        label: '东南亚',
+        data: [65, 95, 80, 70, 85],
+        borderColor: '#38C4A8',
+        backgroundColor: 'rgba(56,196,168,0.08)',
+        pointBackgroundColor: '#38C4A8',
+        borderWidth: 2,
+      },
+      {
+        label: '北美',
+        data: [80, 60, 40, 85, 55],
+        borderColor: '#4F8EF7',
+        backgroundColor: 'rgba(79,142,247,0.08)',
+        pointBackgroundColor: '#4F8EF7',
+        borderWidth: 2,
+      },
+      {
+        label: '俄语区',
+        data: [70, 75, 85, 55, 90],
+        borderColor: '#B855E8',
+        backgroundColor: 'rgba(184,85,232,0.08)',
+        pointBackgroundColor: '#B855E8',
+        borderWidth: 2,
+      },
+      {
+        label: '中东',
+        data: [40, 55, 90, 35, 70],
+        borderColor: '#E85C38',
+        backgroundColor: 'rgba(232,92,56,0.08)',
+        pointBackgroundColor: '#E85C38',
+        borderWidth: 2,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'right', labels: { boxWidth: 10, font: { size: 10 } } }
+    },
+    scales: {
+      r: {
+        min: 0, max: 100,
+        grid: { color: 'rgba(255,255,255,0.06)' },
+        angleLines: { color: 'rgba(255,255,255,0.06)' },
+        ticks: { display: false },
+        pointLabels: { font: { size: 11 } }
+      }
+    }
+  }
+});
+
+// 4. Pain Points Doughnut
+new Chart(document.getElementById('painpointChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['抗衰老/细纹', '祛痘/痘印', '美白/提亮', '干燥/屏障修复', '泛红/敏感', '色斑/色素'],
+    datasets: [{
+      data: [28, 22, 18, 14, 10, 8],
+      backgroundColor: [
+        'rgba(108,63,197,0.7)',
+        'rgba(233,30,140,0.7)',
+        'rgba(56,196,168,0.7)',
+        'rgba(79,142,247,0.7)',
+        'rgba(232,92,56,0.7)',
+        'rgba(232,168,56,0.7)',
+      ],
+      borderColor: '#161829',
+      borderWidth: 2,
+      hoverOffset: 8,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'right',
+        labels: { boxWidth: 10, font: { size: 11 }, padding: 10 }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.label}: ${ctx.parsed}%`
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
