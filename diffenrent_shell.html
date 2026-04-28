@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>北美亚马逊 LED Light Therapy Mask 市场调研 — 硬壳 vs 软壳竞品分析 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --bg2: #F8FAFC;
+    --bg3: #F0F4F8;
+    --text-1: #111827;
+    --text-2: #374151;
+    --text-3: #6B7280;
+    --accent: #1A56DB;
+    --accent-light: #EFF6FF;
+    --hard-color: #7C3AED;
+    --hard-light: #F5F3FF;
+    --soft-color: #059669;
+    --soft-light: #ECFDF5;
+    --border: #E5E7EB;
+    --shadow: 0 1px 4px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg2); color: var(--text-1); line-height: 1.6; }
+
+  /* Header */
+  .site-header { background: var(--bg); border-bottom: 1px solid var(--border); padding: 20px 40px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
+  .site-header .logo { width: 36px; height: 36px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; }
+  .site-header h1 { font-size: 15px; font-weight: 600; color: var(--text-1); }
+  .site-header span { font-size: 12px; color: var(--text-3); background: var(--bg3); padding: 2px 8px; border-radius: 20px; }
+
+  /* Layout */
+  .container { max-width: 1400px; margin: 0 auto; padding: 32px 40px; }
+
+  /* Hero */
+  .hero { background: var(--bg); border-radius: var(--radius); padding: 36px 40px; margin-bottom: 28px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  .hero-title { font-size: 26px; font-weight: 700; color: var(--text-1); margin-bottom: 8px; }
+  .hero-sub { font-size: 14px; color: var(--text-3); margin-bottom: 24px; }
+  .hero-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+  .hero-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-2); }
+  .hero-meta-item span { font-weight: 600; color: var(--text-1); }
+
+  /* KPI Cards */
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 28px; }
+  .kpi-card { background: var(--bg); border-radius: var(--radius); padding: 20px 24px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  .kpi-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-3); margin-bottom: 6px; }
+  .kpi-value { font-size: 26px; font-weight: 700; color: var(--text-1); line-height: 1; }
+  .kpi-sub { font-size: 12px; color: var(--text-3); margin-top: 4px; }
+  .kpi-card.hard .kpi-value { color: var(--hard-color); }
+  .kpi-card.soft .kpi-value { color: var(--soft-color); }
+  .kpi-card.accent .kpi-value { color: var(--accent); }
+
+  /* Section Headers */
+  .section { margin-bottom: 32px; }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
+  .section-header .badge { width: 8px; height: 32px; border-radius: 4px; }
+  .badge-hard { background: var(--hard-color); }
+  .badge-soft { background: var(--soft-color); }
+  .badge-blue { background: var(--accent); }
+  .section-header h2 { font-size: 20px; font-weight: 700; color: var(--text-1); }
+  .section-header .tag { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+  .tag-hard { background: var(--hard-light); color: var(--hard-color); }
+  .tag-soft { background: var(--soft-light); color: var(--soft-color); }
+  .tag-blue { background: var(--accent-light); color: var(--accent); }
+
+  /* Charts */
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .chart-grid.single { grid-template-columns: 1fr; }
+  .chart-card { background: var(--bg); border-radius: var(--radius); padding: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  .chart-title { font-size: 13px; font-weight: 600; color: var(--text-2); margin-bottom: 12px; }
+  .chart-box { width: 100%; height: 320px; }
+
+  /* Product Tables */
+  .table-wrap { background: var(--bg); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; margin-bottom: 24px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th { background: var(--bg3); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-3); padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  tbody td { padding: 12px 14px; border-bottom: 1px solid #F3F4F6; vertical-align: middle; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #FAFBFC; }
+  .rank-badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; font-size: 11px; font-weight: 700; }
+  .rank-1 { background: #FEF3C7; color: #92400E; }
+  .rank-2 { background: #F3F4F6; color: #374151; }
+  .rank-3 { background: #FEF3C7; color: #D97706; }
+  .rank-n { background: #F3F4F6; color: #6B7280; }
+  .brand-cell { font-weight: 600; color: var(--text-1); }
+  .asin-link { font-size: 11px; color: var(--accent); text-decoration: none; font-family: monospace; }
+  .asin-link:hover { text-decoration: underline; }
+  .price-cell { font-weight: 700; color: var(--text-1); font-size: 14px; }
+  .rev-cell { font-weight: 600; color: #059669; }
+  .vol-cell { font-weight: 600; color: var(--accent); }
+  .rating-star { color: #F59E0B; }
+  .shell-badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 700; }
+  .shell-hard { background: var(--hard-light); color: var(--hard-color); }
+  .shell-soft { background: var(--soft-light); color: var(--soft-color); }
+  .origin-badge { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 600; }
+  .origin-us { background: #EFF6FF; color: #1A56DB; }
+  .origin-cn { background: #FFF7ED; color: #C2410C; }
+  .origin-hk { background: #F0FDF4; color: #15803D; }
+  .origin-gb { background: #F5F3FF; color: #7C3AED; }
+  .new-badge { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; font-weight: 700; background: #FEF9C3; color: #854D0E; }
+  .hot-badge { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; font-weight: 700; background: #FEE2E2; color: #991B1B; }
+  .fda-badge { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; font-weight: 700; background: #DCFCE7; color: #166534; }
+
+  /* Spec chips */
+  .spec-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .spec-chip { font-size: 10px; background: var(--bg3); color: var(--text-2); padding: 2px 6px; border-radius: 3px; white-space: nowrap; }
+
+  /* Feature pill */
+  .feat-pill { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; background: var(--bg3); color: var(--text-2); margin: 1px; }
+
+  /* Comparison grid */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .compare-card { background: var(--bg); border-radius: var(--radius); border: 2px solid var(--border); padding: 24px; box-shadow: var(--shadow); }
+  .compare-card.hard-border { border-color: var(--hard-color); }
+  .compare-card.soft-border { border-color: var(--soft-color); }
+  .compare-card-title { font-size: 16px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .compare-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #F3F4F6; font-size: 13px; }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-row .label { color: var(--text-3); }
+  .compare-row .value { font-weight: 600; color: var(--text-1); }
+
+  /* Brand cards */
+  .brand-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .brand-card { background: var(--bg); border-radius: var(--radius); border: 1px solid var(--border); padding: 20px; box-shadow: var(--shadow); }
+  .brand-name { font-size: 16px; font-weight: 700; color: var(--text-1); margin-bottom: 4px; }
+  .brand-origin { font-size: 12px; color: var(--text-3); margin-bottom: 12px; }
+  .brand-stat { display: flex; gap: 16px; margin-bottom: 12px; }
+  .brand-stat-item { text-align: center; }
+  .brand-stat-item .sv { font-size: 18px; font-weight: 700; color: var(--accent); }
+  .brand-stat-item .sl { font-size: 11px; color: var(--text-3); }
+  .brand-products { font-size: 12px; color: var(--text-2); }
+  .brand-tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 12px; }
+
+  /* Insight boxes */
+  .insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .insight-card { background: var(--bg); border-radius: var(--radius); border: 1px solid var(--border); padding: 20px; box-shadow: var(--shadow); }
+  .insight-card h4 { font-size: 13px; font-weight: 700; color: var(--text-1); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .insight-card ul { list-style: none; }
+  .insight-card ul li { font-size: 13px; color: var(--text-2); padding: 4px 0; padding-left: 14px; position: relative; }
+  .insight-card ul li::before { content: '•'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+  /* Footer */
+  .footer { background: var(--bg); border-top: 1px solid var(--border); padding: 24px 40px; margin-top: 40px; font-size: 12px; color: var(--text-3); }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  /* Nav tabs */
+  .tab-nav { display: flex; gap: 4px; margin-bottom: 20px; background: var(--bg3); padding: 4px; border-radius: 10px; width: fit-content; }
+  .tab-btn { padding: 8px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; background: transparent; color: var(--text-3); transition: all 0.15s; }
+  .tab-btn.active { background: var(--bg); color: var(--text-1); box-shadow: var(--shadow); }
+
+  @media (max-width: 900px) {
+    .container { padding: 16px; }
+    .chart-grid { grid-template-columns: 1fr; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .insight-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">💡</div>
+  <div>
+    <h1>北美亚马逊 LED Light Therapy Mask 市场调研</h1>
+    <span>硬壳 Hard Shell vs 软壳 Soft Shell 竞品分析 · Amazon US · 数据采集 2026-04-14</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-title">LED 光疗面罩北美市场全景报告</div>
+    <div class="hero-sub">基于 Sorftime MCP 实时数据 · 覆盖 90+ 个在售产品 · 硬壳 / 软壳双维度深度拆解</div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">站点：<span>Amazon US</span></div>
+      <div class="hero-meta-item">数据时间：<span>2026年4月</span></div>
+      <div class="hero-meta-item">品类范围：<span>LED Light Therapy Face Mask</span></div>
+      <div class="hero-meta-item">分析产品数：<span>94个（筛选后有效）</span></div>
+      <div class="hero-meta-item">重点跟踪产品：<span>19个</span></div>
+    </div>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Top 19 合并月销额</div>
+      <div class="kpi-value accent">$7.5M+</div>
+      <div class="kpi-sub">19款重点产品月度合计</div>
+    </div>
+    <div class="kpi-card hard">
+      <div class="kpi-label">硬壳 Top 7 月销额</div>
+      <div class="kpi-value">$4.31M</div>
+      <div class="kpi-sub">客单价 $349–$650</div>
+    </div>
+    <div class="kpi-card soft">
+      <div class="kpi-label">软壳 Top 12 月销额</div>
+      <div class="kpi-value">$3.19M</div>
+      <div class="kpi-sub">客单价 $49–$470</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">硬壳均价</div>
+      <div class="kpi-value accent">$432</div>
+      <div class="kpi-sub">$349–$649.99</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">软壳均价（主流）</div>
+      <div class="kpi-value accent">$97</div>
+      <div class="kpi-sub">$49–$199（中国品牌为主）</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">月销量最高产品</div>
+      <div class="kpi-value soft">5,074</div>
+      <div class="kpi-sub">INIA B0F18BBHCC · 软壳 · $89.99</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">月收入最高产品</div>
+      <div class="kpi-value hard">$1.19M</div>
+      <div class="kpi-sub">Shark CryoGlow · 硬壳 · $349</div>
+    </div>
+  </div>
+
+  <!-- Charts Row 1 -->
+  <div class="chart-grid">
+    <div class="chart-card">
+      <div class="chart-title">月销额 Top 12 产品排名（硬壳 vs 软壳）</div>
+      <div class="chart-box" id="chart-revenue"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">月销量 Top 15 产品排名（硬壳 vs 软壳）</div>
+      <div class="chart-box" id="chart-volume"></div>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <div class="chart-title">硬壳 vs 软壳：价格分布区间对比</div>
+      <div class="chart-box" id="chart-price-scatter"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">品牌来源构成（硬壳 vs 软壳卖家来源分布）</div>
+      <div class="chart-box" id="chart-origin"></div>
+    </div>
+  </div>
+
+  <!-- Hard Shell Section -->
+  <div class="section">
+    <div class="section-header">
+      <div class="badge badge-hard"></div>
+      <h2>硬壳 Hard Shell LED Face Mask</h2>
+      <span class="tag tag-hard">刚性外壳 · ABS/PC 结构 · 高端定位</span>
+    </div>
+
+    <div class="compare-card hard-border" style="margin-bottom:20px;">
+      <div class="compare-card-title" style="color:var(--hard-color)">
+        🔵 硬壳品类特征
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;font-size:13px;">
+        <div>
+          <div style="font-weight:700;margin-bottom:6px;color:var(--text-2)">产品结构</div>
+          <div style="color:var(--text-3);line-height:1.7">刚性 ABS/PC 塑料外壳<br>固定面部轮廓设计<br>覆盖整张脸部（含眼鼻口区域）<br>部分含遥控器或额外附件</div>
+        </div>
+        <div>
+          <div style="font-weight:700;margin-bottom:6px;color:var(--text-2)">核心优势</div>
+          <div style="color:var(--text-3);line-height:1.7">LED 灯珠密度更高<br>光疗强度稳定<br>品牌信任背书强<br>FSA/HSA 认证覆盖率高</div>
+        </div>
+        <div>
+          <div style="font-weight:700;margin-bottom:6px;color:var(--text-2)">市场定位</div>
+          <div style="color:var(--text-3);line-height:1.7">价格带：$349–$649<br>目标用户：抗衰老、专业护肤<br>主流颜色：白色、蓝色<br>品牌主要来自美国/国际大牌</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>排名</th>
+            <th>品牌 / 产品</th>
+            <th>ASIN</th>
+            <th>价格</th>
+            <th>月销量</th>
+            <th>月销额</th>
+            <th>评分 / 评论</th>
+            <th>颜色</th>
+            <th>主要规格参数</th>
+            <th>卖家来源</th>
+            <th>上架时间</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rank-badge rank-1">1</span></td>
+            <td>
+              <div class="brand-cell">Shark Beauty</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">CryoGlow LED Face Mask</div>
+              <span class="hot-badge">HOT</span>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0DSGJCS47" target="_blank">B0DSGJCS47</a></td>
+            <td class="price-cell">$349.00</td>
+            <td class="vol-cell">3,412</td>
+            <td class="rev-cell">$1,190,788</td>
+            <td><span class="rating-star">★</span> 4.5 / 760条</td>
+            <td>Blue Frost</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">Red+Blue+IR LED</span>
+                <span class="spec-chip">Under-Eye Cooling</span>
+                <span class="spec-chip">USB-C</span>
+                <span class="spec-chip">Remote Control</span>
+                <span class="spec-chip">4种治疗模式</span>
+                <span class="spec-chip">材质：Plastic</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-us">Amazon.com</span></td>
+            <td>2025-02-21</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-2">2</span></td>
+            <td>
+              <div class="brand-cell">iRestore</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">LED Face Mask 360 LEDs</div>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0D7N2KWLH" target="_blank">B0D7N2KWLH</a></td>
+            <td class="price-cell">$399.00</td>
+            <td class="vol-cell">2,654</td>
+            <td class="rev-cell">$1,058,946</td>
+            <td><span class="rating-star">★</span> 4.6 / 652条</td>
+            <td>White</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">360 LEDs</span>
+                <span class="spec-chip">635nm Red</span>
+                <span class="spec-chip">830nm IR</span>
+                <span class="spec-chip">415nm Blue</span>
+                <span class="spec-chip">三波长</span>
+                <span class="spec-chip">FSA Eligible</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-us">iRESTORE (US)</span></td>
+            <td>2024-06-22</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-3">3</span></td>
+            <td>
+              <div class="brand-cell">Therabody</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">TheraFace Mask + Vibration</div>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0CNHTST52" target="_blank">B0CNHTST52</a></td>
+            <td class="price-cell">$649.99</td>
+            <td class="vol-cell">1,109</td>
+            <td class="rev-cell">$720,839</td>
+            <td><span class="rating-star">★</span> 4.2 / 215条</td>
+            <td>White</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">PC+ABS+TPU</span>
+                <span class="spec-chip">Red+IR+Blue</span>
+                <span class="spec-chip">振动按摩</span>
+                <span class="spec-chip">医疗级硅胶护目镜</span>
+                <span class="spec-chip">FSA Eligible</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-us">TheraGun (US)</span></td>
+            <td>2023-11-17</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-n">4</span></td>
+            <td>
+              <div class="brand-cell">Dr. Dennis Gross</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">DRx SpectraLite FaceWare Pro</div>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B08NCRHNW9" target="_blank">B08NCRHNW9</a></td>
+            <td class="price-cell">$455.00</td>
+            <td class="vol-cell">1,248</td>
+            <td class="rev-cell">$567,840</td>
+            <td><span class="rating-star">★</span> 3.8 / 573条</td>
+            <td>White/Clear</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">Red Light Anti-aging</span>
+                <span class="spec-chip">Blue Light Acne</span>
+                <span class="spec-chip">经典折叠设计</span>
+                <span class="spec-chip">皮肤科医生品牌</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-us">Dr Dennis Gross (US)</span></td>
+            <td>2021-01-19</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-n">5</span></td>
+            <td>
+              <div class="brand-cell">HIME SAMA</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">Miracle ACE RB-081 (8色)</div>
+              <span class="fda-badge">FSA/HSA</span>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0CZ8NZ97F" target="_blank">B0CZ8NZ97F</a></td>
+            <td class="price-cell">$365.04</td>
+            <td class="vol-cell">1,048</td>
+            <td class="rev-cell">$382,562</td>
+            <td><span class="rating-star">★</span> 4.5 / 369条</td>
+            <td>多色面板</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">8色LED</span>
+                <span class="spec-chip">820nm NIR</span>
+                <span class="spec-chip">630nm Red</span>
+                <span class="spec-chip">465nm Blue</span>
+                <span class="spec-chip">240颗灯珠</span>
+                <span class="spec-chip">30mW/cm²</span>
+                <span class="spec-chip">2000mAh 无线</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-cn">CL-Beauty (CN)</span></td>
+            <td>2024-04-03</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-n">6</span></td>
+            <td>
+              <div class="brand-cell">CurrentBody</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">Skin LED Therapy Mask Series 2</div>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0DHRW819R" target="_blank">B0DHRW819R</a></td>
+            <td class="price-cell">$469.99</td>
+            <td class="vol-cell">1,388</td>
+            <td class="rev-cell">$652,346</td>
+            <td><span class="rating-star">★</span> 4.2 / 453条</td>
+            <td>白/透明</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">236颗LED</span>
+                <span class="spec-chip">633nm Red</span>
+                <span class="spec-chip">830nm NIR</span>
+                <span class="spec-chip">1072nm Deep NIR</span>
+                <span class="spec-chip">液体硅胶柔性外壳</span>
+                <span class="spec-chip">NFC认证卡</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-gb">Beauty Tech (GB)</span></td>
+            <td>2024-09-23</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-n">7</span></td>
+            <td>
+              <div class="brand-cell">Ulike</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">ReGlow LED Therapy Mask</div>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0DT14FRPG" target="_blank">B0DT14FRPG</a></td>
+            <td class="price-cell">$399.00</td>
+            <td class="vol-cell">549</td>
+            <td class="rev-cell">$219,051</td>
+            <td><span class="rating-star">★</span> 4.3 / 382条</td>
+            <td>White</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">272颗灯珠</span>
+                <span class="spec-chip">4模式</span>
+                <span class="spec-chip">Red+Blue+Yellow+IR</span>
+                <span class="spec-chip">遥控器</span>
+                <span class="spec-chip">护眼设计</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-cn">Ulike Official (CN)</span></td>
+            <td>2025-03-11</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-n">8</span></td>
+            <td>
+              <div class="brand-cell">GYH</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">Cloud-SSS 8色 LED Mask</div>
+              <span class="fda-badge">FSA/HSA</span>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0CR17G9HZ" target="_blank">B0CR17G9HZ</a></td>
+            <td class="price-cell">$360.00</td>
+            <td class="vol-cell">488</td>
+            <td class="rev-cell">$175,680</td>
+            <td><span class="rating-star">★</span> 4.7 / 129条</td>
+            <td>多色面板</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">8色LED光谱</span>
+                <span class="spec-chip">NIR+Red+Blue+Green</span>
+                <span class="spec-chip">高剂量输出</span>
+                <span class="spec-chip">无线</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-cn">GYH Official (CN)</span></td>
+            <td>2024-01-04</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Hard Shell Chart -->
+    <div class="chart-grid">
+      <div class="chart-card">
+        <div class="chart-title">硬壳各品牌月销额对比</div>
+        <div class="chart-box" id="chart-hard-rev"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">硬壳产品价格 vs 月销量气泡图</div>
+        <div class="chart-box" id="chart-hard-scatter"></div>
+      </div>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <h4>🏆 硬壳市场洞察</h4>
+        <ul>
+          <li>Shark CryoGlow 是月销额最高产品（$119万/月），2025年2月才上架，成长极速</li>
+          <li>iRestore 月销额第二（$106万/月），以"360颗LED"卖点区隔市场</li>
+          <li>Therabody TheraFace 客单价最高（$649.99），通过"振动按摩+LED"组合差异化</li>
+          <li>Dr. Dennis Gross 是老牌皮肤科医生品牌，上架最早（2021年），评论数最多（573条），但评分最低（3.8★）</li>
+          <li>CurrentBody Series 2 采用"液体硅胶"柔性壳体，兼具硬壳LED强度和软壳贴合度，是高端软硬混合路线代表</li>
+        </ul>
+      </div>
+      <div class="insight-card">
+        <h4>📊 硬壳竞争格局</h4>
+        <ul>
+          <li>美国本土品牌占绝对主导（Shark/iRestore/Therabody/Dr.Dennis Gross），4个品牌合计月收>$3.5M</li>
+          <li>中国卖家（HIME SAMA/GYH/Ulike）以8色多波长 + FSA/HSA 认证切入高端，但销量远低于美国品牌</li>
+          <li>Ulike 借助IPL品牌知名度进入面罩市场，但月销量仅549件，尚处渗透阶段</li>
+          <li>竞争核心壁垒：美国品牌拥有临床研究数据、皮肤科医生背书、主流渠道曝光</li>
+          <li>价格在$349–$469区间竞争最激烈（Shark、iRestore、CurrentBody、HIME SAMA、Ulike均在此区间）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Soft Shell Section -->
+  <div class="section">
+    <div class="section-header">
+      <div class="badge badge-soft"></div>
+      <h2>软壳 Soft Shell LED Face Mask</h2>
+      <span class="tag tag-soft">硅胶 / 柔性结构 · 贴合面部 · 大众价格带</span>
+    </div>
+
+    <div class="compare-card soft-border" style="margin-bottom:20px;">
+      <div class="compare-card-title" style="color:var(--soft-color)">
+        🟢 软壳品类特征
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;font-size:13px;">
+        <div>
+          <div style="font-weight:700;margin-bottom:6px;color:var(--text-2)">产品结构</div>
+          <div style="color:var(--text-3);line-height:1.7">医用硅胶 / 软性弹性材料<br>可弯曲贴合面部轮廓<br>轻量化设计（可携带）<br>通常配头戴或绑带固定</div>
+        </div>
+        <div>
+          <div style="font-weight:700;margin-bottom:6px;color:var(--text-2)">核心优势</div>
+          <div style="color:var(--text-3);line-height:1.7">价格亲民（$50–$200主流）<br>穿戴舒适贴合度高<br>无线充电款式多<br>入门门槛低，复购率高</div>
+        </div>
+        <div>
+          <div style="font-weight:700;margin-bottom:6px;color:var(--text-2)">市场定位</div>
+          <div style="color:var(--text-3);line-height:1.7">价格带：$49–$200（大众）<br>$469（CurrentBody 高端）<br>主流颜色：黑色、蓝色、粉色<br>HK/中国卖家主导</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>排名</th>
+            <th>品牌 / 产品</th>
+            <th>ASIN</th>
+            <th>价格</th>
+            <th>月销量</th>
+            <th>月销额</th>
+            <th>评分 / 评论</th>
+            <th>颜色</th>
+            <th>主要规格参数</th>
+            <th>卖家来源</th>
+            <th>上架时间</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rank-badge rank-1">1</span></td>
+            <td>
+              <div class="brand-cell">INIA</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">Red Light Therapy Mask (4模式)</div>
+              <span class="hot-badge">HOT #1 销量</span>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0F18BBHCC" target="_blank">B0F18BBHCC</a></td>
+            <td class="price-cell">$89.99</td>
+            <td class="vol-cell">5,074</td>
+            <td class="rev-cell">$456,609</td>
+            <td><span class="rating-star">★</span> 4.5 / 960条</td>
+            <td>Black</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">硅胶材质</span>
+                <span class="spec-chip">220颗LED</span>
+                <span class="spec-chip">620/630nm Red</span>
+                <span class="spec-chip">850nm NIR</span>
+                <span class="spec-chip">460-470nm Blue</span>
+                <span class="spec-chip">4模式</span>
+                <span class="spec-chip">2600mAh</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-hk">INIA Official (HK)</span></td>
+            <td>2025-03-13</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-2">2</span></td>
+            <td>
+              <div class="brand-cell">AIUO</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">Red Light Therapy Mask (护眼款)</div>
+              <span class="new-badge">NEW 2026</span>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0GKGD7MGS" target="_blank">B0GKGD7MGS</a></td>
+            <td class="price-cell">$59.99</td>
+            <td class="vol-cell">2,483</td>
+            <td class="rev-cell">$148,955</td>
+            <td><span class="rating-star">★</span> 5.0 / 31条</td>
+            <td>Black</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">软硅胶</span>
+                <span class="spec-chip">红光+蓝光</span>
+                <span class="spec-chip">全遮光护眼垫</span>
+                <span class="spec-chip">人体工学贴合</span>
+                <span class="spec-chip">计时功能</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-us">Lihodnde Direct (US仓)</span></td>
+            <td>2026-02-04</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-3">3</span></td>
+            <td>
+              <div class="brand-cell">INIA</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">Glow 4D Wireless (Under-Eye Cooling)</div>
+              <span class="new-badge">NEW 2025</span>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0FNWRJQFX" target="_blank">B0FNWRJQFX</a></td>
+            <td class="price-cell">$199.99</td>
+            <td class="vol-cell">2,479</td>
+            <td class="rev-cell">$495,775</td>
+            <td><span class="rating-star">★</span> 4.7 / 234条</td>
+            <td>Blue</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">硅胶材质</span>
+                <span class="spec-chip">320颗LED</span>
+                <span class="spec-chip">双NIR</span>
+                <span class="spec-chip">4模式</span>
+                <span class="spec-chip">眼下制冷</span>
+                <span class="spec-chip">无线</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-hk">INIA Official (HK)</span></td>
+            <td>2025-09-08</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-n">4</span></td>
+            <td>
+              <div class="brand-cell">XSSNVV</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">4模式 272颗LED 面罩</div>
+              <span class="new-badge">NEW 2026</span>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0FY5DNY9D" target="_blank">B0FY5DNY9D</a></td>
+            <td class="price-cell">$89.99</td>
+            <td class="vol-cell">2,149</td>
+            <td class="rev-cell">$193,389</td>
+            <td><span class="rating-star">★</span> 4.5 / 135条</td>
+            <td>N/A</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">272颗LED</span>
+                <span class="spec-chip">620nm Red</span>
+                <span class="spec-chip">850nm NIR</span>
+                <span class="spec-chip">460nm Blue</span>
+                <span class="spec-chip">580nm Amber</span>
+                <span class="spec-chip">4模式</span>
+                <span class="spec-chip">计时10min</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-cn">SandarUS (CN)</span></td>
+            <td>2026-01-28</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-n">5</span></td>
+            <td>
+              <div class="brand-cell">INTEO</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">3模式 180颗LED 遥控款</div>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0CT5FK2YF" target="_blank">B0CT5FK2YF</a></td>
+            <td class="price-cell">$93.47</td>
+            <td class="vol-cell">1,777</td>
+            <td class="rev-cell">$166,096</td>
+            <td><span class="rating-star">★</span> 4.5 / 685条</td>
+            <td>Black Golden</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">180颗LED</span>
+                <span class="spec-chip">630nm Red</span>
+                <span class="spec-chip">830nm NIR</span>
+                <span class="spec-chip">460nm Blue</span>
+                <span class="spec-chip">590nm Yellow</span>
+                <span class="spec-chip">遥控器</span>
+                <span class="spec-chip">计时功能</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-us">Woot/US仓</span></td>
+            <td>2024-02-29</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-n">6</span></td>
+            <td>
+              <div class="brand-cell">NVBOTY</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">4模式 2000mAh 便携款</div>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0DGTFQNKJ" target="_blank">B0DGTFQNKJ</a></td>
+            <td class="price-cell">$93.49</td>
+            <td class="vol-cell">1,770</td>
+            <td class="rev-cell">$165,477</td>
+            <td><span class="rating-star">★</span> 4.6 / 679条</td>
+            <td>Black</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">4模式</span>
+                <span class="spec-chip">2000mAh</span>
+                <span class="spec-chip">Red+Blue+NIR</span>
+                <span class="spec-chip">便携可折叠</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-cn">CN卖家</span></td>
+            <td>2024-11-09</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-n">7</span></td>
+            <td>
+              <div class="brand-cell">gelpal</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">7色 LED 面罩（低价入门）</div>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0DT3C5ZFY" target="_blank">B0DT3C5ZFY</a></td>
+            <td class="price-cell">$49.99</td>
+            <td class="vol-cell">1,735</td>
+            <td class="rev-cell">$86,733</td>
+            <td><span class="rating-star">★</span> 4.2 / 206条</td>
+            <td>多色</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">7色LED</span>
+                <span class="spec-chip">低价入门款</span>
+                <span class="spec-chip">Red+Blue+多色</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-cn">CN卖家</span></td>
+            <td>2025-01-20</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-n">8</span></td>
+            <td>
+              <div class="brand-cell">INTEO</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">4模式 面部+颈部款</div>
+              <span class="new-badge">NEW 2025</span>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0FMXH8STX" target="_blank">B0FMXH8STX</a></td>
+            <td class="price-cell">$107.99</td>
+            <td class="vol-cell">1,419</td>
+            <td class="rev-cell">$153,238</td>
+            <td><span class="rating-star">★</span> 4.5 / 131条</td>
+            <td>Black</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">面部+颈部覆盖</span>
+                <span class="spec-chip">4模式</span>
+                <span class="spec-chip">无线</span>
+                <span class="spec-chip">遥控器</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-cn">CN卖家</span></td>
+            <td>2025-08-26</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-n">9</span></td>
+            <td>
+              <div class="brand-cell">INIA</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">Glow Wireless (磁吸电池)</div>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0DJVBKYBF" target="_blank">B0DJVBKYBF</a></td>
+            <td class="price-cell">$119.99</td>
+            <td class="vol-cell">1,403</td>
+            <td class="rev-cell">$168,346</td>
+            <td><span class="rating-star">★</span> 4.3 / 794条</td>
+            <td>Pink</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">硅胶材质</span>
+                <span class="spec-chip">磁吸无线电池</span>
+                <span class="spec-chip">可折叠</span>
+                <span class="spec-chip">NIR 850nm</span>
+                <span class="spec-chip">轻量化</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-hk">INIA Official (HK)</span></td>
+            <td>2024-11-20</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-n">10</span></td>
+            <td>
+              <div class="brand-cell">CurrentBody</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">Skin LED Mask Series 2（高端软壳）</div>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0DHRW819R" target="_blank">B0DHRW819R</a></td>
+            <td class="price-cell">$469.99</td>
+            <td class="vol-cell">1,388</td>
+            <td class="rev-cell">$652,346</td>
+            <td><span class="rating-star">★</span> 4.2 / 453条</td>
+            <td>White/透明</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">液体硅胶柔性</span>
+                <span class="spec-chip">236颗LED</span>
+                <span class="spec-chip">633nm Red</span>
+                <span class="spec-chip">830nm NIR</span>
+                <span class="spec-chip">1072nm Deep NIR</span>
+                <span class="spec-chip">NFC认证卡</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-gb">Beauty Tech (GB)</span></td>
+            <td>2024-09-23</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-n">11</span></td>
+            <td>
+              <div class="brand-cell">tinkoola</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">面部+颈部 USB-C 款</div>
+              <span class="new-badge">NEW 2026</span>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0FT83NHWW" target="_blank">B0FT83NHWW</a></td>
+            <td class="price-cell">$69.99</td>
+            <td class="vol-cell">1,175</td>
+            <td class="rev-cell">$82,238</td>
+            <td><span class="rating-star">★</span> 4.4 / 246条</td>
+            <td>N/A</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">面部+颈部</span>
+                <span class="spec-chip">USB-C充电</span>
+                <span class="spec-chip">LED多色</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-cn">CN卖家</span></td>
+            <td>2026-02-02</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-n">12</span></td>
+            <td>
+              <div class="brand-cell">wavytalk</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:2px;">Glow Time LED Face Mask</div>
+              <span class="new-badge">NEW 2025</span>
+            </td>
+            <td><a class="asin-link" href="https://www.amazon.com/dp/B0DZ6SLJQ3" target="_blank">B0DZ6SLJQ3</a></td>
+            <td class="price-cell">$109.99</td>
+            <td class="vol-cell">1,103</td>
+            <td class="rev-cell">$121,319</td>
+            <td><span class="rating-star">★</span> 4.2 / 79条</td>
+            <td>N/A</td>
+            <td>
+              <div class="spec-list">
+                <span class="spec-chip">Red Light</span>
+                <span class="spec-chip">LED面罩</span>
+                <span class="spec-chip">新品成长款</span>
+              </div>
+            </td>
+            <td><span class="origin-badge origin-cn">CN卖家</span></td>
+            <td>2025-08-17</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Soft Shell Charts -->
+    <div class="chart-grid">
+      <div class="chart-card">
+        <div class="chart-title">软壳品牌月销额对比</div>
+        <div class="chart-box" id="chart-soft-rev"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">软壳月销量 Top 12 排名</div>
+        <div class="chart-box" id="chart-soft-vol"></div>
+      </div>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <h4>🏆 软壳市场洞察</h4>
+        <ul>
+          <li>INIA（香港品牌）是软壳市场绝对霸主，4个SKU月销合计超10,000件，月收入约$130万</li>
+          <li>AIUO 是最大黑马——2026年2月才上架，月销量已达2,483件，5.0★满分评分，成长势头惊人</li>
+          <li>XSSNVV（2026年1月上架）月销量2,149件，新品即爆款，说明市场容量仍在快速扩大</li>
+          <li>$89.99–$109.99 是竞争最激烈的价格区间（INIA/XSSNVV/INTEO/NVBOTY/wavytalk均集中于此）</li>
+          <li>CurrentBody $469.99 是软壳产品中价格最高的，与硬壳高端品牌直接竞争</li>
+        </ul>
+      </div>
+      <div class="insight-card">
+        <h4>📊 软壳竞争格局</h4>
+        <ul>
+          <li>INIA（HK）+中国卖家占据80%+的软壳市场份额，价格战激烈</li>
+          <li>产品同质化严重：大多数产品采用红光(630nm)+近红外(850nm)+蓝光(460nm)三波长组合</li>
+          <li>差异化方向：灯珠数量（180→272→320颗）、护眼设计、无线/磁吸充电、覆盖颈部</li>
+          <li>RENPHO 4D ($179.99, vol:1061) 和 INIA Glow 4D ($199.99, vol:2479) 代表软壳向高端延伸趋势</li>
+          <li>新入局门槛低：多款2026年新品上架后迅速破千件/月（AIUO、XSSNVV、tinkoola）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Head-to-Head Comparison -->
+  <div class="section">
+    <div class="section-header">
+      <div class="badge badge-blue"></div>
+      <h2>硬壳 vs 软壳：核心维度对比</h2>
+      <span class="tag tag-blue">综合对比分析</span>
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-card hard-border">
+        <div class="compare-card-title" style="color:var(--hard-color)">
+          🔵 硬壳 Hard Shell
+        </div>
+        <div class="compare-row"><span class="label">在售产品数（Top 重点）</span><span class="value">7 款</span></div>
+        <div class="compare-row"><span class="label">合并月销额（Top 7）</span><span class="value" style="color:var(--hard-color)">$4,310,266</span></div>
+        <div class="compare-row"><span class="label">合并月销量（Top 7）</span><span class="value">11,454 件</span></div>
+        <div class="compare-row"><span class="label">客单价范围</span><span class="value">$349 – $649.99</span></div>
+        <div class="compare-row"><span class="label">平均客单价</span><span class="value">$432</span></div>
+        <div class="compare-row"><span class="label">最高月销量产品</span><span class="value">Shark CryoGlow 3,412件</span></div>
+        <div class="compare-row"><span class="label">平均评分</span><span class="value">4.3★</span></div>
+        <div class="compare-row"><span class="label">品牌主要来源</span><span class="value">美国（4/7）</span></div>
+        <div class="compare-row"><span class="label">主流材质</span><span class="value">ABS / PC / 硬性塑料</span></div>
+        <div class="compare-row"><span class="label">常见颜色</span><span class="value">White、Blue Frost</span></div>
+        <div class="compare-row"><span class="label">FSA/HSA 覆盖率</span><span class="value">高（大多支持）</span></div>
+      </div>
+      <div class="compare-card soft-border">
+        <div class="compare-card-title" style="color:var(--soft-color)">
+          🟢 软壳 Soft Shell
+        </div>
+        <div class="compare-row"><span class="label">在售产品数（Top 重点）</span><span class="value">12 款</span></div>
+        <div class="compare-row"><span class="label">合并月销额（Top 12）</span><span class="value" style="color:var(--soft-color)">$3,190,521</span></div>
+        <div class="compare-row"><span class="label">合并月销量（Top 12）</span><span class="value">24,933 件</span></div>
+        <div class="compare-row"><span class="label">客单价范围</span><span class="value">$49.99 – $469.99</span></div>
+        <div class="compare-row"><span class="label">主流价格带</span><span class="value">$60 – $130</span></div>
+        <div class="compare-row"><span class="label">最高月销量产品</span><span class="value">INIA B0F18 5,074件</span></div>
+        <div class="compare-row"><span class="label">平均评分</span><span class="value">4.4★</span></div>
+        <div class="compare-row"><span class="label">品牌主要来源</span><span class="value">HK/中国（10/12）</span></div>
+        <div class="compare-row"><span class="label">主流材质</span><span class="value">医用硅胶 / 弹性材料</span></div>
+        <div class="compare-row"><span class="label">常见颜色</span><span class="value">Black、Blue、Pink</span></div>
+        <div class="compare-row"><span class="label">FSA/HSA 覆盖率</span><span class="value">低（少数支持）</span></div>
+      </div>
+    </div>
+
+    <!-- Bar chart comparison -->
+    <div class="chart-grid">
+      <div class="chart-card">
+        <div class="chart-title">硬壳 vs 软壳：月销额总量对比（Top产品累计）</div>
+        <div class="chart-box" id="chart-compare-rev"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">硬壳 vs 软壳：月销量总量对比（Top产品累计）</div>
+        <div class="chart-box" id="chart-compare-vol"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Insights -->
+  <div class="section">
+    <div class="section-header">
+      <div class="badge badge-blue"></div>
+      <h2>市场总结与机会分析</h2>
+      <span class="tag tag-blue">策略洞察</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;">
+      <div class="insight-card">
+        <h4>📈 市场规模与格局</h4>
+        <ul>
+          <li>北美亚马逊 LED 光疗面罩是 <strong>快速增长的品类</strong>，Top 19 产品月销额合计超 $750 万</li>
+          <li>硬壳产品靠高客单价（均$432）驱动收入；软壳靠销量规模（2.2倍于硬壳）驱动收入</li>
+          <li>2025–2026年间出现大量新品爆款（Shark CryoGlow、AIUO、XSSNVV等）说明市场远未成熟</li>
+          <li>硬壳市场由美国品牌主导，壁垒来自临床认证、皮肤科背书、品牌信任</li>
+          <li>软壳市场是中国/HK卖家的主战场，竞争激烈但机会窗口持续开放</li>
+        </ul>
+      </div>
+      <div class="insight-card">
+        <h4>🎯 入局机会与注意点</h4>
+        <ul>
+          <li><strong>软壳入局建议</strong>：差异化做"护眼+面颈联动"或"4D高密度LED灯珠"，价格锚定$89–$129</li>
+          <li><strong>硬壳入局建议</strong>：必须有临床数据或FSA认证，否则难以与Shark/iRestore/Therabody竞争</li>
+          <li><strong>颜色机会</strong>：软壳市场黑色过于拥挤，蓝色/粉色尚有空间（参考INIA Glow蓝色款高销量）</li>
+          <li><strong>功能升级机会</strong>：Under-Eye Cooling（Shark独有）、双NIR组合（INIA Glow 4D）市场响应优秀</li>
+          <li><strong>风险提示</strong>：软壳新品同质化极快，爆款窗口期短，需配合强力流量和内容营销</li>
+        </ul>
+      </div>
+      <div class="insight-card">
+        <h4>🌈 外观颜色分布洞察</h4>
+        <ul>
+          <li><strong>硬壳主流色</strong>：白色（iRestore、Therabody、Ulike、CurrentBody）→ 干净专业感；Shark 用蓝色打差异化</li>
+          <li><strong>软壳主流色</strong>：黑色最多（INIA、AIUO、NVBOTY、INTEO）→ 科技感；蓝色次之</li>
+          <li>粉色是 INIA 专属色（Pink版 B0DJVBKYBF 月销1,403件），女性礼品市场有独特吸引力</li>
+          <li>多色LED面板（8色：HIME SAMA/GYH）外观为透明/彩色发光，走"专业仪器"视觉路线</li>
+          <li>市面上几乎没有以浅色/奶白色为主打的软壳款，是潜在差异化机会</li>
+        </ul>
+      </div>
+      <div class="insight-card">
+        <h4>⚡ 新品趋势（2025–2026）</h4>
+        <ul>
+          <li>Under-Eye 制冷组合（Shark CryoGlow 开创）成为硬壳差异化新战场</li>
+          <li>软壳向"面颈联合"延伸（INTEO、tinkoola、INIA新款均覆盖颈部）</li>
+          <li>无线/磁吸充电成为软壳新品标配，有线款逐步被淘汰</li>
+          <li>双NIR（850nm+1072nm）是高端软壳的技术升级方向（CurrentBody已采用1072nm）</li>
+          <li>4D/多维灯珠布局（RENPHO 4D、INIA Glow 4D）成为溢价卖点，$150–$200区间成长</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div style="max-width:1400px;margin:0 auto;padding:0 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+    <div>数据来源：Sorftime MCP 亚马逊数据服务 · Amazon US · 采集时间：2026-04-14 · 工具：claude-sonnet-4-6</div>
+    <div>产品销售数据为 Sorftime 估算值，仅供参考 · 价格以 Sorftime 抓取时实时价格为准</div>
+  </div>
+</footer>
+
+<script>
+// Chart 1: Revenue Top 12 (Mixed)
+(function(){
+  const chart = echarts.init(document.getElementById('chart-revenue'));
+  const data = [
+    { name: 'Shark CryoGlow', value: 1190788, type: 'hard' },
+    { name: 'iRestore', value: 1058946, type: 'hard' },
+    { name: 'CurrentBody S2', value: 652346, type: 'soft' },
+    { name: 'TheraFace', value: 720839, type: 'hard' },
+    { name: 'Dr Dennis Gross', value: 567840, type: 'hard' },
+    { name: 'INIA Glow 4D', value: 495775, type: 'soft' },
+    { name: 'INIA B0F18', value: 456609, type: 'soft' },
+    { name: 'HIME SAMA', value: 382562, type: 'hard' },
+    { name: 'INIA Wireless', value: 168346, type: 'soft' },
+    { name: 'INTEO B0CT5', value: 166096, type: 'soft' },
+    { name: 'NVBOTY', value: 165477, type: 'soft' },
+    { name: 'XSSNVV', value: 193389, type: 'soft' },
+  ].sort((a,b) => b.value - a.value);
+
+  chart.setOption({
+    tooltip: { trigger: 'axis', formatter: p => `${p[0].name}<br/>月销额: $${(p[0].value/1000).toFixed(0)}K` },
+    grid: { left: 120, right: 20, top: 10, bottom: 40 },
+    xAxis: { type: 'value', axisLabel: { formatter: v => `$${(v/1000).toFixed(0)}K`, fontSize: 10 } },
+    yAxis: { type: 'category', data: data.map(d => d.name).reverse(), axisLabel: { fontSize: 10 } },
+    series: [{
+      type: 'bar', data: data.map(d => ({
+        value: d.value,
+        itemStyle: { color: d.type === 'hard' ? '#7C3AED' : '#059669' }
+      })).reverse(),
+      barMaxWidth: 20,
+      label: { show: true, position: 'right', formatter: p => `$${(p.value/1000).toFixed(0)}K`, fontSize: 10 }
+    }]
+  });
+})();
+
+// Chart 2: Volume Top 15
+(function(){
+  const chart = echarts.init(document.getElementById('chart-volume'));
+  const data = [
+    { name: 'INIA B0F18', value: 5074, type: 'soft' },
+    { name: 'Shark CryoGlow', value: 3412, type: 'hard' },
+    { name: 'iRestore', value: 2654, type: 'hard' },
+    { name: 'AIUO', value: 2483, type: 'soft' },
+    { name: 'INIA Glow 4D', value: 2479, type: 'soft' },
+    { name: 'XSSNVV', value: 2149, type: 'soft' },
+    { name: 'INTEO B0CT5', value: 1777, type: 'soft' },
+    { name: 'NVBOTY', value: 1770, type: 'soft' },
+    { name: 'gelpal', value: 1735, type: 'soft' },
+    { name: 'CurrentBody S2', value: 1388, type: 'soft' },
+    { name: 'INIA Wireless', value: 1403, type: 'soft' },
+    { name: 'Dr Dennis Gross', value: 1248, type: 'hard' },
+    { name: 'TheraFace', value: 1109, type: 'hard' },
+    { name: 'HIME SAMA', value: 1048, type: 'hard' },
+    { name: 'tinkoola', value: 1175, type: 'soft' },
+  ].sort((a,b) => b.value - a.value);
+
+  chart.setOption({
+    tooltip: { trigger: 'axis', formatter: p => `${p[0].name}<br/>月销量: ${p[0].value}件` },
+    grid: { left: 120, right: 20, top: 10, bottom: 40 },
+    xAxis: { type: 'value', axisLabel: { fontSize: 10 } },
+    yAxis: { type: 'category', data: data.map(d => d.name).reverse(), axisLabel: { fontSize: 10 } },
+    series: [{
+      type: 'bar', data: data.map(d => ({
+        value: d.value,
+        itemStyle: { color: d.type === 'hard' ? '#7C3AED' : '#059669' }
+      })).reverse(),
+      barMaxWidth: 18,
+      label: { show: true, position: 'right', formatter: p => `${p.value}`, fontSize: 10 }
+    }]
+  });
+})();
+
+// Chart 3: Price Distribution Scatter
+(function(){
+  const chart = echarts.init(document.getElementById('chart-price-scatter'));
+  const hardData = [
+    [349, 3412, 'Shark CryoGlow'],
+    [399, 2654, 'iRestore'],
+    [649.99, 1109, 'TheraFace'],
+    [455, 1248, 'Dr Dennis Gross'],
+    [365.04, 1048, 'HIME SAMA'],
+    [399, 549, 'Ulike'],
+    [360, 488, 'GYH'],
+  ];
+  const softData = [
+    [89.99, 5074, 'INIA B0F18'],
+    [59.99, 2483, 'AIUO'],
+    [199.99, 2479, 'INIA Glow 4D'],
+    [89.99, 2149, 'XSSNVV'],
+    [93.47, 1777, 'INTEO'],
+    [93.49, 1770, 'NVBOTY'],
+    [49.99, 1735, 'gelpal'],
+    [107.99, 1419, 'INTEO Face&Neck'],
+    [119.99, 1403, 'INIA Wireless'],
+    [469.99, 1388, 'CurrentBody S2'],
+    [69.99, 1175, 'tinkoola'],
+    [109.99, 1103, 'wavytalk'],
+  ];
+  chart.setOption({
+    tooltip: {
+      trigger: 'item',
+      formatter: p => `${p.data[2]}<br/>价格: $${p.data[0]}<br/>月销量: ${p.data[1]}件`
+    },
+    legend: { data: ['硬壳', '软壳'], bottom: 0, textStyle: { fontSize: 11 } },
+    grid: { left: 50, right: 20, top: 10, bottom: 40 },
+    xAxis: { name: '价格($)', nameTextStyle: { fontSize: 10 }, axisLabel: { fontSize: 10 } },
+    yAxis: { name: '月销量(件)', nameTextStyle: { fontSize: 10 }, axisLabel: { fontSize: 10 } },
+    series: [
+      {
+        name: '硬壳', type: 'scatter', data: hardData,
+        symbolSize: p => Math.max(10, Math.sqrt(p[1]) * 1.2),
+        itemStyle: { color: '#7C3AED', opacity: 0.8 },
+        label: { show: false }
+      },
+      {
+        name: '软壳', type: 'scatter', data: softData,
+        symbolSize: p => Math.max(10, Math.sqrt(p[1]) * 1.2),
+        itemStyle: { color: '#059669', opacity: 0.8 },
+        label: { show: false }
+      }
+    ]
+  });
+})();
+
+// Chart 4: Origin Pie Charts
+(function(){
+  const chart = echarts.init(document.getElementById('chart-origin'));
+  chart.setOption({
+    tooltip: { trigger: 'item', formatter: '{b}: {c}款 ({d}%)' },
+    legend: { bottom: 0, textStyle: { fontSize: 10 } },
+    series: [
+      {
+        name: '硬壳来源', type: 'pie', radius: ['20%', '45%'], center: ['25%', '45%'],
+        label: { fontSize: 10, formatter: '{b}\n{d}%' },
+        data: [
+          { name: '美国品牌', value: 4, itemStyle: { color: '#1A56DB' } },
+          { name: '中国卖家', value: 2, itemStyle: { color: '#F97316' } },
+          { name: '英国品牌', value: 1, itemStyle: { color: '#7C3AED' } },
+        ],
+        title: { text: '硬壳来源', left: '25%', top: '80%', textAlign: 'center', textStyle: { fontSize: 11 } }
+      },
+      {
+        name: '软壳来源', type: 'pie', radius: ['20%', '45%'], center: ['75%', '45%'],
+        label: { fontSize: 10, formatter: '{b}\n{d}%' },
+        data: [
+          { name: '香港品牌(INIA)', value: 3, itemStyle: { color: '#059669' } },
+          { name: '中国卖家', value: 7, itemStyle: { color: '#F97316' } },
+          { name: '英国(CurrentBody)', value: 1, itemStyle: { color: '#7C3AED' } },
+          { name: '美国仓', value: 1, itemStyle: { color: '#1A56DB' } },
+        ],
+        title: { text: '软壳来源', left: '75%', top: '80%', textAlign: 'center', textStyle: { fontSize: 11 } }
+      }
+    ]
+  });
+})();
+
+// Chart 5: Hard Shell Revenue Bar
+(function(){
+  const chart = echarts.init(document.getElementById('chart-hard-rev'));
+  const brands = ['Shark', 'iRestore', 'TheraFace', 'Dr Dennis\nGross', 'HIME SAMA', 'CurrentBody', 'Ulike', 'GYH'];
+  const revs = [1190788, 1058946, 720839, 567840, 382562, 652346, 219051, 175680];
+  chart.setOption({
+    tooltip: { trigger: 'axis', formatter: p => `${p[0].name}<br/>月销额: $${(p[0].value/1000).toFixed(0)}K` },
+    grid: { left: 20, right: 20, top: 10, bottom: 50 },
+    xAxis: { type: 'category', data: brands, axisLabel: { fontSize: 10, interval: 0 } },
+    yAxis: { type: 'value', axisLabel: { formatter: v => `$${(v/1000).toFixed(0)}K`, fontSize: 10 } },
+    series: [{
+      type: 'bar', data: revs,
+      itemStyle: { color: new echarts.graphic.LinearGradient(0,0,0,1, [{offset:0,color:'#7C3AED'},{offset:1,color:'#A78BFA'}]) },
+      barMaxWidth: 40,
+      label: { show: true, position: 'top', formatter: p => `$${(p.value/1000).toFixed(0)}K`, fontSize: 9 }
+    }]
+  });
+})();
+
+// Chart 6: Hard Shell Scatter (Price vs Volume)
+(function(){
+  const chart = echarts.init(document.getElementById('chart-hard-scatter'));
+  const data = [
+    { name: 'Shark CryoGlow', price: 349, vol: 3412, rev: 1190788 },
+    { name: 'iRestore', price: 399, vol: 2654, rev: 1058946 },
+    { name: 'Dr Dennis Gross', price: 455, vol: 1248, rev: 567840 },
+    { name: 'CurrentBody S2', price: 469.99, vol: 1388, rev: 652346 },
+    { name: 'HIME SAMA', price: 365, vol: 1048, rev: 382562 },
+    { name: 'TheraFace', price: 649.99, vol: 1109, rev: 720839 },
+    { name: 'Ulike', price: 399, vol: 549, rev: 219051 },
+    { name: 'GYH', price: 360, vol: 488, rev: 175680 },
+  ];
+  chart.setOption({
+    tooltip: {
+      trigger: 'item',
+      formatter: p => `<b>${p.data.name}</b><br/>价格: $${p.data.value[0]}<br/>月销量: ${p.data.value[1]}件<br/>月销额: $${(p.data.value[2]/1000).toFixed(0)}K`
+    },
+    grid: { left: 60, right: 20, top: 10, bottom: 40 },
+    xAxis: { name: '价格($)', min: 320, nameTextStyle: { fontSize: 10 }, axisLabel: { fontSize: 10 } },
+    yAxis: { name: '月销量(件)', nameTextStyle: { fontSize: 10 }, axisLabel: { fontSize: 10 } },
+    series: [{
+      type: 'scatter',
+      data: data.map(d => ({ name: d.name, value: [d.price, d.vol, d.rev] })),
+      symbolSize: d => Math.max(14, Math.sqrt(d[2]) * 0.55),
+      itemStyle: { color: '#7C3AED', opacity: 0.85 },
+      label: { show: true, formatter: p => p.data.name.split(' ')[0], fontSize: 9, position: 'top' }
+    }]
+  });
+})();
+
+// Chart 7: Soft Shell Revenue
+(function(){
+  const chart = echarts.init(document.getElementById('chart-soft-rev'));
+  const softData = [
+    ['INIA B0F18', 456609],
+    ['INIA Glow 4D', 495775],
+    ['CurrentBody', 652346],
+    ['XSSNVV', 193389],
+    ['INTEO', 166096],
+    ['NVBOTY', 165477],
+    ['INIA Wireless', 168346],
+    ['gelpal', 86733],
+    ['INTEO F&N', 153238],
+    ['tinkoola', 82238],
+    ['wavytalk', 121319],
+    ['AIUO', 148955],
+  ].sort((a,b) => b[1]-a[1]);
+  chart.setOption({
+    tooltip: { trigger: 'axis', formatter: p => `${p[0].name}<br/>月销额: $${(p[0].value/1000).toFixed(0)}K` },
+    grid: { left: 100, right: 20, top: 10, bottom: 40 },
+    xAxis: { type: 'value', axisLabel: { formatter: v => `$${(v/1000).toFixed(0)}K`, fontSize: 10 } },
+    yAxis: { type: 'category', data: softData.map(d => d[0]).reverse(), axisLabel: { fontSize: 10 } },
+    series: [{
+      type: 'bar', data: softData.map(d => d[1]).reverse(),
+      itemStyle: { color: new echarts.graphic.LinearGradient(1,0,0,0, [{offset:0,color:'#059669'},{offset:1,color:'#34D399'}]) },
+      barMaxWidth: 18,
+      label: { show: true, position: 'right', formatter: p => `$${(p.value/1000).toFixed(0)}K`, fontSize: 10 }
+    }]
+  });
+})();
+
+// Chart 8: Soft Shell Volume
+(function(){
+  const chart = echarts.init(document.getElementById('chart-soft-vol'));
+  const softData = [
+    ['INIA B0F18', 5074],
+    ['AIUO', 2483],
+    ['INIA Glow 4D', 2479],
+    ['XSSNVV', 2149],
+    ['INTEO', 1777],
+    ['NVBOTY', 1770],
+    ['gelpal', 1735],
+    ['INTEO F&N', 1419],
+    ['INIA Wireless', 1403],
+    ['CurrentBody', 1388],
+    ['tinkoola', 1175],
+    ['wavytalk', 1103],
+  ].sort((a,b) => b[1]-a[1]);
+  chart.setOption({
+    tooltip: { trigger: 'axis', formatter: p => `${p[0].name}<br/>月销量: ${p[0].value}件` },
+    grid: { left: 100, right: 20, top: 10, bottom: 40 },
+    xAxis: { type: 'value', axisLabel: { fontSize: 10 } },
+    yAxis: { type: 'category', data: softData.map(d => d[0]).reverse(), axisLabel: { fontSize: 10 } },
+    series: [{
+      type: 'bar', data: softData.map(d => d[1]).reverse(),
+      itemStyle: { color: new echarts.graphic.LinearGradient(1,0,0,0, [{offset:0,color:'#059669'},{offset:1,color:'#6EE7B7'}]) },
+      barMaxWidth: 18,
+      label: { show: true, position: 'right', formatter: p => p.value, fontSize: 10 }
+    }]
+  });
+})();
+
+// Chart 9: Comparison Revenue
+(function(){
+  const chart = echarts.init(document.getElementById('chart-compare-rev'));
+  chart.setOption({
+    tooltip: { trigger: 'axis' },
+    grid: { left: 60, right: 20, top: 20, bottom: 40 },
+    xAxis: { type: 'category', data: ['硬壳 Top7', '软壳 Top12'] },
+    yAxis: { type: 'value', axisLabel: { formatter: v => `$${(v/1000000).toFixed(1)}M`, fontSize: 10 } },
+    series: [{
+      type: 'bar',
+      data: [
+        { value: 4315266, itemStyle: { color: '#7C3AED' } },
+        { value: 3190521, itemStyle: { color: '#059669' } }
+      ],
+      barMaxWidth: 80,
+      label: { show: true, position: 'top', formatter: p => `$${(p.value/1000000).toFixed(2)}M`, fontSize: 12, fontWeight: 'bold' }
+    }]
+  });
+})();
+
+// Chart 10: Comparison Volume
+(function(){
+  const chart = echarts.init(document.getElementById('chart-compare-vol'));
+  chart.setOption({
+    tooltip: { trigger: 'axis' },
+    grid: { left: 60, right: 20, top: 20, bottom: 40 },
+    xAxis: { type: 'category', data: ['硬壳 Top7', '软壳 Top12'] },
+    yAxis: { type: 'value', axisLabel: { formatter: v => `${v}件`, fontSize: 10 } },
+    series: [{
+      type: 'bar',
+      data: [
+        { value: 11454, itemStyle: { color: '#7C3AED' } },
+        { value: 24933, itemStyle: { color: '#059669' } }
+      ],
+      barMaxWidth: 80,
+      label: { show: true, position: 'top', formatter: p => `${p.value.toLocaleString()}件`, fontSize: 12, fontWeight: 'bold' }
+    }]
+  });
+})();
+
+window.addEventListener('resize', () => {
+  ['chart-revenue','chart-volume','chart-price-scatter','chart-origin',
+   'chart-hard-rev','chart-hard-scatter','chart-soft-rev','chart-soft-vol',
+   'chart-compare-rev','chart-compare-vol'].forEach(id => {
+    echarts.getInstanceByDom(document.getElementById(id))?.resize();
+  });
+});
+</script>
+</body>
+</html>

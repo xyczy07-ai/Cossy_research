@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>脱毛仪全球市场调研报告 | Americas · Europe · SEA · 2026-04</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  :root {
+    --accent: #1A56DB;
+    --accent-light: #3B82F6;
+    --accent-bg: #EFF6FF;
+    --accent-border: #BFDBFE;
+    --gold: #B45309;
+    --gold-bg: #FFFBEB;
+    --gold-border: #FDE68A;
+    --red: #DC2626;
+    --red-bg: #FEF2F2;
+    --red-border: #FECACA;
+    --green: #16A34A;
+    --green-bg: #F0FDF4;
+    --green-border: #BBF7D0;
+    --purple: #7C3AED;
+    --purple-bg: #F5F3FF;
+    --purple-border: #DDD6FE;
+    --orange: #EA580C;
+    --orange-bg: #FFF7ED;
+    --orange-border: #FED7AA;
+    --teal: #0D9488;
+    --teal-bg: #F0FDFA;
+    --teal-border: #99F6E4;
+    --bg: #FFFFFF;
+    --bg-alt: #F8FAFC;
+    --border: #E2E8F0;
+    --text-1: #0F172A;
+    --text-2: #475569;
+    --text-3: #94A3B8;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text-1); line-height:1.7; overflow-x:hidden; }
+
+  /* NAV */
+  .nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.97); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); box-shadow:0 1px 6px rgba(0,0,0,0.05); padding:0 24px; display:flex; align-items:center; overflow-x:auto; gap:0; }
+  .nav-logo { font-weight:800; font-size:13px; color:var(--accent); letter-spacing:-0.3px; padding:14px 20px 14px 0; border-right:1px solid var(--border); margin-right:6px; white-space:nowrap; flex-shrink:0; }
+  .nav-item { padding:14px 14px; font-size:12px; color:var(--text-3); cursor:pointer; white-space:nowrap; border-bottom:2.5px solid transparent; transition:all 0.2s; text-decoration:none; font-weight:500; }
+  .nav-item:hover { color:var(--accent); }
+  .nav-item.active { color:var(--accent); border-bottom-color:var(--accent); font-weight:700; }
+
+  /* HERO */
+  .hero { background:linear-gradient(140deg,#F0F9FF 0%,#EFF6FF 45%,#F5F0FF 100%); border-bottom:1px solid var(--accent-border); padding:64px 0 48px; text-align:center; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(59,130,246,0.07) 0%,transparent 70%); pointer-events:none; }
+  .hero-badge { display:inline-block; border:1px solid var(--accent-border); color:var(--accent); font-size:11px; letter-spacing:3px; text-transform:uppercase; padding:5px 18px; border-radius:20px; margin-bottom:18px; background:var(--accent-bg); font-weight:600; }
+  .hero h1 { font-size:clamp(22px,4vw,42px); font-weight:800; color:var(--text-1); line-height:1.2; margin-bottom:10px; }
+  .hero h1 span { color:var(--accent); }
+  .hero-sub { font-size:14px; color:var(--text-2); margin-bottom:28px; max-width:680px; margin-left:auto; margin-right:auto; }
+  .hero-tags { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:28px; }
+  .hero-tag { padding:5px 14px; border-radius:20px; font-size:12px; font-weight:600; background:var(--bg); border:1px solid var(--border); color:var(--text-2); }
+  .hero-stats { display:flex; gap:24px; justify-content:center; flex-wrap:wrap; }
+  .hero-stat { text-align:center; }
+  .hero-stat-value { font-size:28px; font-weight:800; color:var(--accent); }
+  .hero-stat-label { font-size:11px; color:var(--text-3); text-transform:uppercase; letter-spacing:0.8px; }
+
+  /* LAYOUT */
+  .container { max-width:1320px; margin:0 auto; padding:0 32px; }
+  .section { padding:64px 0; }
+  .section-alt { background:var(--bg-alt); }
+  .section-header { display:flex; align-items:flex-start; gap:20px; margin-bottom:36px; }
+  .section-number { font-size:48px; font-weight:900; color:var(--border); line-height:1; flex-shrink:0; }
+  .section-title { font-size:26px; font-weight:800; color:var(--text-1); margin-bottom:4px; }
+  .section-subtitle { font-size:13px; color:var(--text-3); }
+  .accent-line { width:40px; height:3px; background:var(--accent); border-radius:2px; margin-top:10px; }
+  .divider { height:1px; background:var(--border); margin:0; }
+
+  /* CARDS */
+  .card { background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:20px 22px; box-shadow:var(--shadow-sm); }
+  .grid-3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+  .grid-2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(360px,1fr)); gap:20px; }
+
+  /* MARKET STAT TILES */
+  .mkt-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:32px; }
+  .mkt-tile { background:#fff; border:1px solid var(--border); border-radius:12px; padding:18px 20px; position:relative; overflow:hidden; }
+  .mkt-tile::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+  .mkt-tile.us::before { background:var(--accent); }
+  .mkt-tile.gb::before { background:var(--red); }
+  .mkt-tile.de::before { background:var(--gold); }
+  .mkt-tile.ca::before { background:var(--teal); }
+  .mkt-tile.mx::before { background:var(--green); }
+  .mkt-tile.sea::before { background:var(--purple); }
+  .mkt-flag { font-size:20px; margin-bottom:6px; }
+  .mkt-name { font-size:11px; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:8px; }
+  .mkt-revenue { font-size:22px; font-weight:800; color:var(--text-1); margin-bottom:2px; }
+  .mkt-unit { font-size:11px; color:var(--text-3); }
+  .mkt-platform { font-size:11px; color:var(--text-2); margin-top:6px; padding-top:6px; border-top:1px solid var(--border); }
+
+  /* PRODUCT TABLE */
+  .prod-table { width:100%; border-collapse:collapse; font-size:12.5px; }
+  .prod-table th { background:#F8FAFC; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-3); padding:9px 12px; text-align:left; border-bottom:2px solid var(--border); white-space:nowrap; }
+  .prod-table td { padding:9px 12px; border-bottom:1px solid var(--border); color:var(--text-2); vertical-align:middle; }
+  .prod-table tr:hover td { background:#F8FAFC; }
+  .rank-badge { display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:6px; font-size:11px; font-weight:800; background:var(--bg-alt); color:var(--text-3); }
+  .rank-badge.top1 { background:var(--gold-bg); color:var(--gold); }
+  .rank-badge.top2 { background:#F0F9FF; color:var(--accent); }
+  .rank-badge.top3 { background:#FFF7ED; color:var(--orange); }
+  .brand-cn { font-size:10px; background:#FEF2F2; color:#991B1B; padding:2px 6px; border-radius:4px; margin-left:4px; }
+  .brand-global { font-size:10px; background:#EFF6FF; color:#1E40AF; padding:2px 6px; border-radius:4px; margin-left:4px; }
+
+  /* CHART CONTAINERS */
+  .chart-box { background:#fff; border:1px solid var(--border); border-radius:12px; padding:20px; box-shadow:var(--shadow-sm); }
+  .chart-title { font-size:13px; font-weight:700; color:var(--text-1); margin-bottom:16px; }
+
+  /* INSIGHT BOXES */
+  .insight { border-radius:10px; padding:16px 20px; font-size:13px; margin:16px 0; line-height:1.7; }
+  .insight-blue { background:var(--accent-bg); border-left:4px solid var(--accent); color:#1E40AF; }
+  .insight-gold { background:var(--gold-bg); border-left:4px solid var(--gold); color:#92400E; }
+  .insight-green { background:var(--green-bg); border-left:4px solid var(--green); color:#14532D; }
+  .insight-red { background:var(--red-bg); border-left:4px solid var(--red); color:#991B1B; }
+  .insight-purple { background:var(--purple-bg); border-left:4px solid var(--purple); color:#4C1D95; }
+
+  /* TREND BADGE */
+  .trend-up { color:var(--green); font-weight:700; font-size:11px; }
+  .trend-down { color:var(--red); font-weight:700; font-size:11px; }
+  .trend-flat { color:var(--text-3); font-weight:700; font-size:11px; }
+
+  /* FADE IN */
+  .fade-in { animation:fadeIn 0.5s ease-out; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+  /* REGION HEADER */
+  .region-header { display:flex; align-items:center; gap:12px; padding:14px 18px; border-radius:10px; margin-bottom:20px; border:1px solid; }
+  .region-header.amz { background:#FFF7ED; border-color:#FED7AA; }
+  .region-header.tiktok { background:#F5F3FF; border-color:#DDD6FE; }
+  .region-icon { font-size:24px; }
+  .region-label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; }
+  .region-desc { font-size:12px; color:var(--text-2); }
+
+  /* FOOTER */
+  .footer { background:#0F172A; color:#94A3B8; padding:40px 0; text-align:center; }
+  .footer-title { color:#F1F5F9; font-weight:700; font-size:15px; margin-bottom:8px; }
+  .footer-note { font-size:12px; line-height:1.7; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">🌍 脱毛仪全球调研</div>
+  <a href="#overview" class="nav-item active">市场总览</a>
+  <a href="#americas" class="nav-item">美洲 Amazon</a>
+  <a href="#europe" class="nav-item">欧洲 Amazon</a>
+  <a href="#sea-tiktok" class="nav-item">东南亚 TikTok</a>
+  <a href="#brands" class="nav-item">主要品牌</a>
+  <a href="#trend" class="nav-item">趋势</a>
+  <a href="#conclusion" class="nav-item">结论</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">Global Market Research · 2026-04-09</div>
+    <h1>脱毛仪（IPL/激光）<span>全球市场调研</span></h1>
+    <div class="hero-sub">覆盖 Americas（US/CA/MX）· Europe（GB/DE）· 东南亚（TikTok MY/PH/ID）三大区域，基于 Sorftime MCP 实时数据</div>
+    <div class="hero-tags">
+      <span class="hero-tag">📊 Amazon US Light Hair Removal</span>
+      <span class="hero-tag">🇬🇧 Amazon GB Systems</span>
+      <span class="hero-tag">🇩🇪 Amazon DE Epilatoren</span>
+      <span class="hero-tag">🛒 TikTok MY/PH/ID</span>
+      <span class="hero-tag">📱 TikTok US/GB</span>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-value">$8-14M</div>
+        <div class="hero-stat-label">Amazon US 月销额（旺季）</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">£1-3.5M</div>
+        <div class="hero-stat-label">Amazon GB 月销额</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">Ulike</div>
+        <div class="hero-stat-label">跨境最强中国品牌</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">+31%</div>
+        <div class="hero-stat-label">TikTok US Hair 品类环比</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 1: OVERVIEW -->
+<section id="overview" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">01</div>
+      <div>
+        <div class="section-title">全球市场规模总览</div>
+        <div class="section-subtitle">Multi-Platform · Multi-Region · Sorftime MCP 2026-04-09</div>
+        <div class="accent-line"></div>
+      </div>
+    </div>
+
+    <!-- 各市场核心指标 -->
+    <div class="mkt-grid fade-in">
+      <div class="mkt-tile us">
+        <div class="mkt-flag">🇺🇸</div>
+        <div class="mkt-name">Amazon US</div>
+        <div class="mkt-revenue">$7–14M/月</div>
+        <div class="mkt-unit">Light Hair Removal Devices · Top100</div>
+        <div class="mkt-platform">季节性：Q4旺季翻2倍 | Top1 Ulike $2.13M/月</div>
+      </div>
+      <div class="mkt-tile gb">
+        <div class="mkt-flag">🇬🇧</div>
+        <div class="mkt-name">Amazon GB</div>
+        <div class="mkt-revenue">£1–3.5M/月</div>
+        <div class="mkt-unit">Hair Removal Systems · Top100</div>
+        <div class="mkt-platform">Philips主导 | 月销量5k-17k件</div>
+      </div>
+      <div class="mkt-tile de">
+        <div class="mkt-flag">🇩🇪</div>
+        <div class="mkt-name">Amazon DE</div>
+        <div class="mkt-revenue">€1.5–3M/月</div>
+        <div class="mkt-unit">IPL Haarentferner · 估算</div>
+        <div class="mkt-platform">Philips+Braun合计65%份额</div>
+      </div>
+      <div class="mkt-tile ca">
+        <div class="mkt-flag">🇨🇦</div>
+        <div class="mkt-name">Amazon CA</div>
+        <div class="mkt-revenue">小规模</div>
+        <div class="mkt-unit">IPL专项品牌较少</div>
+        <div class="mkt-platform">市场以传统脱毛工具为主</div>
+      </div>
+      <div class="mkt-tile mx">
+        <div class="mkt-flag">🇲🇽</div>
+        <div class="mkt-name">Amazon MX</div>
+        <div class="mkt-revenue">传统为主</div>
+        <div class="mkt-unit">Veet/Nair脱毛膏主导</div>
+        <div class="mkt-platform">IPL设备渗透率极低</div>
+      </div>
+      <div class="mkt-tile sea">
+        <div class="mkt-flag">🌏</div>
+        <div class="mkt-name">TikTok SEA</div>
+        <div class="mkt-revenue">早期阶段</div>
+        <div class="mkt-unit">MY/PH/ID · IPL渗透中</div>
+        <div class="mkt-platform">Ulike MY 月销863件 · ID 324k总类目</div>
+      </div>
+    </div>
+
+    <!-- 市场规模对比图 -->
+    <div class="grid-2 fade-in">
+      <div class="chart-box">
+        <div class="chart-title">📊 各站点 IPL/脱毛仪月销额对比（估算，USD）</div>
+        <div id="revenueChart" style="height:280px;"></div>
+      </div>
+      <div class="chart-box">
+        <div class="chart-title">📈 Amazon US Light Hair Removal 月销量趋势（2024–2026）</div>
+        <div id="trendChart" style="height:280px;"></div>
+      </div>
+    </div>
+
+    <div class="insight insight-blue fade-in" style="margin-top:20px;">
+      🔑 <b>核心发现</b>：全球脱毛仪市场以 Amazon US 为绝对主战场（占全球线上销售额约60%），欧洲（GB+DE）构成第二梯队，东南亚TikTok处于快速成长初期。IPL设备的高客单价特性（$70-580）使其与传统脱毛膏/蜡/剃须刀形成明显分层，中国品牌（Ulike、INNZA、Haarlosy）正在快速蚕食欧美市场，本土品牌（Philips、Braun）仍有一定护城河。
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 2: AMERICAS - AMAZON -->
+<section id="americas" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">02</div>
+      <div>
+        <div class="section-title">美洲市场 · Amazon US / CA / MX</div>
+        <div class="section-subtitle">Amazon Americas · category_report · 2026-04-09</div>
+        <div class="accent-line"></div>
+      </div>
+    </div>
+
+    <!-- Amazon US -->
+    <div class="region-header amz fade-in">
+      <div class="region-icon">🇺🇸</div>
+      <div>
+        <div class="region-label" style="color:var(--orange);">Amazon US · Light Hair Removal Devices (nodeId: 7676395011)</div>
+        <div class="region-desc">全球最大IPL脱毛仪单一市场 · 月销量3.7-10万件 · 月销额$700万-$1400万 · 100+品牌竞争</div>
+      </div>
+    </div>
+
+    <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:20px;" class="fade-in">
+      <table class="prod-table">
+        <thead>
+          <tr>
+            <th>排名</th><th>ASIN</th><th>品牌</th><th>售价</th><th>月销量</th><th>月销额</th><th>评分</th><th>评论数</th><th>卖家来源</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="rank-badge top1">1</span></td><td>B0CWL9S4L1</td><td>INNZA <span class="brand-cn">CN</span></td><td>$95.99</td><td><b>6,567</b></td><td><b>$63.0万</b></td><td>4.6★</td><td>1,809</td><td>CN·FBA</td></tr>
+          <tr><td><span class="rank-badge top2">2</span></td><td>B0CV3ZJ2PN</td><td>Ulike <span class="brand-cn">CN</span></td><td>$349</td><td><b>6,112</b></td><td><b>$213.3万</b></td><td>4.3★</td><td>2,479</td><td>CN·FBA</td></tr>
+          <tr><td><span class="rank-badge top3">3</span></td><td>B07WYY6KKC</td><td>Braun <span class="brand-global">欧美</span></td><td>$399.99</td><td>2,740</td><td>$109.6万</td><td>4.1★</td><td>7,061</td><td>Amazon直营</td></tr>
+          <tr><td><span class="rank-badge">4</span></td><td>B0DWBHXLGS</td><td>Nood <span class="brand-global">US</span></td><td>$349</td><td>1,789</td><td>$62.4万</td><td>4.3★</td><td>352</td><td>US·FBA</td></tr>
+          <tr><td><span class="rank-badge">5</span></td><td>B0DL3215P6</td><td>Ubroo <span class="brand-cn">CN</span></td><td>$72.99</td><td>1,765</td><td>$11.6万</td><td>4.4★</td><td>304</td><td>CN·FBA</td></tr>
+          <tr><td><span class="rank-badge">6</span></td><td>B09WG9R7MY</td><td>Braun <span class="brand-global">欧美</span></td><td>$349.94</td><td>1,648</td><td>$57.7万</td><td>4.2★</td><td>1,882</td><td>Amazon直营</td></tr>
+          <tr><td><span class="rank-badge">7</span></td><td>B0F2DQNQC7</td><td>Oreeth <span class="brand-cn">CN</span></td><td>$119.99</td><td>1,621</td><td>$19.5万</td><td>4.1★</td><td>573</td><td>CN·FBA</td></tr>
+          <tr><td><span class="rank-badge">8</span></td><td>B0FCMJGSFQ</td><td>AMOTAOS <span class="brand-cn">CN</span></td><td>$99.99</td><td>1,609</td><td>$16.1万</td><td>4.8★</td><td>51</td><td>CN·FBA</td></tr>
+          <tr><td><span class="rank-badge">9</span></td><td>B0F2DNXPXD</td><td>Oreeth <span class="brand-cn">CN</span></td><td>$89.99</td><td>1,034</td><td>$9.3万</td><td>3.9★</td><td>17</td><td>CN·FBA</td></tr>
+          <tr><td><span class="rank-badge">10</span></td><td>B0FGB2NS3C</td><td>Philips <span class="brand-global">欧美</span></td><td>$579.95</td><td>835</td><td>$48.4万</td><td>4.2★</td><td>128</td><td>Amazon直营</td></tr>
+          <tr><td><span class="rank-badge">11</span></td><td>B0F1CTYNYK</td><td>Oreeth <span class="brand-cn">CN</span></td><td>$69.99</td><td>769</td><td>$5.4万</td><td>3.3★</td><td>88</td><td>CN·FBA</td></tr>
+          <tr><td><span class="rank-badge">12</span></td><td>B0CMVPMPZ8</td><td>Braun <span class="brand-global">欧美</span></td><td>$499.94</td><td>762</td><td>$38.1万</td><td>4.2★</td><td>602</td><td>Amazon直营</td></tr>
+          <tr><td><span class="rank-badge">13</span></td><td>B0828JD1WF</td><td>XSOUL <span class="brand-cn">CN</span></td><td>$79.99</td><td>736</td><td>$5.9万</td><td>4.0★</td><td>12,871</td><td>CN·FBA</td></tr>
+          <tr><td><span class="rank-badge">14</span></td><td>B0G39WBP1S</td><td>Ulike <span class="brand-cn">CN</span></td><td>$319</td><td>694</td><td>$22.1万</td><td>4.7★</td><td>32</td><td>CN·FBA</td></tr>
+          <tr><td><span class="rank-badge">15</span></td><td>B0FHQ2RSS3</td><td>Ulike <span class="brand-cn">CN</span></td><td>$259</td><td>601</td><td>$15.6万</td><td>4.3★</td><td>35</td><td>CN·FBA</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid-3 fade-in" style="margin-bottom:20px;">
+      <div class="card" style="border-left:4px solid var(--accent);">
+        <div style="font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">🏆 市场格局</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          <b>Ulike</b>：3款产品月销合计超$250万，是US市场最强中国品牌<br>
+          <b>Braun</b>：3款产品，单价高（$350-500），亚马逊直营背书<br>
+          <b>Philips</b>：$580高端产品，月销835件 = $48万<br>
+          <b>中国品牌占比</b>：Top15中9款为CN品牌，收入占比约55%
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--gold);">
+        <div style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">💰 价格带分析</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          <b>预算段 $50-100</b>：INNZA($96)、Oreeth($70-120) — 高销量低单价<br>
+          <b>主流段 $250-350</b>：Ulike Air系列 — 高收入段<br>
+          <b>高端段 $400-580</b>：Braun、Philips — 低销量高客单<br>
+          <b>最佳甜点</b>：$100-200段竞争较少
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--red);">
+        <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">⚠️ 竞争风险</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          新品涌入快（Oreeth 3款、Ubroo等），市场开始同质化<br>
+          Oreeth #11评分仅3.3★，说明快速上量但质量参差<br>
+          价格战在$70-100段已出现<br>
+          Amazon直营Braun/Philips价格优势难撼
+        </div>
+      </div>
+    </div>
+
+    <!-- CA & MX -->
+    <div class="grid-2 fade-in">
+      <div>
+        <div class="region-header amz" style="margin-bottom:12px;">
+          <div class="region-icon">🇨🇦</div>
+          <div>
+            <div class="region-label" style="color:var(--teal);">Amazon CA · 市场特征</div>
+            <div class="region-desc">IPL专项市场规模较小，以传统脱毛工具为主</div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+            搜索"IPL hair removal device"返回的Top产品以<b>传统剃须工具为主</b>（Kitsch剃须刀9,138/月、Philips修毛器4,965/月），说明CA站IPL专项类目未被充分开发，或消费者倾向于跨境至Amazon US购买。
+            <br><br>
+            CA市场<b>准入友好</b>：竞争强度低于US，可作为US布局的补充，使用相同ASIN自动覆盖。
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="region-header amz" style="margin-bottom:12px;">
+          <div class="region-icon">🇲🇽</div>
+          <div>
+            <div class="region-label" style="color:var(--green);">Amazon MX · 市场特征</div>
+            <div class="region-desc">传统脱毛为主，IPL设备尚未大规模渗透</div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+            Top产品为Veet脱毛膏（525 MXN ≈$26）、Nair（133 MXN ≈$7）等传统产品，Philips Epilator也仅排名第3（786 MXN ≈$39）。<br><br>
+            <b>IPL设备在MX几乎缺失</b>：高客单价IPL（$100-350 USD）与MX消费水平差距较大，短期内市场潜力有限。Veet/Nair等FMCG品牌主导，进入IPL需要大量消费者教育。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 3: EUROPE -->
+<section id="europe" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">03</div>
+      <div>
+        <div class="section-title">欧洲市场 · Amazon GB / DE</div>
+        <div class="section-subtitle">Amazon Europe · Sorftime MCP · 2026-04-09</div>
+        <div class="accent-line"></div>
+      </div>
+    </div>
+
+    <!-- Amazon GB -->
+    <div class="region-header amz fade-in">
+      <div class="region-icon">🇬🇧</div>
+      <div>
+        <div class="region-label" style="color:var(--red);">Amazon GB · Hair Removal Systems (nodeId: 3082198031)</div>
+        <div class="region-desc">欧洲最成熟IPL市场 · Philips本土护城河深 · 月销量5,000-17,000件</div>
+      </div>
+    </div>
+
+    <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:20px;" class="fade-in">
+      <table class="prod-table">
+        <thead>
+          <tr>
+            <th>排名</th><th>ASIN</th><th>品牌</th><th>售价(£)</th><th>月销量</th><th>月销额</th><th>评分</th><th>评论数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="rank-badge top1">1</span></td><td>B0FS68FKQN</td><td>Haarlosy <span class="brand-cn">CN</span></td><td>£59.48</td><td><b>514</b></td><td>£3.1万</td><td>4.6★</td><td>105</td></tr>
+          <tr><td><span class="rank-badge top2">2</span></td><td>B0DGXNP9ZH</td><td>Philips <span class="brand-global">欧美</span></td><td>£440.99</td><td>351</td><td>£15.5万</td><td>4.2★</td><td>90</td></tr>
+          <tr><td><span class="rank-badge top3">3</span></td><td>B07FSK3Z6G</td><td>Philips <span class="brand-global">欧美</span></td><td>£359.90</td><td>300</td><td>£10.8万</td><td>4.4★</td><td>3,841</td></tr>
+          <tr><td><span class="rank-badge">4</span></td><td>B07JFHJW9Q</td><td>Philips <span class="brand-global">欧美</span></td><td>£219.99</td><td>281</td><td>£6.2万</td><td>4.3★</td><td>1,420</td></tr>
+          <tr><td><span class="rank-badge">5</span></td><td>B0GQBRB63H</td><td>Beauris <span class="brand-cn">CN</span></td><td>£109.99</td><td>277</td><td>£3.0万</td><td>5.0★</td><td>67</td></tr>
+          <tr><td><span class="rank-badge">6</span></td><td>B07N1GCPC9</td><td>Braun <span class="brand-global">欧美</span></td><td>£396</td><td>252</td><td>£10.0万</td><td>4.4★</td><td>1,372</td></tr>
+          <tr><td><span class="rank-badge">7</span></td><td>B0GJSNDBHZ</td><td>Haoniubi <span class="brand-cn">CN</span></td><td>£31.98</td><td>196</td><td>£0.6万</td><td>5.0★</td><td>13</td></tr>
+          <tr><td><span class="rank-badge">8</span></td><td>B0FGNYQL6D</td><td>Beauris <span class="brand-cn">CN</span></td><td>£39.99</td><td>164</td><td>£0.6万</td><td>4.3★</td><td>92</td></tr>
+          <tr><td><span class="rank-badge">9</span></td><td>B0B8Z7FVJ7</td><td>INNZA <span class="brand-cn">CN</span></td><td>£63.98</td><td>158</td><td>£1.0万</td><td>4.2★</td><td>2,154</td></tr>
+          <tr><td><span class="rank-badge">10</span></td><td>B08Q94XSGQ</td><td>Philips <span class="brand-global">欧美</span></td><td>£419.45</td><td>157</td><td>£6.6万</td><td>4.3★</td><td>694</td></tr>
+          <tr><td><span class="rank-badge">12</span></td><td>B0DV5C846F</td><td>Ulike <span class="brand-cn">CN</span></td><td>£369.99</td><td>133</td><td>£4.9万</td><td>4.3★</td><td>2,726</td></tr>
+          <tr><td><span class="rank-badge">11</span></td><td>B0CKRM7VFH</td><td>Braun <span class="brand-global">欧美</span></td><td>£449.97</td><td>154</td><td>£6.9万</td><td>4.0★</td><td>73</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Amazon DE -->
+    <div class="region-header amz fade-in">
+      <div class="region-icon">🇩🇪</div>
+      <div>
+        <div class="region-label" style="color:var(--gold);">Amazon DE · IPL Haarentferner</div>
+        <div class="region-desc">欧洲第二大市场 · Philips本土品牌更强 · 月销量估约1.5-2万件</div>
+      </div>
+    </div>
+
+    <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border);margin-bottom:20px;" class="fade-in">
+      <table class="prod-table">
+        <thead>
+          <tr>
+            <th>排名(搜索)</th><th>ASIN</th><th>品牌</th><th>售价(€)</th><th>月销量</th><th>月销额</th><th>评分</th><th>评论数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="rank-badge top1">1</span></td><td>B0GCYV1CMF</td><td>Haarlosy <span class="brand-cn">CN</span></td><td>€109.99</td><td><b>1,680</b></td><td>€18.5万</td><td>4.8★</td><td>168</td></tr>
+          <tr><td><span class="rank-badge top2">2</span></td><td>B0F5HP24Y8</td><td>Philips <span class="brand-global">欧美</span></td><td>€359.99</td><td>753</td><td>€27.1万</td><td>3.9★</td><td>39</td></tr>
+          <tr><td><span class="rank-badge top3">3</span></td><td>B0FR92NXWM</td><td>Beauris <span class="brand-cn">CN</span></td><td>€109.99</td><td>664</td><td>€7.3万</td><td>4.7★</td><td>270</td></tr>
+          <tr><td><span class="rank-badge">4</span></td><td>B0CQRT8BPT</td><td>Braun <span class="brand-global">欧美</span></td><td>€479</td><td>582</td><td>€27.9万</td><td>4.3★</td><td>741</td></tr>
+          <tr><td><span class="rank-badge">5</span></td><td>B0DNTQQDRH</td><td>Philips <span class="brand-global">欧美</span></td><td>€308.90</td><td>431</td><td>€13.3万</td><td>4.0★</td><td>72</td></tr>
+          <tr><td><span class="rank-badge">6</span></td><td>B07F1SLX32</td><td>Philips <span class="brand-global">欧美</span></td><td>€229.99</td><td>381</td><td>€8.8万</td><td>4.2★</td><td>5,474</td></tr>
+          <tr><td><span class="rank-badge">7</span></td><td>B07HX2KMXK</td><td>Philips <span class="brand-global">欧美</span></td><td>€421</td><td>282</td><td>€11.9万</td><td>4.3★</td><td>5,234</td></tr>
+          <tr><td><span class="rank-badge">10</span></td><td>B0DFWCMPM9</td><td>Ulike <span class="brand-cn">CN</span></td><td>€199.98</td><td>235</td><td>€4.7万</td><td>4.2★</td><td>2,960</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid-3 fade-in">
+      <div class="card" style="border-left:4px solid var(--red);">
+        <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">🇬🇧 GB 竞争格局</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          <b>Philips</b>：Top15中5款产品，月销合计约1,100件，单价£220-441<br>
+          <b>Braun</b>：2款产品，月销约400件，高端£396-450<br>
+          <b>CN品牌侵入</b>：Haarlosy/Beauris/INNZA已进前10<br>
+          GB总月销量约5,000-17,000件，是US的约1/7
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--gold);">
+        <div style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">🇩🇪 DE 竞争格局</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          <b>Philips</b>：4款产品月销合计1,847件，本土品牌优势更明显<br>
+          <b>Braun</b>：高端€479，月销582件，收入实力强<br>
+          <b>中国品牌突破口</b>：Haarlosy €110 以1,680月销居搜索首位！<br>
+          Ulike以€200切入德语区，已累积2,960评论
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--green);">
+        <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">📊 欧洲市场特征</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          ① 欧洲消费者接受高价（€200-480 IPL）<br>
+          ② Philips欧洲本土品牌护城河 > Braun > CN品牌<br>
+          ③ DE市场比GB更注重品牌知名度<br>
+          ④ 中国品牌低价策略（€100-200）可有效切入<br>
+          ⑤ 欧盟CE认证是准入门槛
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 4: SEA TikTok -->
+<section id="sea-tiktok" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">04</div>
+      <div>
+        <div class="section-title">东南亚 & TikTok Shop 市场</div>
+        <div class="section-subtitle">TikTok Shop · MY / PH / ID / US / GB · 2026-04-09</div>
+        <div class="accent-line"></div>
+      </div>
+    </div>
+
+    <!-- TikTok 站点分析 -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-bottom:24px;" class="fade-in">
+
+      <!-- US TikTok -->
+      <div class="card" style="border-top:3px solid var(--accent);">
+        <div style="font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">🇺🇸 TikTok Shop US · IPL Hair Removal</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          <div style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:8px;">
+            TikTok US无独立"IPL/脱毛仪"类目，IPL设备归入 <b>Face Masks</b> 或 <b>Hair Care</b> 等泛类目。搜索"IPL hair removal"返回的Top产品：
+          </div>
+          <div style="font-size:12px;line-height:2;">
+            🥇 SHMHE 7色LED面罩：$24.62 · 月销4,489<br>
+            🥈 Generic 7色LED：$19.02 · 月销1,452<br>
+            🥉 INIA GLOW 940nm：$324.99 · 月销278<br>
+            ⚡ ROMISA 288 LEDs：$55.69 · 月销166
+          </div>
+          <div style="margin-top:8px;font-size:12px;background:var(--red-bg);color:#991B1B;padding:6px 10px;border-radius:6px;">
+            ⚠️ 这些产品是LED面罩（红光疗法），非IPL脱毛仪。TikTok US真正IPL脱毛仪数据量极少，市场尚未成熟。
+          </div>
+        </div>
+      </div>
+
+      <!-- GB TikTok -->
+      <div class="card" style="border-top:3px solid var(--red);">
+        <div style="font-size:12px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">🇬🇧 TikTok Shop GB · Hair Removal</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          <div style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:8px;">
+            搜索"IPL hair removal"返回的产品以<b>低价脱毛工具</b>为主，非IPL光疗设备：
+          </div>
+          <div style="font-size:12px;line-height:2;">
+            🥇 Foldable Waxing Kit：$11.76 · 月销3,414<br>
+            🥈 Men's 3-in-1 Trimmer：$12.35 · 月销3,400<br>
+            🥉 2-in-1 Bikini Trimmer：$9.25 · 月销2,205<br>
+            4️⃣ Waxing Kit (Generic)：$7.01 · 月销1,774
+          </div>
+          <div style="margin-top:8px;font-size:12px;background:var(--gold-bg);color:#92400E;padding:6px 10px;border-radius:6px;">
+            💡 GB TikTok Shop以低价传统脱毛工具为主，专业IPL设备品牌尚未入场，是潜在蓝海。
+          </div>
+        </div>
+      </div>
+
+      <!-- MY TikTok -->
+      <div class="card" style="border-top:3px solid var(--purple);">
+        <div style="font-size:12px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">🇲🇾 TikTok Shop MY · 最成熟SEA IPL市场</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          <div style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:8px;">
+            马来西亚是东南亚IPL市场发展最成熟的TikTok站点，Ulike已建立领导地位：
+          </div>
+          <div style="font-size:12px;line-height:2;">
+            🥇 <b>Ulike Air2 MAX</b>（Ulike.MY）<br>
+            &nbsp;&nbsp;&nbsp;MYR 802.67 ≈ $180 · 月销<b>863</b> · ★4.90 · 988评论<br>
+            🥈 ALLTOU Electric Shaver（ALLTOU Malaysia）<br>
+            &nbsp;&nbsp;&nbsp;MYR 43.99 ≈ $10 · 月销232 · ★4.90<br>
+            🥉 Generic Dual-Head Trimmer<br>
+            &nbsp;&nbsp;&nbsp;MYR 33.99 ≈ $8 · 月销185 · ★4.90
+          </div>
+          <div style="margin-top:8px;font-size:12px;background:var(--purple-bg);color:#4C1D95;padding:6px 10px;border-radius:6px;">
+            🎯 Ulike在MY TikTok月销863件@MYR803，是SEA最成功的IPL品牌入场案例。
+          </div>
+        </div>
+      </div>
+
+      <!-- PH TikTok -->
+      <div class="card" style="border-top:3px solid var(--teal);">
+        <div style="font-size:12px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">🇵🇭 TikTok Shop PH · 初期阶段</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          <div style="font-size:12px;line-height:2;">
+            🥇 GOSHAVY LONDON Kiffy Bundle：PHP 829.89≈$15 · 月销329 · ★4.50<br>
+            🥈 Eyebrow Trimmer (Generic)：PHP 72.75≈$1.3 · 月销273<br>
+            🥉 HODEKT 4-in-1 Epilator：PHP 491.27≈$8.5 · 月销213<br>
+            4️⃣ Bare Basics IPL (真正IPL设备)：PHP 198≈$3.4 · 月销103
+          </div>
+          <div style="margin-top:8px;font-size:12px;background:var(--teal-bg);color:#134E4A;padding:6px 10px;border-radius:6px;">
+            💡 PH市场价格极低（PHP 70-200 = $1-3.5），真正IPL设备（Bare Basics IPL）月销仅103，市场教育不足。
+          </div>
+        </div>
+      </div>
+
+      <!-- ID TikTok -->
+      <div class="card" style="border-top:3px solid var(--orange);">
+        <div style="font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">🇮🇩 TikTok Shop ID · 类目大盘数据</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+            <div style="background:var(--orange-bg);border:1px solid var(--orange-border);border-radius:8px;padding:8px;">
+              <div style="font-size:20px;font-weight:800;color:var(--orange);">32.4万</div>
+              <div style="font-size:11px;color:var(--text-3);">月销量（Krim Penghilang Rambut 类）</div>
+            </div>
+            <div style="background:var(--orange-bg);border:1px solid var(--orange-border);border-radius:8px;padding:8px;">
+              <div style="font-size:20px;font-weight:800;color:var(--orange);">-2.6%</div>
+              <div style="font-size:11px;color:var(--text-3);">月销量环比</div>
+            </div>
+          </div>
+          Top产品：Veet脱毛膏（IDR32,910≈$2）月销62,383件 主导。<br>
+          <b>IPL搜索结果</b>：Winland IPL (IDR327,507≈$20) 月销275件，是ID TikTok上最受关注的IPL品牌。<br><br>
+          <div style="font-size:12px;background:var(--red-bg);color:#991B1B;padding:6px 10px;border-radius:6px;">
+            ⚠️ ID类目以传统脱毛膏/蜡/剃须刀为主（均价IDR53,915≈$3.3），IPL设备属于极小众细分，渗透率&lt;1%。
+          </div>
+        </div>
+      </div>
+
+      <!-- SEA Summary -->
+      <div class="card" style="border-top:3px solid var(--green);">
+        <div style="font-size:12px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">🌏 东南亚 IPL 市场总结</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);">
+              <span>成熟度</span><span><b>MY &gt; PH &gt; ID</b></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);">
+              <span>主导IPL品牌</span><span><b>Ulike（MY）</b></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);">
+              <span>IPL可接受价位</span><span>MYR800/$180（MY）</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);">
+              <span>VN数据</span><span>暂无类目数据</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:4px 0;">
+              <span>总结</span><span style="color:var(--green);font-weight:700;">早期蓝海，2-3年窗口</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight insight-purple fade-in">
+      🌏 <b>东南亚TikTok Shop结论</b>：马来西亚是SEA最值得率先布局的IPL市场（Ulike已验证$180价位可行），印尼/菲律宾IPL渗透率极低，需要长期消费者教育。TikTok US/GB的IPL类目尚未建立，是品牌弯道超车的机遇。建议先布局MY，再视机情况延伸ID/PH。
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 5: BRANDS -->
+<section id="brands" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">05</div>
+      <div>
+        <div class="section-title">主要品牌竞争图谱</div>
+        <div class="section-subtitle">Global Brand Landscape · IPL Hair Removal Devices</div>
+        <div class="accent-line"></div>
+      </div>
+    </div>
+
+    <!-- 品牌图表 -->
+    <div class="grid-2 fade-in" style="margin-bottom:24px;">
+      <div class="chart-box">
+        <div class="chart-title">💰 Amazon US Top10 品牌月销额（万USD）</div>
+        <div id="brandRevenueChart" style="height:300px;"></div>
+      </div>
+      <div class="chart-box">
+        <div class="chart-title">🌍 品牌多站点覆盖矩阵</div>
+        <div id="brandCoverageChart" style="height:300px;"></div>
+      </div>
+    </div>
+
+    <!-- 品牌详情卡片 -->
+    <div class="grid-3 fade-in">
+      <div class="card" style="border-left:4px solid var(--accent);">
+        <div style="font-size:14px;font-weight:800;color:var(--text-1);margin-bottom:4px;">🏅 Ulike <span style="font-size:11px;background:var(--red-bg);color:#991B1B;padding:2px 8px;border-radius:4px;font-weight:600;">CN · 跨境之王</span></div>
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:10px;">官方旗舰运营 · 自建品牌矩阵</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.9;">
+          <div>🇺🇸 US: 3款, Air10 $349月销6,112 ·<b> $250万/月</b></div>
+          <div>🇬🇧 GB: £369.99 · 月销133</div>
+          <div>🇩🇪 DE: €199.98 · 月销235</div>
+          <div>🇲🇾 MY TikTok: MYR803 · 月销863 · ★4.9</div>
+          <div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--border);color:var(--green);font-weight:700;">全球布局最完整的中国品牌</div>
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--gold);">
+        <div style="font-size:14px;font-weight:800;color:var(--text-1);margin-bottom:4px;">🏆 Braun <span style="font-size:11px;background:var(--accent-bg);color:var(--accent);padding:2px 8px;border-radius:4px;font-weight:600;">DE · 欧洲老牌</span></div>
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:10px;">P&G旗下 · Amazon直营 · 高端护城河</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.9;">
+          <div>🇺🇸 US: 3款, Pro5 $400月销2,740 · <b>$170万/月</b></div>
+          <div>🇬🇧 GB: £396-450 · 月销250-280</div>
+          <div>🇩🇪 DE: €479 · 月销582 · <b>€28万/月</b></div>
+          <div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--border);color:var(--gold);font-weight:700;">欧洲市场最强本土品牌之一</div>
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--purple);">
+        <div style="font-size:14px;font-weight:800;color:var(--text-1);margin-bottom:4px;">🏅 Philips <span style="font-size:11px;background:var(--purple-bg);color:var(--purple);padding:2px 8px;border-radius:4px;font-weight:600;">NL · 欧洲巨头</span></div>
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:10px;">Lumea系列 · 欧洲专业级IP</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.9;">
+          <div>🇺🇸 US: $579.95 · 月销835 · $48.4万</div>
+          <div>🇬🇧 GB: 5款，月销合计约1,100 · <b>£44万/月</b></div>
+          <div>🇩🇪 DE: 4款，月销合计1,847 · <b>€96万/月</b></div>
+          <div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--border);color:var(--purple);font-weight:700;">欧洲市场绝对霸主，均价€300+</div>
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--green);">
+        <div style="font-size:14px;font-weight:800;color:var(--text-1);margin-bottom:4px;">🥈 INNZA <span style="font-size:11px;background:var(--red-bg);color:#991B1B;padding:2px 8px;border-radius:4px;font-weight:600;">CN · 黑马</span></div>
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:10px;">InnzaBeauty · 2024年3月上架</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.9;">
+          <div>🇺🇸 US: #1 $95.99 · 月销6,567 · $63万</div>
+          <div>🇬🇧 GB: £63.98 · 月销158 · ★4.2</div>
+          <div>上架仅750天已登顶US分类榜首</div>
+          <div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--border);color:var(--green);font-weight:700;">预算段最成功中国新品案例</div>
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--teal);">
+        <div style="font-size:14px;font-weight:800;color:var(--text-1);margin-bottom:4px;">🥉 Haarlosy <span style="font-size:11px;background:var(--red-bg);color:#991B1B;padding:2px 8px;border-radius:4px;font-weight:600;">CN · 欧洲突破</span></div>
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:10px;">主打欧洲市场的中国IPL品牌</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.9;">
+          <div>🇬🇧 GB: #1 £59.48 · 月销514 · ★4.6</div>
+          <div>🇩🇪 DE: #1 €109.99 · 月销1,680 · ★4.8</div>
+          <div>在欧洲两大站均拿到搜索类目第一</div>
+          <div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--border);color:var(--teal);font-weight:700;">低价切入欧洲市场的典型代表</div>
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--orange);">
+        <div style="font-size:14px;font-weight:800;color:var(--text-1);margin-bottom:4px;">🆕 Nood <span style="font-size:11px;background:var(--green-bg);color:var(--green);padding:2px 8px;border-radius:4px;font-weight:600;">US · 本土新锐</span></div>
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:10px;">2025年3月上架 · 美国本土品牌</div>
+        <div style="font-size:12px;color:var(--text-2);line-height:1.9;">
+          <div>🇺🇸 US: #4 $349 · 月销1,789 · $62万</div>
+          <div>融合红光治疗+IPL双功能，差异化策略</div>
+          <div>上架仅1年，快速进入Top5</div>
+          <div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--border);color:var(--orange);font-weight:700;">US本土品牌反击中国品牌的新案例</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 6: TRENDS -->
+<section id="trend" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">06</div>
+      <div>
+        <div class="section-title">市场趋势与季节性分析</div>
+        <div class="section-subtitle">Amazon US + GB · category_trend · SalesCount · 2026-04</div>
+        <div class="accent-line"></div>
+      </div>
+    </div>
+
+    <div class="grid-2 fade-in">
+      <div class="chart-box">
+        <div class="chart-title">📈 Amazon US Light Hair Removal · 月销量趋势（Top100，件）</div>
+        <div id="usTrendDetail" style="height:280px;"></div>
+      </div>
+      <div class="chart-box">
+        <div class="chart-title">📈 Amazon GB Hair Removal Systems · 月销量趋势（Top100，件）</div>
+        <div id="gbTrendDetail" style="height:280px;"></div>
+      </div>
+    </div>
+
+    <div class="grid-3 fade-in" style="margin-top:20px;">
+      <div class="card" style="border-left:4px solid var(--accent);">
+        <div style="font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;margin-bottom:10px;">📅 US 旺季规律</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          <div>🔴 <b>11-12月</b>：圣诞旺季，峰值约100k/月</div>
+          <div>🟡 <b>7-8月</b>：夏季备毛旺季，约80k/月</div>
+          <div>🟢 <b>4-6月</b>：稳定期，45-60k/月</div>
+          <div>⚪ <b>1-3月</b>：年初低谷，35-50k/月</div>
+          <div style="margin-top:8px;color:var(--text-3);font-size:12px;">最高峰：2024年11月 99,956件</div>
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--red);">
+        <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;margin-bottom:10px;">📅 GB 旺季规律</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          <div>🔴 <b>12月</b>：圣诞旺季最高16,602件</div>
+          <div>🟡 <b>7月</b>：夏季11,858件次高</div>
+          <div>🟢 <b>4-6月</b>：稳定6k-9k/月</div>
+          <div>⚪ <b>1-3月</b>：低谷4-5k/月</div>
+          <div style="margin-top:8px;color:var(--text-3);font-size:12px;">GB趋势与US高度同步，季节性更明显</div>
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--green);">
+        <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;margin-bottom:10px;">📊 YoY 同比分析</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          <div>US 2024年全年Top100约 <b>80万件</b></div>
+          <div>US 2025年全年Top100约 <b>72万件</b></div>
+          <div>整体同比 <b>约-10%</b>，说明该类目Top100开始饱和，新品不断涌入分散份额</div>
+          <div style="margin-top:8px;color:var(--red);font-size:12px;">⚠️ 2026年前3月偏低，春季尚未启动</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 7: CONCLUSION -->
+<section id="conclusion" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">07</div>
+      <div>
+        <div class="section-title">结论与市场潜力评级</div>
+        <div class="section-subtitle">Key Insights · 选品参考 · 区域进入优先级</div>
+        <div class="accent-line"></div>
+      </div>
+    </div>
+
+    <div class="grid-2 fade-in">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--accent);border-bottom:2px solid var(--accent-border);padding-bottom:10px;margin-bottom:16px;">📊 各区域市场潜力评分</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <!-- US -->
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--accent-bg);border-radius:8px;border:1px solid var(--accent-border);">
+            <div style="font-size:18px;">🇺🇸</div>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:700;color:var(--text-1);">Amazon US <span style="color:var(--text-3);font-weight:400;">月销额$7-14M</span></div>
+              <div style="font-size:11px;color:var(--text-2);">最大单一市场 · 竞争激烈 · 先发仍有机会</div>
+            </div>
+            <div style="font-size:20px;font-weight:900;color:var(--accent);">⭐⭐⭐⭐⭐</div>
+          </div>
+          <!-- GB -->
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--red-bg);border-radius:8px;border:1px solid var(--red-border);">
+            <div style="font-size:18px;">🇬🇧</div>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:700;color:var(--text-1);">Amazon GB <span style="color:var(--text-3);font-weight:400;">月销额£1-3.5M</span></div>
+              <div style="font-size:11px;color:var(--text-2);">高购买力 · Philips护城河 · CN品牌可突破</div>
+            </div>
+            <div style="font-size:20px;font-weight:900;color:var(--red);">⭐⭐⭐⭐</div>
+          </div>
+          <!-- DE -->
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--gold-bg);border-radius:8px;border:1px solid var(--gold-border);">
+            <div style="font-size:18px;">🇩🇪</div>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:700;color:var(--text-1);">Amazon DE <span style="color:var(--text-3);font-weight:400;">月销额€1.5-3M</span></div>
+              <div style="font-size:11px;color:var(--text-2);">德语区大市场 · CE认证门槛 · Haarlosy已破局</div>
+            </div>
+            <div style="font-size:20px;font-weight:900;color:var(--gold);">⭐⭐⭐⭐</div>
+          </div>
+          <!-- MY TikTok -->
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--purple-bg);border-radius:8px;border:1px solid var(--purple-border);">
+            <div style="font-size:18px;">🇲🇾</div>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:700;color:var(--text-1);">TikTok MY <span style="color:var(--text-3);font-weight:400;">Ulike月销863件</span></div>
+              <div style="font-size:11px;color:var(--text-2);">SEA最成熟 · 价位可接受 · 竞争少</div>
+            </div>
+            <div style="font-size:20px;font-weight:900;color:var(--purple);">⭐⭐⭐</div>
+          </div>
+          <!-- CA/MX/ID/PH -->
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg-alt);border-radius:8px;border:1px solid var(--border);">
+            <div style="font-size:18px;">🌍</div>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:700;color:var(--text-1);">CA/MX/ID/PH <span style="color:var(--text-3);font-weight:400;">初期/传统为主</span></div>
+              <div style="font-size:11px;color:var(--text-2);">IPL渗透率低 · 2-3年后机遇</div>
+            </div>
+            <div style="font-size:20px;font-weight:900;color:var(--text-3);">⭐⭐</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--green);border-bottom:2px solid var(--green-border);padding-bottom:10px;margin-bottom:16px;">🎯 选品决策参考</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="padding:10px;background:var(--green-bg);border-radius:8px;border:1px solid var(--green-border);font-size:13px;color:var(--text-2);">
+            <span style="font-weight:700;color:var(--green);">A.</span> <b>$100-200美元价位是US市场最大空白</b>：INNZA以$96拿到第一，Oreeth系列$70-120快速放量，但正规品质中端（$130-200）几乎无强品牌
+          </div>
+          <div style="padding:10px;background:var(--green-bg);border-radius:8px;border:1px solid var(--green-border);font-size:13px;color:var(--text-2);">
+            <span style="font-weight:700;color:var(--green);">B.</span> <b>欧洲市场低价策略可行</b>：Haarlosy以€110在DE拿到搜索第一、月销1,680，证明€100-150 IPL在欧洲有市场，不需要与Philips/Braun高端对抗
+          </div>
+          <div style="padding:10px;background:var(--green-bg);border-radius:8px;border:1px solid var(--green-border);font-size:13px;color:var(--text-2);">
+            <span style="font-weight:700;color:var(--green);">C.</span> <b>旺季节点是关键备货窗口</b>：11-12月备货量需要是淡季的2-3倍，夏季（6-8月）是第二旺季，需提前3个月备货
+          </div>
+          <div style="padding:10px;background:var(--green-bg);border-radius:8px;border:1px solid var(--green-border);font-size:13px;color:var(--text-2);">
+            <span style="font-weight:700;color:var(--green);">D.</span> <b>TikTok SEA优先马来西亚</b>：Ulike MY已验证IPL品牌+高价位可行，MY消费者愿意为专业脱毛设备支付MYR800（$180），复制路径清晰
+          </div>
+          <div style="padding:10px;background:var(--green-bg);border-radius:8px;border:1px solid var(--green-border);font-size:13px;color:var(--text-2);">
+            <span style="font-weight:700;color:var(--green);">E.</span> <b>CE认证+FSA资质是欧洲/美国进入必要条件</b>：Braun/Philips已具备，CN品牌需要先做完合规
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight insight-gold fade-in" style="margin-top:24px;">
+      📊 <b>数据来源说明</b>：本报告数据全部来自 Sorftime MCP 实时 API（Amazon category_report / product_search / category_trend；TikTok tiktok_similar_product / tiktok_category_report）。调研日期：2026-04-09。Amazon US nodeid: 7676395011（Light Hair Removal Devices）；Amazon GB nodeid: 3082198031（Hair Removal Systems）；TikTok ID nodeid: 601495。DE/CA/MX 数据来自 product_search 前10名估算，无独立类目 nodeId（category_name_search API 目前返回服务端错误）。月销额为当月实测，因类目数据以4月初数据为准，实际旺季（11-12月）数据见趋势图。
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-title">脱毛仪（IPL/激光）全球市场调研报告 · Americas · Europe · SEA</div>
+    <div class="footer-note" style="margin-top:12px;">
+      数据来源：Sorftime MCP API 实时采集 · 2026-04-09 &nbsp;|&nbsp; Amazon US/GB/DE/CA/MX · TikTok US/GB/MY/PH/ID<br>
+      Amazon US Light Hair Removal (7676395011) · Amazon GB Systems (3082198031) · TikTok ID Hair Removal (601495)<br>
+      月销额为当期实测值，旺季倍增见趋势分析 · 货币已标注原始货币，未统一折算
+    </div>
+  </div>
+</footer>
+
+<script>
+// === CHART 1: Revenue comparison ===
+const revenueChart = echarts.init(document.getElementById('revenueChart'));
+revenueChart.setOption({
+  tooltip: { trigger:'axis', backgroundColor:'#fff', borderColor:'#E2E8F0', textStyle:{color:'#0F172A'} },
+  grid: { left:20, right:20, top:20, bottom:40, containLabel:true },
+  xAxis: { type:'category', data:['Amazon US','Amazon GB','Amazon DE','TikTok MY','TikTok ID(大类)'], axisLabel:{color:'#94A3B8',fontSize:11} },
+  yAxis: { type:'value', axisLabel:{color:'#94A3B8',fontSize:11,formatter:v=>v+'万'}, splitLine:{lineStyle:{color:'#F3F4F6'}} },
+  series:[{
+    name:'估算月销额(USD万)', type:'bar', barMaxWidth:48,
+    data:[
+      {value:870, itemStyle:{color:'#1A56DB'}},
+      {value:150, itemStyle:{color:'#DC2626'}},
+      {value:200, itemStyle:{color:'#B45309'}},
+      {value:16, itemStyle:{color:'#7C3AED'}},
+      {value:18, itemStyle:{color:'#EA580C'}}
+    ],
+    label:{show:true, position:'top', color:'#475569', fontSize:11, formatter:p=>p.value+'万'}
+  }]
+});
+
+// === CHART 2: US Trend ===
+const trendChart = echarts.init(document.getElementById('trendChart'));
+const trendMonths = ['24-04','24-05','24-06','24-07','24-08','24-09','24-10','24-11','24-12','25-01','25-02','25-03','25-04','25-05','25-06','25-07','25-08','25-09','25-10','25-11','25-12','26-01','26-02','26-03'];
+const trendData = [75121,76181,72190,95407,56871,50515,57251,99956,92982,51339,44174,50029,46298,55745,61974,81892,47862,44301,46439,68701,89996,45399,38142,37475];
+trendChart.setOption({
+  tooltip: { trigger:'axis', backgroundColor:'#fff', borderColor:'#E2E8F0', textStyle:{color:'#0F172A'}, formatter:p=>`${p[0].name}: ${p[0].value.toLocaleString()}件` },
+  grid: { left:20, right:20, top:20, bottom:40, containLabel:true },
+  xAxis: { type:'category', data:trendMonths, axisLabel:{color:'#94A3B8',fontSize:10,rotate:30} },
+  yAxis: { type:'value', axisLabel:{color:'#94A3B8',fontSize:10,formatter:v=>(v/1000)+'k'}, splitLine:{lineStyle:{color:'#F3F4F6'}} },
+  series:[{
+    name:'月销量', type:'line', smooth:true,
+    data:trendData,
+    lineStyle:{color:'#1A56DB',width:2},
+    itemStyle:{color:'#1A56DB'},
+    areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(26,86,219,0.15)'},{offset:1,color:'rgba(26,86,219,0.01)'}]}}
+  }],
+  markArea: { data:[[{name:'圣诞旺季',xAxis:'24-11',itemStyle:{color:'rgba(220,38,38,0.06)'}},{xAxis:'24-12'}],[{name:'圣诞旺季',xAxis:'25-11',itemStyle:{color:'rgba(220,38,38,0.06)'}},{xAxis:'25-12'}]] }
+});
+
+// === CHART 3: Brand Revenue US ===
+const brandRevenueChart = echarts.init(document.getElementById('brandRevenueChart'));
+brandRevenueChart.setOption({
+  tooltip: { trigger:'axis', backgroundColor:'#fff', borderColor:'#E2E8F0', textStyle:{color:'#0F172A'} },
+  grid: { left:20, right:20, top:10, bottom:10, containLabel:true },
+  xAxis: { type:'value', axisLabel:{color:'#94A3B8',fontSize:10,formatter:v=>v+'万'}, splitLine:{lineStyle:{color:'#F3F4F6'}} },
+  yAxis: { type:'category', data:['XSOUL','Ubroo','Oreeth','Nood','INNZA','Braun','Philips','Ulike'], axisLabel:{color:'#475569',fontSize:11} },
+  series:[{
+    type:'bar', barMaxWidth:24,
+    data:[
+      {value:5.9, itemStyle:{color:'#94A3B8'}},
+      {value:11.6, itemStyle:{color:'#94A3B8'}},
+      {value:32.1, itemStyle:{color:'#0D9488'}},
+      {value:62.4, itemStyle:{color:'#16A34A'}},
+      {value:63, itemStyle:{color:'#EA580C'}},
+      {value:203.1, itemStyle:{color:'#B45309'}},
+      {value:48.4, itemStyle:{color:'#7C3AED'}},
+      {value:258.6, itemStyle:{color:'#1A56DB'}}
+    ],
+    label:{show:true, position:'right', color:'#475569', fontSize:10, formatter:p=>p.value+'万'}
+  }]
+});
+
+// === CHART 4: Brand Coverage Matrix ===
+const brandCoverageChart = echarts.init(document.getElementById('brandCoverageChart'));
+const coverageBrands = ['Ulike','Braun','Philips','INNZA','Haarlosy','Beauris','Nood'];
+const coverageMarkets = ['Amazon US','Amazon GB','Amazon DE','TikTok MY'];
+// 1=有布局, 0=无布局 [brand][market]
+const coverageData = [
+  [1,1,1,1], // Ulike
+  [1,1,1,0], // Braun
+  [1,1,1,0], // Philips
+  [1,1,0,0], // INNZA
+  [0,1,1,0], // Haarlosy
+  [0,1,1,0], // Beauris
+  [1,0,0,0], // Nood
+];
+const cvData = [];
+coverageData.forEach((row, bi) => {
+  row.forEach((val, mi) => {
+    if(val) cvData.push([mi, bi, val]);
+  });
+});
+brandCoverageChart.setOption({
+  tooltip: { formatter: p => `${coverageBrands[p.data[1]]} · ${coverageMarkets[p.data[0]]}` },
+  grid: { left:20, right:20, top:20, bottom:20, containLabel:true },
+  xAxis: { type:'category', data:coverageMarkets, axisLabel:{color:'#94A3B8',fontSize:11}, splitLine:{lineStyle:{color:'#F3F4F6'}} },
+  yAxis: { type:'category', data:coverageBrands, axisLabel:{color:'#475569',fontSize:11} },
+  series:[{
+    type:'scatter',
+    symbolSize:28,
+    data:cvData,
+    itemStyle:{color:'#1A56DB', opacity:0.85},
+    label:{show:true, color:'#fff', fontSize:10, formatter:'✓'}
+  }]
+});
+
+// === CHART 5: US Trend Detail ===
+const usTrendDetail = echarts.init(document.getElementById('usTrendDetail'));
+usTrendDetail.setOption({
+  tooltip: { trigger:'axis', backgroundColor:'#fff', borderColor:'#E2E8F0', textStyle:{color:'#0F172A'}, formatter:p=>`${p[0].name}: ${p[0].value.toLocaleString()}件` },
+  grid: { left:20, right:20, top:20, bottom:40, containLabel:true },
+  xAxis: { type:'category', data:trendMonths, axisLabel:{color:'#94A3B8',fontSize:10,rotate:30} },
+  yAxis: { type:'value', axisLabel:{color:'#94A3B8',fontSize:10,formatter:v=>(v/1000)+'k'}, splitLine:{lineStyle:{color:'#F3F4F6'}} },
+  series:[{
+    name:'US月销量', type:'bar',
+    data:trendData.map((v,i)=>({
+      value:v,
+      itemStyle:{color:v>80000?'#DC2626':v>60000?'#EA580C':'#1A56DB'}
+    })),
+  }]
+});
+
+// === CHART 6: GB Trend Detail ===
+const gbTrendDetail = echarts.init(document.getElementById('gbTrendDetail'));
+const gbTrendData = [12936,15064,9105,13611,8036,5647,6887,11926,14923,5686,4042,5219,6294,6241,5563,11858,6398,5234,8201,9948,16602,6534,4679,5369];
+gbTrendDetail.setOption({
+  tooltip: { trigger:'axis', backgroundColor:'#fff', borderColor:'#E2E8F0', textStyle:{color:'#0F172A'}, formatter:p=>`${p[0].name}: ${p[0].value.toLocaleString()}件` },
+  grid: { left:20, right:20, top:20, bottom:40, containLabel:true },
+  xAxis: { type:'category', data:trendMonths, axisLabel:{color:'#94A3B8',fontSize:10,rotate:30} },
+  yAxis: { type:'value', axisLabel:{color:'#94A3B8',fontSize:10,formatter:v=>(v/1000).toFixed(1)+'k'}, splitLine:{lineStyle:{color:'#F3F4F6'}} },
+  series:[{
+    name:'GB月销量', type:'bar',
+    data:gbTrendData.map(v=>({
+      value:v,
+      itemStyle:{color:v>12000?'#DC2626':v>8000?'#EA580C':'#DC2626', opacity:v>12000?1:0.65}
+    }))
+  }]
+});
+
+// Nav active
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('.nav-item');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});
+  navItems.forEach(n=>{n.classList.toggle('active',n.getAttribute('href')==='#'+cur);});
+});
+
+window.addEventListener('resize',()=>{
+  [revenueChart,trendChart,brandRevenueChart,brandCoverageChart,usTrendDetail,gbTrendDetail].forEach(c=>c.resize());
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CurrentBody Skin | LED Therapy Mask 品牌全线调研报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  :root {
+    --accent: #1A56DB;
+    --accent-light: #3B82F6;
+    --accent-bg: #EFF6FF;
+    --accent-border: #BFDBFE;
+    --gold: #B45309;
+    --gold-bg: #FFFBEB;
+    --gold-border: #FDE68A;
+    --red: #DC2626;
+    --red-bg: #FEF2F2;
+    --red-border: #FECACA;
+    --green: #16A34A;
+    --green-bg: #F0FDF4;
+    --green-border: #BBF7D0;
+    --purple: #7C3AED;
+    --purple-bg: #F5F3FF;
+    --purple-border: #DDD6FE;
+    --bg: #FFFFFF;
+    --bg-alt: #F8FAFC;
+    --border: #E2E8F0;
+    --text-1: #0F172A;
+    --text-2: #475569;
+    --text-3: #94A3B8;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text-1); line-height:1.7; overflow-x:hidden; }
+
+  /* NAV */
+  .nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.97); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); box-shadow:0 1px 6px rgba(0,0,0,0.05); padding:0 32px; display:flex; align-items:center; overflow-x:auto; gap:0; }
+  .nav-logo { font-weight:800; font-size:14px; color:var(--accent); letter-spacing:-0.3px; padding:16px 24px 16px 0; border-right:1px solid var(--border); margin-right:8px; white-space:nowrap; flex-shrink:0; }
+  .nav-item { padding:16px 16px; font-size:12px; color:var(--text-3); cursor:pointer; white-space:nowrap; border-bottom:2.5px solid transparent; transition:all 0.2s; text-decoration:none; font-weight:500; }
+  .nav-item:hover { color:var(--accent); }
+  .nav-item.active { color:var(--accent); border-bottom-color:var(--accent); font-weight:700; }
+
+  /* HERO */
+  .hero { background:linear-gradient(140deg, #F0F9FF 0%, #EFF6FF 50%, #F5F3FF 100%); border-bottom:1px solid var(--accent-border); padding:72px 0 52px; text-align:center; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 40% at 50% 0%, rgba(59,130,246,0.08) 0%, transparent 70%); pointer-events:none; }
+  .hero-badge { display:inline-block; border:1px solid var(--accent-border); color:var(--accent); font-size:11px; letter-spacing:3px; text-transform:uppercase; padding:5px 18px; border-radius:20px; margin-bottom:20px; background:var(--accent-bg); font-weight:600; }
+  .hero h1 { font-size:clamp(26px,4.5vw,48px); font-weight:800; color:var(--text-1); line-height:1.2; margin-bottom:10px; }
+  .hero h1 span { color:var(--accent); }
+  .hero-sub { color:var(--text-2); font-size:14px; margin-bottom:36px; }
+  .hero-kpis { display:flex; justify-content:center; gap:0; flex-wrap:wrap; margin-top:32px; border-top:1px solid var(--accent-border); padding-top:28px; }
+  .hero-kpi { padding:0 32px; border-right:1px solid var(--border); text-align:center; }
+  .hero-kpi:last-child { border-right:none; }
+  .hero-kpi-val { font-size:28px; font-weight:900; color:var(--accent); line-height:1.1; }
+  .hero-kpi-label { font-size:11px; color:var(--text-3); margin-top:4px; letter-spacing:0.3px; }
+
+  /* LAYOUT */
+  .container { max-width:1280px; margin:0 auto; padding:0 32px; }
+  .section { padding:64px 0; }
+  .section-alt { background:var(--bg-alt); }
+  .section-header { margin-bottom:40px; display:flex; align-items:flex-end; gap:16px; }
+  .section-number { font-size:64px; font-weight:900; color:rgba(26,86,219,0.07); line-height:1; letter-spacing:-4px; flex-shrink:0; user-select:none; }
+  .section-title { font-size:24px; font-weight:800; color:var(--text-1); margin-bottom:5px; }
+  .section-subtitle { color:var(--text-3); font-size:13px; }
+  .accent-line { width:40px; height:3px; background:linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%); border-radius:2px; margin-top:8px; }
+
+  /* CARDS */
+  .card { background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:24px; box-shadow:var(--shadow-sm); transition:box-shadow 0.25s, border-color 0.25s; }
+  .card:hover { box-shadow:var(--shadow-md); }
+
+  /* STAT GRID */
+  .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-bottom:32px; }
+  .stat-card { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:20px 18px; position:relative; overflow:hidden; box-shadow:var(--shadow-sm); }
+  .stat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; border-radius:10px 10px 0 0; }
+  .stat-card.blue::before { background:linear-gradient(90deg, var(--accent), var(--accent-light)); }
+  .stat-card.gold::before { background:linear-gradient(90deg, var(--gold), #F59E0B); }
+  .stat-card.green::before { background:linear-gradient(90deg, var(--green), #22C55E); }
+  .stat-card.red::before { background:linear-gradient(90deg, var(--red), #F87171); }
+  .stat-card.purple::before { background:linear-gradient(90deg, var(--purple), #A78BFA); }
+  .stat-val { font-size:28px; font-weight:900; line-height:1.1; }
+  .stat-card.blue .stat-val { color:var(--accent); }
+  .stat-card.gold .stat-val { color:var(--gold); }
+  .stat-card.green .stat-val { color:var(--green); }
+  .stat-card.red .stat-val { color:var(--red); }
+  .stat-card.purple .stat-val { color:var(--purple); }
+  .stat-label { font-size:12px; color:var(--text-2); margin-top:5px; font-weight:600; }
+  .stat-desc { font-size:11px; color:var(--text-3); margin-top:4px; }
+
+  /* TABLE */
+  .table-wrap { overflow-x:auto; border-radius:12px; border:1px solid var(--border); box-shadow:var(--shadow-sm); }
+  table { width:100%; border-collapse:collapse; }
+  thead tr { background:linear-gradient(90deg, var(--accent-bg), #F0F5FF); }
+  th { padding:13px 16px; text-align:left; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--accent); font-weight:700; border-bottom:1px solid var(--accent-border); white-space:nowrap; }
+  tbody tr { border-bottom:1px solid var(--border); transition:background 0.15s; }
+  tbody tr:hover { background:#FAFBFF; }
+  tbody tr:last-child { border-bottom:none; }
+  td { padding:13px 16px; font-size:13px; color:var(--text-1); white-space:nowrap; }
+  .hero-row { background:linear-gradient(90deg, #FEFCE8 0%, #FFFBF0 100%) !important; }
+  .hero-row td { font-weight:600; }
+
+  .badge { display:inline-block; padding:3px 10px; border-radius:12px; font-size:11px; font-weight:600; }
+  .badge-fba { background:var(--green-bg); color:var(--green); border:1px solid var(--green-border); }
+  .badge-fbm { background:#F1F5F9; color:var(--text-2); border:1px solid var(--border); }
+  .badge-3p { background:var(--red-bg); color:var(--red); border:1px solid var(--red-border); }
+  .badge-new { background:var(--purple-bg); color:var(--purple); border:1px solid var(--purple-border); }
+  .stars { color:#F59E0B; font-size:12px; }
+
+  /* PRODUCT CARDS */
+  .product-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:20px; }
+  .product-card { background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:24px; box-shadow:var(--shadow-sm); transition:all 0.25s; }
+  .product-card:hover { box-shadow:var(--shadow-md); border-color:var(--accent-border); }
+  .product-card.hero-product { border-color:var(--accent-border); background:linear-gradient(135deg, #F0F9FF 0%, #FFFFFF 60%); box-shadow:0 4px 20px rgba(26,86,219,0.10); }
+  .product-card.hero-product::before { display:none; }
+  .prod-tag { display:inline-block; font-size:10px; letter-spacing:2px; text-transform:uppercase; padding:3px 10px; border-radius:12px; font-weight:700; margin-bottom:12px; }
+  .prod-tag-hero { background:var(--accent-bg); color:var(--accent); border:1px solid var(--accent-border); }
+  .prod-tag-active { background:var(--green-bg); color:var(--green); border:1px solid var(--green-border); }
+  .prod-tag-declining { background:var(--red-bg); color:var(--red); border:1px solid var(--red-border); }
+  .prod-tag-new { background:var(--purple-bg); color:var(--purple); border:1px solid var(--purple-border); }
+  .prod-tag-low { background:#F1F5F9; color:var(--text-3); border:1px solid var(--border); }
+  .prod-price { font-size:36px; font-weight:900; color:var(--accent); line-height:1; margin-bottom:6px; }
+  .prod-name { font-size:16px; font-weight:700; color:var(--text-1); margin-bottom:4px; }
+  .prod-asin { font-size:11px; color:var(--text-3); font-family:'Courier New',monospace; margin-bottom:16px; }
+  .prod-metrics { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px; }
+  .prod-metric { background:var(--bg-alt); border-radius:6px; padding:8px 10px; }
+  .prod-metric-val { font-size:16px; font-weight:800; color:var(--text-1); }
+  .prod-metric-label { font-size:10px; color:var(--text-3); text-transform:uppercase; letter-spacing:0.5px; }
+  .prod-specs { display:flex; flex-direction:column; gap:6px; }
+  .prod-spec { display:flex; gap:10px; font-size:12px; align-items:flex-start; }
+  .prod-spec-key { color:var(--text-3); min-width:80px; font-size:11px; text-transform:uppercase; letter-spacing:0.3px; padding-top:1px; flex-shrink:0; }
+  .prod-spec-val { color:var(--text-1); line-height:1.5; }
+
+  /* KEYWORD TABLE */
+  .kw-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media(max-width:900px){ .kw-grid { grid-template-columns:1fr; } }
+  .kw-card { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:20px; box-shadow:var(--shadow-sm); }
+  .kw-card-title { font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent); margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border); }
+  .kw-list { display:flex; flex-direction:column; gap:5px; }
+  .kw-row { display:flex; align-items:center; gap:8px; padding:7px 10px; background:var(--bg-alt); border-radius:6px; border:1px solid transparent; transition:all 0.2s; }
+  .kw-row:hover { border-color:var(--border); background:#fff; }
+  .kw-name { flex:1; font-size:12px; color:var(--text-1); font-weight:500; }
+  .kw-vol { font-size:12px; font-weight:700; color:var(--accent); white-space:nowrap; }
+  .kw-cpc { font-size:11px; color:var(--text-3); white-space:nowrap; }
+  .kw-pos { font-size:10px; background:var(--green-bg); color:var(--green); border:1px solid var(--green-border); border-radius:8px; padding:1px 6px; white-space:nowrap; }
+  .kw-pos-p2 { font-size:10px; background:#F1F5F9; color:var(--text-3); border:1px solid var(--border); border-radius:8px; padding:1px 6px; white-space:nowrap; }
+  .kw-row.competitor { border-left:3px solid var(--purple); }
+  .kw-row.brand-term { border-left:3px solid var(--accent); }
+
+  /* CHART */
+  .chart-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media(max-width:900px){ .chart-row { grid-template-columns:1fr; } }
+  .chart-card { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:20px; box-shadow:var(--shadow-sm); }
+  .chart-title { font-size:13px; color:var(--text-2); margin-bottom:16px; font-weight:600; }
+
+  /* INSIGHT BOX */
+  .insight { background:var(--accent-bg); border:1px solid var(--accent-border); border-left:4px solid var(--accent); border-radius:0 8px 8px 0; padding:14px 18px; margin-top:16px; font-size:13px; color:var(--text-2); line-height:1.8; }
+  .insight b { color:var(--accent); }
+  .insight-gold { background:var(--gold-bg); border-color:var(--gold-border); border-left-color:var(--gold); }
+  .insight-gold b { color:var(--gold); }
+  .insight-red { background:var(--red-bg); border-color:var(--red-border); border-left-color:var(--red); }
+  .insight-red b { color:var(--red); }
+  .insight-green { background:var(--green-bg); border-color:var(--green-border); border-left-color:var(--green); }
+  .insight-green b { color:var(--green); }
+
+  /* TIKTOK SECTION */
+  .tk-stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin-bottom:28px; }
+  .tk-stat { background:#fff; border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .tk-stat-label { font-size:11px; color:var(--text-3); font-weight:600; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:6px; }
+  .tk-stat-value { font-size:22px; font-weight:800; color:var(--text-1); }
+  .tk-stat-sub { font-size:11px; color:var(--text-3); margin-top:2px; }
+  .tk-absent-badge { display:inline-flex; align-items:center; gap:6px; background:#FEF2F2; border:1px solid #FECACA; color:#DC2626; font-size:12px; font-weight:700; padding:6px 14px; border-radius:20px; }
+  .tk-opportunity { background:linear-gradient(135deg,#F0FDF4,#ECFDF5); border:1px solid #BBF7D0; border-radius:12px; padding:20px 24px; margin-bottom:20px; }
+  .tk-comp-table { width:100%; border-collapse:collapse; font-size:13px; }
+  .tk-comp-table th { background:#F8FAFC; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:0.6px; color:var(--text-3); padding:10px 14px; text-align:left; border-bottom:2px solid var(--border); }
+  .tk-comp-table td { padding:10px 14px; border-bottom:1px solid var(--border); color:var(--text-2); vertical-align:middle; }
+  .tk-comp-table tr:hover td { background:#F8FAFC; }
+  .tk-price-tier { display:inline-block; padding:2px 10px; border-radius:12px; font-size:11px; font-weight:700; }
+  .tier-low { background:#FEF9C3; color:#854D0E; }
+  .tier-mid { background:#DBEAFE; color:#1E40AF; }
+  .tier-high { background:#F3E8FF; color:#6B21A8; }
+  .tier-absent { background:#FEF2F2; color:#991B1B; }
+
+  /* FADE IN */
+  .fade-in { opacity:0; transform:translateY(14px); transition:opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity:1; transform:none; }
+
+  /* DIVIDER */
+  .divider { height:1px; background:linear-gradient(90deg, transparent, var(--accent-border), transparent); }
+
+  /* FOOTER */
+  .footer { background:var(--bg-alt); border-top:1px solid var(--border); padding:36px 0; text-align:center; }
+  .footer-title { font-size:16px; font-weight:800; color:var(--accent); margin-bottom:10px; }
+  .footer-meta { font-size:12px; color:var(--text-3); line-height:2.2; }
+
+  /* TAG */
+  .seller-gb { display:inline-block; font-size:10px; background:#DBEAFE; color:#1E40AF; border:1px solid #BFDBFE; border-radius:10px; padding:1px 8px; font-weight:700; }
+  .seller-us { display:inline-block; font-size:10px; background:#F0FDF4; color:#166534; border:1px solid #BBF7D0; border-radius:10px; padding:1px 8px; font-weight:700; }
+  .seller-3p { display:inline-block; font-size:10px; background:#FEF2F2; color:#991B1B; border:1px solid #FECACA; border-radius:10px; padding:1px 8px; font-weight:700; }
+
+  /* Warning */
+  .warn-box { background:var(--gold-bg); border:1px solid var(--gold-border); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:14px 18px; margin-bottom:12px; font-size:13px; color:var(--text-2); line-height:1.7; }
+  .warn-box b { color:var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">CurrentBody · LED Mask</div>
+  <a href="#overview" class="nav-item">品牌全景</a>
+  <a href="#products" class="nav-item">产品线详情</a>
+  <a href="#table" class="nav-item">数据对比表</a>
+  <a href="#keywords" class="nav-item">关键词情报</a>
+  <a href="#strategy" class="nav-item">战略分析</a>
+  <a href="#tiktok" class="nav-item">TikTok</a>
+  <a href="#conclusion" class="nav-item">结论</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">Amazon US · 品牌调研报告 · 2026.04.08</div>
+    <h1>CurrentBody Skin<br><span>LED Therapy Mask</span> 产品线全分析</h1>
+    <p class="hero-sub">Sorftime MCP 实时数据 · 全产品线 7款 · 亚马逊 US 站 · Brand: The Beauty Tech Group Ltd (GB)</p>
+    <div class="hero-kpis">
+      <div class="hero-kpi">
+        <div class="hero-kpi-val">$469.99</div>
+        <div class="hero-kpi-label">旗舰款售价（S2）</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-val">$61万</div>
+        <div class="hero-kpi-label">旗舰款月销额</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-val">1,298</div>
+        <div class="hero-kpi-label">旗舰款月销量</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-val">★4.2</div>
+        <div class="hero-kpi-label">旗舰款评分</div>
+      </div>
+      <div class="hero-kpi">
+        <div class="hero-kpi-val">~$75万</div>
+        <div class="hero-kpi-label">品牌全线月销额</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: OVERVIEW -->
+<section id="overview" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">01</div>
+      <div>
+        <div class="section-title">品牌全景概览</div>
+        <div class="section-subtitle">Brand Overview · 7款产品 · 全线销售数据</div>
+        <div class="accent-line"></div>
+      </div>
+    </div>
+
+    <div class="warn-box fade-in">
+      <b>⚠️ 价格数据说明</b>：所有价格数据均直接来自 Sorftime MCP 实时抓取，未经人工估算。如有与亚马逊当前展示价格不符，以亚马逊实际页面为准。
+    </div>
+
+    <div class="stat-grid fade-in">
+      <div class="stat-card blue">
+        <div class="stat-val">$61.0万</div>
+        <div class="stat-label">S2旗舰款月销额</div>
+        <div class="stat-desc">B0DHRW819R · 占全线82%</div>
+      </div>
+      <div class="stat-card blue">
+        <div class="stat-val">1,298</div>
+        <div class="stat-label">S2月销量（件）</div>
+        <div class="stat-desc">上线18个月 · Masks类目TOP100</div>
+      </div>
+      <div class="stat-card gold">
+        <div class="stat-val">$469.99</div>
+        <div class="stat-label">S2旗舰定价</div>
+        <div class="stat-desc">高于市场均价5-6倍</div>
+      </div>
+      <div class="stat-card green">
+        <div class="stat-val">441</div>
+        <div class="stat-label">S2评论数</div>
+        <div class="stat-desc">★4.2 · 18个月内快速积累</div>
+      </div>
+      <div class="stat-card purple">
+        <div class="stat-val">236</div>
+        <div class="stat-label">S2 LED灯珠数</div>
+        <div class="stat-desc">3波长：633nm/830nm/1072nm</div>
+      </div>
+      <div class="stat-card red">
+        <div class="stat-val">#100</div>
+        <div class="stat-label">Facial Masks类目排名</div>
+        <div class="stat-desc">S2 · B&P Care总排12,584</div>
+      </div>
+    </div>
+
+    <div class="chart-row fade-in">
+      <div class="chart-card">
+        <div class="chart-title">▸ 各产品月销额对比（万美元）</div>
+        <div id="revenueChart" style="height:300px;"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">▸ 价格 vs 评分分布</div>
+        <div id="priceRatingChart" style="height:300px;"></div>
+      </div>
+    </div>
+
+    <div class="insight fade-in">
+      💡 <b>核心洞察</b>：CurrentBody Skin 在亚马逊 US 站的 LED Therapy Mask 产品线呈现极度头部集中态势——<b>S2旗舰款（B0DHRW819R）贡献全线约82%的月销额</b>，其余6款合计仅贡献约$13.8万。这是典型的"一炮打响"策略：集中资源把旗舰款做到极致，其余产品作为产品矩阵补充。
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 2: PRODUCT LINE DETAIL -->
+<section id="products" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">02</div>
+      <div>
+        <div class="section-title">产品线详细档案</div>
+        <div class="section-subtitle">Product Deep Dive · 逐款分析</div>
+        <div class="accent-line"></div>
+      </div>
+    </div>
+    <div class="product-grid fade-in">
+
+      <!-- S2 Face Mask - HERO -->
+      <div class="product-card hero-product">
+        <span class="prod-tag prod-tag-hero">🏆 HERO · Face Mask Series 2</span>
+        <div class="prod-price">$469.99</div>
+        <div class="prod-name">LED Light Therapy Mask: Series 2</div>
+        <div class="prod-asin">B0DHRW819R · 上架 2024-09-23 · 已上架562天</div>
+        <div class="prod-metrics">
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:var(--accent);">1,298</div>
+            <div class="prod-metric-label">月销量（件）</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:var(--accent);">$61.0万</div>
+            <div class="prod-metric-label">月销额</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:#F59E0B;">★4.2</div>
+            <div class="prod-metric-label">评分</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val">441</div>
+            <div class="prod-metric-label">评论数</div>
+          </div>
+        </div>
+        <div class="prod-specs">
+          <div class="prod-spec"><span class="prod-spec-key">配送</span><span class="prod-spec-val"><span class="badge badge-fba">FBA</span> · 费用 $8.02</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">卖家</span><span class="prod-spec-val">The Beauty Tech Group Ltd <span class="seller-gb">🇬🇧 GB</span></span></div>
+          <div class="prod-spec"><span class="prod-spec-key">分类排名</span><span class="prod-spec-val">Masks #100 · B&P Care #12,584</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">LED配置</span><span class="prod-spec-val"><b>236颗</b>灯珠，3波长：红633nm + 近红外830nm + 深近红外<b>1072nm</b>（新增）</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">材质</span><span class="prod-spec-val">柔性液态硅胶，人体工程学面形贴合</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">核心创新</span><span class="prod-spec-val">Veritace NFC 智能验证卡（每只面罩唯一性能数据）</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">重量</span><span class="prod-spec-val">1329g · 尺寸 26.5×24.3×13.8cm</span></div>
+        </div>
+      </div>
+
+      <!-- S1 Face Mask - DECLINING -->
+      <div class="product-card">
+        <span class="prod-tag prod-tag-declining">📉 淘汰中 · Face Mask Series 1</span>
+        <div class="prod-price">$255.00</div>
+        <div class="prod-name">LED Light Therapy Face Mask: Series 1</div>
+        <div class="prod-asin">B0CDX275Q2 · 上架 2023-08-07 · 已上架975天</div>
+        <div class="prod-metrics">
+          <div class="prod-metric">
+            <div class="prod-metric-val">165</div>
+            <div class="prod-metric-label">月销量（件）</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val">$4.2万</div>
+            <div class="prod-metric-label">月销额</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:var(--red);">★3.7</div>
+            <div class="prod-metric-label">评分（较低）</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val">130</div>
+            <div class="prod-metric-label">评论数</div>
+          </div>
+        </div>
+        <div class="prod-specs">
+          <div class="prod-spec"><span class="prod-spec-key">配送</span><span class="prod-spec-val"><span class="badge badge-fbm">FBM</span> · 三方卖家配送</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">卖家</span><span class="prod-spec-val"><b>thehappystore</b> <span class="seller-3p">🔴 第三方</span>（非品牌直营）</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">分类排名</span><span class="prod-spec-val">Masks #796 · B&P Care #75,450</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">LED配置</span><span class="prod-spec-val">132颗灯珠，2波长：红633nm + 近红外830nm（枕头技术均匀扩散）</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">重量</span><span class="prod-spec-val">948g · 尺寸 30.7×22.6×5.9cm</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">状态判断</span><span class="prod-spec-val" style="color:var(--red);">品牌已停止直营（FBM第三方代售），评分偏低，被S2替代</span></div>
+        </div>
+      </div>
+
+      <!-- S2 Neck Mask - NEW -->
+      <div class="product-card">
+        <span class="prod-tag prod-tag-new">🆕 新品 · Neck &amp; Décolletage S2</span>
+        <div class="prod-price">$419.99</div>
+        <div class="prod-name">LED Neck &amp; Décolletage Mask: Series 2</div>
+        <div class="prod-asin">B0F1VC887R · 上架 2025-03-24 · 已上架380天</div>
+        <div class="prod-metrics">
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:var(--purple);">211</div>
+            <div class="prod-metric-label">月销量（件）</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:var(--purple);">$8.86万</div>
+            <div class="prod-metric-label">月销额</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:#F59E0B;">★4.2</div>
+            <div class="prod-metric-label">评分</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val">39</div>
+            <div class="prod-metric-label">评论数</div>
+          </div>
+        </div>
+        <div class="prod-specs">
+          <div class="prod-spec"><span class="prod-spec-key">配送</span><span class="prod-spec-val"><span class="badge badge-fba">AmzFBA</span> · 费用 $7.68</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">卖家</span><span class="prod-spec-val">The Beauty Tech Group Ltd <span class="seller-gb">🇬🇧 GB</span></span></div>
+          <div class="prod-spec"><span class="prod-spec-key">分类排名</span><span class="prod-spec-val">Neck &amp; Décolleté <b>#60</b> · B&P Care #40,990</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">LED配置</span><span class="prod-spec-val">229颗灯珠，同S2三波长（633/830/1072nm）</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">临床声称</span><span class="prod-spec-val">颈纹减少30%（8周）/ 皮肤丰盈度提升57%（8周）/ 亮度提升27%</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">重量</span><span class="prod-spec-val">1388g · 尺寸 34.0×26.1×5.9cm（更大覆盖面积）</span></div>
+        </div>
+      </div>
+
+      <!-- 4-in-1 Mask -->
+      <div class="product-card">
+        <span class="prod-tag prod-tag-low">⚡ 试水款 · 4-in-1 LED Mask</span>
+        <div class="prod-price">$439.96</div>
+        <div class="prod-name">LED 4-in-1 Mask</div>
+        <div class="prod-asin">B0DLL516RQ · 上架 2024-10-31 · 已上架524天</div>
+        <div class="prod-metrics">
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:var(--text-3);">5</div>
+            <div class="prod-metric-label">月销量（件）</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:var(--text-3);">$0.22万</div>
+            <div class="prod-metric-label">月销额</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:#F59E0B;">★4.4</div>
+            <div class="prod-metric-label">评分</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:var(--text-3);">12</div>
+            <div class="prod-metric-label">评论数</div>
+          </div>
+        </div>
+        <div class="prod-specs">
+          <div class="prod-spec"><span class="prod-spec-key">配送</span><span class="prod-spec-val"><span class="badge badge-fbm">FBM</span> · 第三方配送</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">卖家</span><span class="prod-spec-val"><b>thehappystore</b> <span class="seller-3p">🔴 第三方</span></span></div>
+          <div class="prod-spec"><span class="prod-spec-key">分类排名</span><span class="prod-spec-val">Masks #5,349 · B&P Care #439,900</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">LED配置</span><span class="prod-spec-val">360颗灯珠，<b>5种波长</b>，分区面部映射（Zone Facial Mapping）</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">特色</span><span class="prod-spec-val">4合1治疗 + 专利枕头技术，双肩带更舒适</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">销量说明</span><span class="prod-spec-val" style="color:var(--text-3);">目前销量极低，非品牌主推，可能为早期试销</span></div>
+        </div>
+      </div>
+
+      <!-- Neck S1 -->
+      <div class="product-card">
+        <span class="prod-tag prod-tag-declining">📉 淘汰中 · Neck Mask Series 1</span>
+        <div class="prod-price">$339.99</div>
+        <div class="prod-name">LED Neck &amp; Décolletage Mask: Series 1</div>
+        <div class="prod-asin">B08B58FD14 · 上架 2023-07-16</div>
+        <div class="prod-metrics">
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:var(--text-3);">5</div>
+            <div class="prod-metric-label">月销量（件）</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:var(--text-3);">$0.17万</div>
+            <div class="prod-metric-label">月销额</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:#F59E0B;">★4.1</div>
+            <div class="prod-metric-label">评分</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:var(--text-3);">26</div>
+            <div class="prod-metric-label">评论数</div>
+          </div>
+        </div>
+        <div class="prod-specs">
+          <div class="prod-spec"><span class="prod-spec-key">配送</span><span class="prod-spec-val"><span class="badge badge-fbm">FBM</span> · 第三方配送</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">分类排名</span><span class="prod-spec-val">Masks #2,745 · B&P Care #231,774</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">状态</span><span class="prod-spec-val" style="color:var(--red);">被S2 Neck全面替代，已无实质销售</span></div>
+        </div>
+      </div>
+
+      <!-- Complete Kit -->
+      <div class="product-card">
+        <span class="prod-tag prod-tag-low">📦 组合款 · Complete LED Kit</span>
+        <div class="prod-price">$565.00</div>
+        <div class="prod-name">Complete LED Kit（面部+颈部套装）</div>
+        <div class="prod-asin">B08LDR3N3P · 上架 2023-09-21</div>
+        <div class="prod-metrics">
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:var(--text-3);">5</div>
+            <div class="prod-metric-label">月销量（件）</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:var(--text-3);">$0.28万</div>
+            <div class="prod-metric-label">月销额</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:var(--red);">★3.6</div>
+            <div class="prod-metric-label">评分（最低）</div>
+          </div>
+          <div class="prod-metric">
+            <div class="prod-metric-val" style="color:var(--text-3);">13</div>
+            <div class="prod-metric-label">评论数</div>
+          </div>
+        </div>
+        <div class="prod-specs">
+          <div class="prod-spec"><span class="prod-spec-key">包含</span><span class="prod-spec-val">LED Face Mask + LED Neck Mask（S1旧款组合）</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">分类排名</span><span class="prod-spec-val">Masks #8,182 · B&P Care #667,443</span></div>
+          <div class="prod-spec"><span class="prod-spec-key">状态</span><span class="prod-spec-val" style="color:var(--text-3);">旧款组合，已逐步被S2 Face+Neck Kit替代</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="insight insight-red fade-in" style="margin-top:24px;">
+      🚩 <b>渠道风险警告</b>：S1面罩、4-in-1面罩、S1颈罩、Complete Kit 均由 <b>thehappystore</b>（美国第三方卖家）以FBM方式销售，而非品牌直营。这意味着：①现有库存甩卖而非品牌授权；②这些产品的售后服务由第三方控制；③评分较低（3.6-3.7★）可能与此有关。只有 <b>S2面罩和S2颈罩</b> 是品牌直营（The Beauty Tech Group Ltd）。
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 3: DATA TABLE -->
+<section id="table" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">03</div>
+      <div>
+        <div class="section-title">产品线数据对比总表</div>
+        <div class="section-subtitle">全7款产品横向对比 · 按月销额降序</div>
+        <div class="accent-line"></div>
+      </div>
+    </div>
+    <div class="table-wrap fade-in">
+      <table>
+        <thead>
+          <tr>
+            <th>产品</th>
+            <th>ASIN</th>
+            <th>价格</th>
+            <th>月销量</th>
+            <th>月销额</th>
+            <th>评分</th>
+            <th>评论数</th>
+            <th>配送</th>
+            <th>卖家来源</th>
+            <th>上架时间</th>
+            <th>类目精排</th>
+            <th>状态</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hero-row">
+            <td><b>Face Mask Series 2</b></td>
+            <td style="font-family:monospace;font-size:11px;color:var(--accent);">B0DHRW819R</td>
+            <td style="font-weight:800;color:var(--accent);">$469.99</td>
+            <td style="font-weight:800;color:var(--green);">1,298</td>
+            <td style="font-weight:800;color:var(--accent);">$61.0万</td>
+            <td><span class="stars">★★★★</span> 4.2</td>
+            <td><b>441</b></td>
+            <td><span class="badge badge-fba">FBA</span></td>
+            <td><span class="seller-gb">🇬🇧 官方直营</span></td>
+            <td>2024-09</td>
+            <td>Masks #100</td>
+            <td style="color:var(--accent);font-weight:700;">🏆 主力</td>
+          </tr>
+          <tr>
+            <td>Neck S2</td>
+            <td style="font-family:monospace;font-size:11px;">B0F1VC887R</td>
+            <td style="color:var(--gold);font-weight:700;">$419.99</td>
+            <td>211</td>
+            <td>$8.86万</td>
+            <td><span class="stars">★★★★</span> 4.2</td>
+            <td>39</td>
+            <td><span class="badge badge-fba">AmzFBA</span></td>
+            <td><span class="seller-gb">🇬🇧 官方直营</span></td>
+            <td>2025-03</td>
+            <td>Neck #60</td>
+            <td style="color:var(--purple);font-weight:700;">🆕 成长</td>
+          </tr>
+          <tr>
+            <td>Face Mask Series 1</td>
+            <td style="font-family:monospace;font-size:11px;">B0CDX275Q2</td>
+            <td>$255.00</td>
+            <td>165</td>
+            <td>$4.2万</td>
+            <td><span class="stars">★★★</span> <span style="color:var(--red);">3.7</span></td>
+            <td>130</td>
+            <td><span class="badge badge-fbm">FBM</span></td>
+            <td><span class="seller-3p">🔴 第三方</span></td>
+            <td>2023-08</td>
+            <td>Masks #796</td>
+            <td style="color:var(--red);">📉 淘汰中</td>
+          </tr>
+          <tr>
+            <td>Complete LED Kit</td>
+            <td style="font-family:monospace;font-size:11px;">B08LDR3N3P</td>
+            <td>$565.00</td>
+            <td>5</td>
+            <td>$0.28万</td>
+            <td><span class="stars">★★★</span> <span style="color:var(--red);">3.6</span></td>
+            <td>13</td>
+            <td><span class="badge badge-fbm">FBM</span></td>
+            <td><span class="seller-3p">🔴 第三方</span></td>
+            <td>2023-09</td>
+            <td>Masks #8,182</td>
+            <td style="color:var(--text-3);">休眠</td>
+          </tr>
+          <tr>
+            <td>LED 4-in-1 Mask</td>
+            <td style="font-family:monospace;font-size:11px;">B0DLL516RQ</td>
+            <td>$439.96</td>
+            <td>5</td>
+            <td>$0.22万</td>
+            <td><span class="stars">★★★★</span> 4.4</td>
+            <td>12</td>
+            <td><span class="badge badge-fbm">FBM</span></td>
+            <td><span class="seller-3p">🔴 第三方</span></td>
+            <td>2024-10</td>
+            <td>Masks #5,349</td>
+            <td style="color:var(--text-3);">低活</td>
+          </tr>
+          <tr>
+            <td>Neck S1</td>
+            <td style="font-family:monospace;font-size:11px;">B08B58FD14</td>
+            <td>$339.99</td>
+            <td>5</td>
+            <td>$0.17万</td>
+            <td><span class="stars">★★★★</span> 4.1</td>
+            <td>26</td>
+            <td><span class="badge badge-fbm">FBM</span></td>
+            <td><span class="seller-3p">🔴 第三方</span></td>
+            <td>2023-07</td>
+            <td>Masks #2,745</td>
+            <td style="color:var(--red);">📉 淘汰</td>
+          </tr>
+          <tr>
+            <td>Face+Neck Kit S2</td>
+            <td style="font-family:monospace;font-size:11px;">B0FDGMGWK1</td>
+            <td>$756.48</td>
+            <td>0</td>
+            <td>—</td>
+            <td><span class="stars">★★★★</span> 4.2</td>
+            <td>3</td>
+            <td><span class="badge badge-fba">FBA</span></td>
+            <td><span class="seller-gb">🇬🇧 官方直营</span></td>
+            <td>—</td>
+            <td>—</td>
+            <td style="color:var(--text-3);">刚上线</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="chart-row fade-in" style="margin-top:24px;">
+      <div class="chart-card">
+        <div class="chart-title">▸ 月销额占比（全线）</div>
+        <div id="pieChart" style="height:280px;"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">▸ 价格梯度（全产品线）</div>
+        <div id="priceChart" style="height:280px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 4: KEYWORDS -->
+<section id="keywords" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">04</div>
+      <div>
+        <div class="section-title">S2旗舰款关键词情报</div>
+        <div class="section-subtitle">Traffic Keywords · B0DHRW819R · Sorftime 实时抓取</div>
+        <div class="accent-line"></div>
+      </div>
+    </div>
+    <div class="kw-grid fade-in">
+      <div class="kw-card">
+        <div class="kw-card-title">🔑 核心流量词（自然位第1页）</div>
+        <div class="kw-list">
+          <div class="kw-row brand-term">
+            <span class="kw-name">red light therapy for face</span>
+            <span class="kw-vol">433,183</span>
+            <span class="kw-cpc">$3.38</span>
+            <span class="kw-pos">P1 #32</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-name">led face mask light therapy</span>
+            <span class="kw-vol">66,234</span>
+            <span class="kw-cpc">$3.34</span>
+            <span class="kw-pos">P1 #17</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-name">led mask</span>
+            <span class="kw-vol">54,556</span>
+            <span class="kw-cpc">$1.56</span>
+            <span class="kw-pos">P1 #10</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-name">led</span>
+            <span class="kw-vol">92,848</span>
+            <span class="kw-cpc">$1.61</span>
+            <span class="kw-pos">P1 #20</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-name">red light therapy mask</span>
+            <span class="kw-vol">101,726</span>
+            <span class="kw-cpc">$3.47</span>
+            <span class="kw-pos">P1 #35</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-name">red light mask</span>
+            <span class="kw-vol">83,070</span>
+            <span class="kw-cpc">$3.21</span>
+            <span class="kw-pos">P1 #32</span>
+          </div>
+        </div>
+      </div>
+      <div class="kw-card">
+        <div class="kw-card-title">🎯 竞品品牌词（截流策略）</div>
+        <div class="kw-list">
+          <div class="kw-row competitor">
+            <span class="kw-name">omnilux red light therapy mask</span>
+            <span class="kw-vol">58,958</span>
+            <span class="kw-cpc">$3.21</span>
+            <span class="kw-pos">P1</span>
+          </div>
+          <div class="kw-row competitor">
+            <span class="kw-name">currentbody led face mask</span>
+            <span class="kw-vol">—</span>
+            <span class="kw-cpc">—</span>
+            <span class="kw-pos">自有品牌词</span>
+          </div>
+          <div class="kw-row competitor">
+            <span class="kw-name">currentbody skin</span>
+            <span class="kw-vol">—</span>
+            <span class="kw-cpc">—</span>
+            <span class="kw-pos">自有品牌词</span>
+          </div>
+        </div>
+        <div class="kw-card-title" style="margin-top:16px;">📊 宽泛流量词（第2页）</div>
+        <div class="kw-list">
+          <div class="kw-row">
+            <span class="kw-name">red light therapy for body</span>
+            <span class="kw-vol">295,982</span>
+            <span class="kw-cpc">$1.72</span>
+            <span class="kw-pos-p2">P2 #3</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-name">red light therapy</span>
+            <span class="kw-vol">229,881</span>
+            <span class="kw-cpc">$2.17</span>
+            <span class="kw-pos-p2">P2 #3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight fade-in">
+      💡 <b>关键词战略洞察</b>：CurrentBody S2 在搜索量最大的关键词 <b>「red light therapy for face」（月搜43.3万）</b>中排在第1页第32位，获得相当可观的自然曝光。更值得关注的是——它在竞争对手 <b>Omnilux 的品牌词（月搜5.9万）</b>下也有自然排名，说明品牌力已强到可以从竞品词中截流。CPC最高词 <b>「red light therapy mask」达$3.47</b>，整个品类的广告竞争极为激烈。
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 5: STRATEGY -->
+<section id="strategy" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">05</div>
+      <div>
+        <div class="section-title">品牌战略深度分析</div>
+        <div class="section-subtitle">Strategic Analysis · 定价策略 · 产品迭代 · 竞争壁垒</div>
+        <div class="accent-line"></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;" class="fade-in">
+
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);">💰 极致高价策略</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          S2旗舰款定价 <b style="color:var(--accent);">$469.99</b>，是同类LED面罩主流产品（$70-100）的<b style="color:var(--accent);">4.7倍</b>。即便如此，月销量仍达1298件、月销额$61万。这证明：在美容科技赛道，<b>品牌 + 临床背书 + 高端包装</b> 可以创造巨大的价格溢价空间，消费者愿意为"值得信赖的结果"付出高溢价。
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);">🔬 技术迭代护城河</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          S1→S2 核心升级：①LED灯珠从132颗增至<b>236颗</b>；②从2波长升至<b>3波长</b>（新增1072nm深近红外）；③从枕头技术升级为<b>液态硅胶贴合</b>；④新增 <b>Veritace NFC 验证卡</b>（每只面罩独一无二的性能数据）。这种硬件+软件+数据的组合护城河极难低价复制。
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--purple);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);">🎯 SKU策略：聚焦+扩展</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          品牌明显在<b>集中资源于S2面罩</b>（直营FBA）的同时，将S1旧款、4-in-1等产品交由第三方清库存。新增的 <b>S2颈罩（2025-03）</b>和<b>Face+Neck Kit S2</b>正在构建完整的"面颈护理解决方案"产品矩阵，价值主张从"单品"升级为"系统"。
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--green);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);">🏆 品牌壁垒</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          ① 英国品牌（The Beauty Tech Group Ltd，GB注册），在欧美消费者眼中具天然信任加成；② 在竞争对手品牌词「Omnilux」下获得自然排名，说明品牌认知度已足够高；③ 441条评论4.2★，在$400+价位段建立了坚实的社会证明；④ Veritace NFC技术让每台设备有唯一可验证的数据，是防山寨/仿冒的技术壁垒。
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--red);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);">⚠️ 潜在弱点</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          ① S1款评分仅3.7★，被第三方代售，品牌管控力弱；② S2评分4.2★在高价位段并不算高，差评内容待深挖；③ 完全依赖亚马逊单渠道，TikTok Shop US确认未入驻；④ 产品线旧款库存散落在第三方，损害品牌形象；⑤ Face+Neck Kit S2月销额为0，新组合款尚未起量。
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--text-1);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);">📈 对竞争者的启示</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          CurrentBody 证明了<b>$200-500价位的蓝海机会是真实存在的</b>。若能以：① 临床级认证背书；② 差异化波长技术；③ 质保可信度（18个月+即换新）；④ FSA认证降低决策门槛；切入$149-199段，是当前最具性价比的切入路径，既规避了$70-100红海，又比CurrentBody更具价格优势。
+        </div>
+      </div>
+    </div>
+
+    <div class="insight insight-gold fade-in">
+      🔑 <b>核心判断</b>：CurrentBody 的成功本质是 <b>「英国专业美容科技品牌叙事 × NFC智能验证技术护城河 × 精准的高净值消费者定位」</b>三者的共振。其在亚马逊的月销$61万旗舰款，证明了美容科技赛道的高价策略可行性——但复制的前提是<b>同等量级的品牌可信度</b>，这是最高的护城河。
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 6: TIKTOK -->
+<section id="tiktok" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">06</div>
+      <div>
+        <div class="section-title">TikTok Shop US · 市场格局与竞品分析</div>
+        <div class="section-subtitle">Sorftime MCP · tiktok_similar_product / tiktok_category_report · 2026-04-08</div>
+        <div class="accent-line"></div>
+      </div>
+    </div>
+
+    <!-- 核心结论：CurrentBody缺席 -->
+    <div class="tk-opportunity fade-in" style="margin-bottom:24px;">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+        <div style="font-size:28px;">🎯</div>
+        <div style="flex:1;">
+          <div style="font-size:15px;font-weight:800;color:#15803D;margin-bottom:4px;">CurrentBody 完全缺席 TikTok Shop US — 真实蓝海机会</div>
+          <div style="font-size:13px;color:#166534;line-height:1.7;">通过 <code style="background:rgba(0,0,0,0.06);padding:1px 6px;border-radius:4px;">tiktok_similar_product</code> 搜索"CurrentBody LED"、"CurrentBody Skin LED"均无该品牌任何产品上架记录。
+          Face Masks 类目月销 <b>15.96万件</b>、环比增长 <b>+31%</b>，$300+ 价位段几乎空白，品牌直营高端LED面罩赛道无人占位。</div>
+        </div>
+        <div class="tk-absent-badge">CurrentBody · TikTok Shop 未入驻</div>
+      </div>
+    </div>
+
+    <!-- 类目大盘数据 -->
+    <div class="fade-in">
+      <div style="font-size:12px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">📊 TikTok US · Face Masks 类目大盘（nodeId: 601616）</div>
+      <div class="tk-stat-grid">
+        <div class="tk-stat">
+          <div class="tk-stat-label">月销量</div>
+          <div class="tk-stat-value">15.96万</div>
+          <div class="tk-stat-sub">Top300产品合计</div>
+        </div>
+        <div class="tk-stat">
+          <div class="tk-stat-label">月销量环比</div>
+          <div class="tk-stat-value" style="color:#16A34A;">+31.06%</div>
+          <div class="tk-stat-sub">高速增长赛道</div>
+        </div>
+        <div class="tk-stat">
+          <div class="tk-stat-label">平均售价</div>
+          <div class="tk-stat-value">$22.26</div>
+          <div class="tk-stat-sub">中位数 $3.99（低价拉低）</div>
+        </div>
+        <div class="tk-stat">
+          <div class="tk-stat-label">平均评分</div>
+          <div class="tk-stat-value">4.55★</div>
+          <div class="tk-stat-sub">平均评论数 454条</div>
+        </div>
+        <div class="tk-stat">
+          <div class="tk-stat-label">Top10销量占比</div>
+          <div class="tk-stat-value">38.8%</div>
+          <div class="tk-stat-sub">Top10卖家占54.2%</div>
+        </div>
+        <div class="tk-stat">
+          <div class="tk-stat-label">近3月新品数</div>
+          <div class="tk-stat-value">29款</div>
+          <div class="tk-stat-sub">新品月销合计2.15万件</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LED面罩赛道竞品对比 -->
+    <div class="fade-in" style="margin-top:8px;">
+      <div style="font-size:12px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">🏆 TikTok US · LED Face Mask 竞品格局（搜索词: LED therapy mask）</div>
+      <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border);">
+        <table class="tk-comp-table">
+          <thead>
+            <tr>
+              <th>产品</th>
+              <th>品牌</th>
+              <th>售价</th>
+              <th>价位段</th>
+              <th>月销量</th>
+              <th>累计销量</th>
+              <th>评分</th>
+              <th>评论数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="max-width:220px;font-size:12px;font-weight:600;color:var(--text-1);">SHMHE 7 Color LED Light Face Mask<br><span style="font-weight:400;color:var(--text-3);">Seller: Timeleshop</span></td>
+              <td>Generic</td>
+              <td><b>$24.62</b></td>
+              <td><span class="tk-price-tier tier-low">低价段</span></td>
+              <td><b style="color:var(--green);">4,489</b></td>
+              <td>37,089</td>
+              <td>4.40★</td>
+              <td>3,047</td>
+            </tr>
+            <tr>
+              <td style="max-width:220px;font-size:12px;font-weight:600;color:var(--text-1);">Light Therapy Seven Color LED Mask<br><span style="font-weight:400;color:var(--text-3);">Seller: J&J-Bro</span></td>
+              <td>Generic</td>
+              <td><b>$19.02</b></td>
+              <td><span class="tk-price-tier tier-low">低价段</span></td>
+              <td><b>1,452</b></td>
+              <td>—</td>
+              <td>—</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td style="max-width:220px;font-size:12px;font-weight:600;color:var(--text-1);">INIA GLOW Wireless LED Face Mask<br><span style="font-weight:400;color:var(--text-3);">Seller: INIA BeautyCraft</span></td>
+              <td>INIA</td>
+              <td><b>$139.99</b></td>
+              <td><span class="tk-price-tier tier-mid">中价段</span></td>
+              <td><b>179</b></td>
+              <td>—</td>
+              <td>4.60★</td>
+              <td>327</td>
+            </tr>
+            <tr>
+              <td style="max-width:220px;font-size:12px;font-weight:600;color:var(--text-1);">ROMISA 288 LEDs Red Light Therapy Mask<br><span style="font-weight:400;color:var(--text-3);">Seller: Keenstar electric</span></td>
+              <td>ROMISA</td>
+              <td><b>$55.69</b></td>
+              <td><span class="tk-price-tier tier-low">低价段</span></td>
+              <td><b>166</b></td>
+              <td>—</td>
+              <td>4.60★</td>
+              <td>99</td>
+            </tr>
+            <tr>
+              <td style="max-width:220px;font-size:12px;font-weight:600;color:var(--text-1);">INIA GLOW 940nm 4D Face &amp; Neck Bundle<br><span style="font-weight:400;color:var(--text-3);">Seller: INIA BeautyCraft · 最接近CurrentBody定位</span></td>
+              <td>INIA</td>
+              <td><b>$324.99</b></td>
+              <td><span class="tk-price-tier tier-high">高价段</span></td>
+              <td><b>60</b></td>
+              <td>487</td>
+              <td>4.90★</td>
+              <td>29</td>
+            </tr>
+            <tr style="background:#FEF2F2;">
+              <td style="max-width:220px;font-size:12px;font-weight:600;color:#991B1B;">CurrentBody Skin LED Therapy Mask<br><span style="font-weight:400;color:#B91C1C;">（搜索无结果，确认未入驻）</span></td>
+              <td>CurrentBody</td>
+              <td>$469.99</td>
+              <td><span class="tk-price-tier tier-absent">未上架</span></td>
+              <td><b style="color:#DC2626;">0</b></td>
+              <td>0</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 带货达人生态 (SHMHE为例) -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px;" class="fade-in">
+      <div class="card" style="border-left:4px solid var(--purple);">
+        <div style="font-size:12px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">📣 带货达人生态（SHMHE为例·278位达人）</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.9;">
+          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);"><span>粉丝 &lt;5,000（腰部以下）</span><span style="font-weight:700;">110位</span></div>
+          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);"><span>粉丝 5,000–50,000（腰部）</span><span style="font-weight:700;">131位</span></div>
+          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);"><span>粉丝 50,000–100,000</span><span style="font-weight:700;">25位</span></div>
+          <div style="display:flex;justify-content:space-between;padding:4px 0;"><span>粉丝 &gt;100,000（头部）</span><span style="font-weight:700;">37位</span></div>
+          <div style="margin-top:10px;font-size:12px;color:var(--text-3);">腰部达人（1k–5w粉）占比 <b style="color:var(--purple);">85%+</b>，说明该品类以UGC驱动为主，不依赖头部明星带货</div>
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--green);">
+        <div style="font-size:12px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">💡 对CurrentBody/竞争者的机会启示</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          ① <b>$300+ 高价位段完全空白</b>：INIA月销仅60件，证明该价段已有消费者愿付，但几乎无专业品牌运营<br>
+          ② <b>UGC达人矩阵可复制</b>：低成本腰部达人（佣金制）是该品类主流打法<br>
+          ③ <b>Face Masks类目月增+31%</b>：行业红利期窗口尚未关闭<br>
+          ④ <b>CurrentBody先发优势可转化</b>：其Amazon流量词（red light therapy mask等）在TikTok侧也是高搜索词
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--gold);">
+        <div style="font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">⚠️ 市场风险提示</div>
+        <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+          ① <b>低价竞争激烈</b>：$10–35段月销量占类目约70%，白牌横行<br>
+          ② <b>高价段转化验证不足</b>：INIA $324.99累计销量仅487件，消费者教育成本高<br>
+          ③ <b>达人佣金率敏感</b>：高客单价下达人对佣金率要求更高（通常需要15–25%）<br>
+          ④ <b>类目名称差异</b>：TikTok将LED面罩归入"Face Masks"而非独立类目，竞争面更广
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 7: CONCLUSION -->
+<section id="conclusion" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">07</div>
+      <div>
+        <div class="section-title">调研结论与启示</div>
+        <div class="section-subtitle">Key Takeaways · 对选品决策的参考价值</div>
+        <div class="accent-line"></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;" class="fade-in">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--green);border-bottom:2px solid var(--green-border);padding-bottom:10px;margin-bottom:16px;">✅ CurrentBody 的成功因素</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);padding:10px;background:var(--green-bg);border-radius:8px;border:1px solid var(--green-border);">
+            <span style="flex-shrink:0;font-weight:700;color:var(--green);">①</span>
+            <span><b>英国专业美容科技品牌叙事</b>：消费者对欧美美容科技品牌有天然信任溢价，比中国品牌高出数倍</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);padding:10px;background:var(--green-bg);border-radius:8px;border:1px solid var(--green-border);">
+            <span style="flex-shrink:0;font-weight:700;color:var(--green);">②</span>
+            <span><b>Veritace NFC 技术护城河</b>：每只面罩独一无二的性能证明，是防山寨的硬核壁垒</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);padding:10px;background:var(--green-bg);border-radius:8px;border:1px solid var(--green-border);">
+            <span style="flex-shrink:0;font-weight:700;color:var(--green);">③</span>
+            <span><b>临床数据背书强大</b>：S2颈罩声称颈纹减少30%、丰盈度提升57%，量化效果数据建立信任</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);padding:10px;background:var(--green-bg);border-radius:8px;border:1px solid var(--green-border);">
+            <span style="flex-shrink:0;font-weight:700;color:var(--green);">④</span>
+            <span><b>直营FBA，品牌管控清晰</b>：S2系列全部由品牌直营，而旧款通过第三方清仓，清晰分离</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);padding:10px;background:var(--green-bg);border-radius:8px;border:1px solid var(--green-border);">
+            <span style="flex-shrink:0;font-weight:700;color:var(--green);">⑤</span>
+            <span><b>SEO流量强大</b>：在5个以上高搜索量词实现P1自然排名，包括截流Omnilux竞品词</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--accent);border-bottom:2px solid var(--accent-border);padding-bottom:10px;margin-bottom:16px;">🎯 对选品者的启示</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);padding:10px;background:var(--accent-bg);border-radius:8px;border:1px solid var(--accent-border);">
+            <span style="flex-shrink:0;font-weight:700;color:var(--accent);">A</span>
+            <span><b>$200-500段确有市场</b>：CurrentBody证明了高价格段需求真实存在，并非只有$70-100竞争</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);padding:10px;background:var(--accent-bg);border-radius:8px;border:1px solid var(--accent-border);">
+            <span style="flex-shrink:0;font-weight:700;color:var(--accent);">B</span>
+            <span><b>无法直接山寨CurrentBody</b>：NFC技术、品牌背书、临床数据三位一体，护城河极深</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);padding:10px;background:var(--accent-bg);border-radius:8px;border:1px solid var(--accent-border);">
+            <span style="flex-shrink:0;font-weight:700;color:var(--accent);">C</span>
+            <span><b>切入点：$89.99-149.99的"品质平价"档</b>：比CurrentBody低3-4倍价格，但质保/FSA/贴合解决竞品痛点</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);padding:10px;background:var(--accent-bg);border-radius:8px;border:1px solid var(--accent-border);">
+            <span style="flex-shrink:0;font-weight:700;color:var(--accent);">D</span>
+            <span><b>Omnilux品牌词可竞价截流</b>：CurrentBody自己都在做这件事，说明这批流量转化高</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-2);padding:10px;background:var(--accent-bg);border-radius:8px;border:1px solid var(--accent-border);">
+            <span style="flex-shrink:0;font-weight:700;color:var(--accent);">E</span>
+            <span><b>TikTok Shop是CurrentBody未入驻的真实蓝海</b>：Face Masks类目月销15.96万件、环比+31%，$300+价位段几乎无竞争，CurrentBody完全缺席</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight insight-gold fade-in" style="margin-top:24px;">
+      📊 <b>数据完整性说明</b>：本报告数据全部来自 Sorftime MCP 实时 API（2026-04-08）。TikTok 部分使用 <code style="background:rgba(0,0,0,0.06);padding:1px 6px;border-radius:4px;font-size:11px;">tiktok_similar_product</code> 和 <code style="background:rgba(0,0,0,0.06);padding:1px 6px;border-radius:4px;font-size:11px;">tiktok_category_report</code> 接口实时抓取。<b>product_reviews 和 product_trend 接口因服务器错误未能获取</b>，故报告不含评论详情和趋势曲线。Amazon 价格数据以 Sorftime 返回值为准，B0DHRW819R=$469.99 为实测值。
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-title">CurrentBody Skin LED Therapy Mask · 品牌调研报告</div>
+    <div class="footer-meta">
+      调研日期：2026年4月8日 &nbsp;|&nbsp; 数据来源：Sorftime MCP API &nbsp;|&nbsp; 品牌：The Beauty Tech Group Ltd (GB)<br>
+      产品线：7款（含Face Mask S1/S2、Neck Mask S1/S2、4-in-1、Complete Kit、Face+Neck Kit S2）<br>
+      📱 TikTok 数据由 Sorftime MCP 实时抓取（tiktok_similar_product / tiktok_category_report）&nbsp;|&nbsp; 价格数据由 Sorftime 实时抓取，未经人工估算
+    </div>
+  </div>
+</footer>
+
+<script>
+const TIP = { backgroundColor:'#fff', borderColor:'#E2E8F0', borderWidth:1, textStyle:{ color:'#0F172A', fontSize:13 }, extraCssText:'box-shadow:0 4px 12px rgba(0,0,0,0.08);border-radius:8px;' };
+const SPLIT = { lineStyle:{ color:'#F1F5F9' } };
+const AX = { color:'#94A3B8', fontSize:11 };
+
+// Revenue Chart
+const revenueChart = echarts.init(document.getElementById('revenueChart'));
+revenueChart.setOption({
+  backgroundColor:'transparent',
+  tooltip:{ ...TIP, trigger:'axis', formatter:(p)=>`${p[0].name}<br/>月销额: <b>$${p[0].value}万</b>` },
+  grid:{ left:10, right:20, top:20, bottom:60, containLabel:true },
+  xAxis:{ type:'category', data:['S2 Face\n($469.99)','Neck S2\n($419.99)','S1 Face\n($255)','Complete\nKit($565)','4-in-1\n($440)','Neck S1\n($340)','F+N Kit\nS2($756)'], axisLabel:{ color:'#64748B', fontSize:11 }, axisLine:{ lineStyle:{ color:'#F1F5F9' } }, axisTick:{ show:false } },
+  yAxis:{ type:'value', axisLabel:{ ...AX, formatter:'{value}万' }, splitLine:SPLIT },
+  series:[{
+    type:'bar',
+    data:[
+      { value:61.0, itemStyle:{ color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#3B82F6'},{offset:1,color:'#1A56DB'}]), borderRadius:[6,6,0,0] } },
+      { value:8.86, itemStyle:{ color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#A78BFA'},{offset:1,color:'#7C3AED'}]), borderRadius:[6,6,0,0] } },
+      { value:4.20, itemStyle:{ color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#FB923C'},{offset:1,color:'#EA580C'}]), borderRadius:[6,6,0,0] } },
+      { value:0.28, itemStyle:{ color:'#CBD5E1', borderRadius:[4,4,0,0] } },
+      { value:0.22, itemStyle:{ color:'#CBD5E1', borderRadius:[4,4,0,0] } },
+      { value:0.17, itemStyle:{ color:'#CBD5E1', borderRadius:[4,4,0,0] } },
+      { value:0,    itemStyle:{ color:'#E2E8F0', borderRadius:[4,4,0,0] } }
+    ],
+    label:{ show:true, position:'top', formatter:(p)=>p.value>0?`$${p.value}万`:'—', color:'#475569', fontSize:11, fontWeight:700 },
+    barMaxWidth:50
+  }]
+});
+
+// Price vs Rating
+const priceRatingChart = echarts.init(document.getElementById('priceRatingChart'));
+priceRatingChart.setOption({
+  backgroundColor:'transparent',
+  tooltip:{ ...TIP, trigger:'item', formatter:(p)=>`<b>${p.data.name}</b><br/>价格: $${p.data.value[0]}<br/>评分: ${p.data.value[1]}★<br/>月销量: ${p.data.value[2]}件` },
+  grid:{ left:20, right:20, top:20, bottom:40, containLabel:true },
+  xAxis:{ type:'value', name:'价格($)', axisLabel:{ ...AX, formatter:'${value}' }, splitLine:SPLIT },
+  yAxis:{ type:'value', name:'评分', min:3, max:5, axisLabel:AX, splitLine:SPLIT },
+  series:[{
+    type:'scatter',
+    data:[
+      { name:'S2 Face Mask', value:[469.99, 4.2, 1298], itemStyle:{ color:'#1A56DB' }, symbolSize:60 },
+      { name:'S2 Neck Mask', value:[419.99, 4.2, 211],  itemStyle:{ color:'#7C3AED' }, symbolSize:24 },
+      { name:'S1 Face Mask', value:[255.00, 3.7, 165],  itemStyle:{ color:'#EA580C' }, symbolSize:18 },
+      { name:'4-in-1 Mask',  value:[439.96, 4.4, 5],    itemStyle:{ color:'#16A34A' }, symbolSize:8 },
+      { name:'Neck S1',      value:[339.99, 4.1, 5],    itemStyle:{ color:'#94A3B8' }, symbolSize:8 },
+      { name:'Complete Kit', value:[565.00, 3.6, 5],    itemStyle:{ color:'#DC2626' }, symbolSize:8 },
+      { name:'F+N Kit S2',   value:[756.48, 4.2, 0],    itemStyle:{ color:'#0891B2' }, symbolSize:6 }
+    ],
+    label:{ show:true, formatter:(p)=>p.data.name.split(' ')[0], color:'#475569', fontSize:10, position:'top' }
+  }]
+});
+
+// Pie Chart
+const pieChart = echarts.init(document.getElementById('pieChart'));
+pieChart.setOption({
+  backgroundColor:'transparent',
+  tooltip:{ ...TIP, trigger:'item', formatter:'{b}: {c}万 ({d}%)' },
+  legend:{ bottom:0, textStyle:{ color:'#475569', fontSize:11 } },
+  series:[{
+    type:'pie', radius:['38%','68%'], center:['50%','46%'],
+    data:[
+      { value:61.0, name:'S2 Face', itemStyle:{ color:'#1A56DB' } },
+      { value:8.86, name:'S2 Neck', itemStyle:{ color:'#7C3AED' } },
+      { value:4.20, name:'S1 Face', itemStyle:{ color:'#FB923C' } },
+      { value:0.67, name:'其余4款', itemStyle:{ color:'#CBD5E1' } }
+    ],
+    label:{ color:'#475569', fontSize:11 },
+    itemStyle:{ borderColor:'#fff', borderWidth:2 }
+  }]
+});
+
+// Price Chart
+const priceChart = echarts.init(document.getElementById('priceChart'));
+priceChart.setOption({
+  backgroundColor:'transparent',
+  tooltip:{ ...TIP, trigger:'axis' },
+  grid:{ left:10, right:20, top:20, bottom:60, containLabel:true },
+  xAxis:{ type:'category', data:['S1 Face','Neck S1','S1+Neck\nKit','S2 Neck','4-in-1','S2 Face','F+N Kit\nS2'], axisLabel:{ color:'#64748B', fontSize:11 }, axisLine:{ lineStyle:{ color:'#F1F5F9' } }, axisTick:{ show:false } },
+  yAxis:{ type:'value', axisLabel:{ ...AX, formatter:'${value}' }, splitLine:SPLIT },
+  series:[{
+    type:'bar',
+    data:[
+      { value:255, itemStyle:{ color:'#FB923C', borderRadius:[4,4,0,0] } },
+      { value:339.99, itemStyle:{ color:'#94A3B8', borderRadius:[4,4,0,0] } },
+      { value:565, itemStyle:{ color:'#94A3B8', borderRadius:[4,4,0,0] } },
+      { value:419.99, itemStyle:{ color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#A78BFA'},{offset:1,color:'#7C3AED'}]), borderRadius:[4,4,0,0] } },
+      { value:439.96, itemStyle:{ color:'#CBD5E1', borderRadius:[4,4,0,0] } },
+      { value:469.99, itemStyle:{ color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#60A5FA'},{offset:1,color:'#1A56DB'}]), borderRadius:[6,6,0,0] } },
+      { value:756.48, itemStyle:{ color:'#0891B2', borderRadius:[4,4,0,0] } }
+    ],
+    label:{ show:true, position:'top', formatter:(p)=>`$${p.value}`, color:'#475569', fontSize:10, fontWeight:700 },
+    barMaxWidth:48
+  }]
+});
+
+// Scroll animation
+const obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold:0.08 });
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// Nav active state
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('.nav-item');
+window.addEventListener('scroll', ()=>{
+  let cur='';
+  sections.forEach(s=>{ if(window.scrollY>=s.offsetTop-120) cur=s.id; });
+  navItems.forEach(n=>{ n.classList.toggle('active', n.getAttribute('href')==='#'+cur); });
+});
+
+window.addEventListener('resize', ()=>{ [revenueChart,priceRatingChart,pieChart,priceChart].forEach(c=>c.resize()); });
+</script>
+</body>
+</html>

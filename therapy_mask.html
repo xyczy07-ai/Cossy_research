@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LED 光疗面罩 | 亚马逊品类全链路调研报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  :root {
+    --gold: #B8860B;
+    --gold-mid: #C9A020;
+    --gold-light: #E6B800;
+    --gold-bg: #FFFBEA;
+    --gold-border: #E8D080;
+    --red: #DC2626;
+    --red-bg: #FEF2F2;
+    --red-border: #FECACA;
+    --green: #16A34A;
+    --green-bg: #F0FDF4;
+    --green-border: #BBF7D0;
+    --blue: #2563EB;
+    --blue-bg: #EFF6FF;
+    --blue-border: #BFDBFE;
+    --bg: #FFFFFF;
+    --bg-alt: #F5F7FA;
+    --bg-card: #FFFFFF;
+    --border: #E4E7EC;
+    --border-strong: #D0D5DD;
+    --text-1: #111827;
+    --text-2: #4B5563;
+    --text-3: #9CA3AF;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text-1);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(155deg, #FFFDF5 0%, #FFF8DC 40%, #FFFEF7 100%);
+    border-bottom: 1px solid var(--gold-border);
+    padding: 80px 0 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184,134,11,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--gold-border);
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 18px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    background: rgba(184,134,11,0.06);
+    font-weight: 600;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 800;
+    color: var(--text-1);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .hero h1 span {
+    background: linear-gradient(135deg, #B8860B 0%, #D4A017 50%, #8B6400 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    color: var(--text-2);
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    margin-bottom: 40px;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-meta span {
+    color: var(--text-3);
+    font-size: 13px;
+  }
+  .hero-meta span b { color: var(--gold); font-weight: 700; }
+
+  /* ── VERDICT BANNER ── */
+  .verdict-banner {
+    background: var(--gold-bg);
+    border-top: 1px solid var(--gold-border);
+    border-bottom: 1px solid var(--gold-border);
+    padding: 28px 0;
+    text-align: center;
+  }
+  .verdict-score {
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    display: inline-block;
+  }
+  .verdict-score sup { font-size: 22px; color: var(--text-3); font-weight: 400; }
+  .verdict-label {
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: middle;
+    text-align: left;
+  }
+  .verdict-label .tag {
+    background: rgba(184,134,11,0.12);
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    padding: 6px 20px;
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .verdict-label p { color: var(--text-2); font-size: 13px; max-width: 480px; }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+  .section { padding: 72px 0; background: var(--bg); }
+  .section-alt { background: var(--bg-alt); }
+
+  .section-header {
+    margin-bottom: 48px;
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+  }
+  .section-number {
+    font-size: 72px;
+    font-weight: 900;
+    color: rgba(184,134,11,0.10);
+    line-height: 1;
+    letter-spacing: -4px;
+    flex-shrink: 0;
+    user-select: none;
+  }
+  .section-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-1);
+    margin-bottom: 6px;
+  }
+  .section-subtitle { color: var(--text-3); font-size: 14px; }
+  .gold-line {
+    width: 48px; height: 3px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+    border-radius: 2px;
+    margin-top: 10px;
+  }
+
+  /* ── STAT CARDS ── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.25s, border-color 0.25s;
+    box-shadow: var(--shadow-sm);
+  }
+  .stat-card:hover { box-shadow: var(--shadow-md); border-color: var(--gold-border); }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+    border-radius: 10px 10px 0 0;
+  }
+  .stat-value {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1.1;
+  }
+  .stat-label { color: var(--text-2); font-size: 12px; margin-top: 6px; font-weight: 600; letter-spacing: 0.3px; }
+  .stat-desc { color: var(--text-3); font-size: 11px; margin-top: 6px; }
+
+  /* ── COMPETITOR TABLE ── */
+  .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { background: linear-gradient(90deg, #FFFBEA 0%, #FFF8DC 100%); }
+  th {
+    padding: 13px 16px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    border-bottom: 1px solid var(--gold-border);
+    white-space: nowrap;
+  }
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  tbody tr:hover { background: #FAFAFA; }
+  tbody tr:last-child { border-bottom: none; }
+  td {
+    padding: 13px 16px;
+    font-size: 13px;
+    color: var(--text-1);
+    white-space: nowrap;
+  }
+  .rank-badge {
+    display: inline-flex;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  .rank-1 { background: linear-gradient(135deg, #D4A017 0%, #B8860B 100%); color: #fff; }
+  .rank-2 { background: linear-gradient(135deg, #B8B8B8 0%, #888 100%); color: #fff; }
+  .rank-3 { background: linear-gradient(135deg, #CD7F32 0%, #8B4513 100%); color: #fff; }
+  .rank-other { background: #F3F4F6; color: var(--text-3); border: 1px solid var(--border); }
+  .brand-name { font-weight: 700; color: var(--text-1); }
+  .asin-code { font-size: 11px; color: var(--text-3); font-family: 'Courier New', monospace; }
+  .price-tag { color: var(--gold); font-weight: 700; }
+  .lifecycle-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .lc-growth { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .lc-stable { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+  .lc-boom   { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-border); }
+  .lc-new    { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+  .stars { color: #F59E0B; font-size: 12px; }
+
+  /* ── SCORE RADAR ── */
+  .score-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  @media(max-width:768px){ .score-row { grid-template-columns: 1fr; } }
+  .score-list { display: flex; flex-direction: column; gap: 18px; padding-top: 8px; }
+  .score-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .score-item-name { font-size: 14px; color: var(--text-1); font-weight: 600; }
+  .score-item-val { font-size: 22px; font-weight: 900; color: var(--gold); }
+  .score-item-weight { font-size: 11px; color: var(--text-3); font-weight: 400; }
+  .score-bar-bg {
+    height: 7px;
+    background: #F3F4F6;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+  .score-basis { font-size: 11px; color: var(--text-3); margin-top: 4px; }
+
+  /* ── VOC ── */
+  .voc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .voc-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.25s;
+  }
+  .voc-card:hover { box-shadow: var(--shadow-md); }
+  .voc-card.danger { border-color: var(--red-border); }
+  .voc-card.danger::before { content:''; position:absolute; top:0;left:0;right:0;height:3px; background: var(--red); }
+  .voc-card.warning { border-color: var(--gold-border); }
+  .voc-card.warning::before { content:''; position:absolute; top:0;left:0;right:0;height:3px; background: var(--gold); }
+  .voc-card.info { border-color: var(--blue-border); }
+  .voc-card.info::before { content:''; position:absolute; top:0;left:0;right:0;height:3px; background: var(--blue); }
+  .voc-percent {
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .voc-card.danger .voc-percent { color: var(--red); }
+  .voc-card.warning .voc-percent { color: var(--gold); }
+  .voc-card.info .voc-percent { color: var(--blue); }
+  .voc-name { font-size: 14px; font-weight: 700; color: var(--text-1); margin-bottom: 8px; }
+  .voc-pain { font-size: 12px; color: var(--text-2); margin-bottom: 12px; line-height: 1.6; }
+  .voc-solution { font-size: 11px; color: var(--text-3); padding-top: 12px; border-top: 1px solid var(--border); line-height: 1.7; }
+  .voc-solution b { color: var(--green); }
+  .voc-brands { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+  .brand-pill {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #F3F4F6;
+    color: var(--text-2);
+    border: 1px solid var(--border);
+    font-weight: 500;
+  }
+
+  /* ── KEYWORDS ── */
+  .kw-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .kw-section-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .kw-section-title {
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--border);
+  }
+  .kw-list { display: flex; flex-direction: column; gap: 6px; }
+  .kw-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 12px;
+    background: var(--bg-alt);
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .kw-item:hover { border-color: var(--border); background: #fff; }
+  .kw-name { flex: 1; font-size: 12px; color: var(--text-1); font-weight: 500; }
+  .kw-vol { font-size: 12px; color: var(--gold); font-weight: 700; white-space: nowrap; }
+  .kw-cpc { font-size: 11px; color: var(--text-3); white-space: nowrap; }
+
+  /* ── PRODUCT MATRIX ── */
+  .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 24px; }
+  .tier-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.25s;
+  }
+  .tier-card:hover { box-shadow: var(--shadow-md); }
+  .tier-card.featured {
+    border-color: var(--gold-border);
+    background: linear-gradient(160deg, #FFFDF5 0%, #FFFFFF 100%);
+    box-shadow: 0 4px 20px rgba(184,134,11,0.12);
+  }
+  .tier-card.featured::before {
+    content:'';
+    position:absolute; top:0;left:0;right:0;height:4px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+  }
+  .tier-badge {
+    display: inline-block;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 3px 12px; border-radius: 12px; margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .tier-1-badge { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-border); }
+  .tier-2-badge { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+  .tier-price {
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .tier-name { font-size: 18px; font-weight: 700; color: var(--text-1); margin-bottom: 8px; }
+  .tier-tagline { font-size: 13px; color: var(--text-2); margin-bottom: 24px; line-height: 1.6; }
+  .spec-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+  .spec-item {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 10px 12px;
+    background: var(--bg-alt);
+    border-radius: 6px;
+    border-left: 3px solid var(--gold-border);
+  }
+  .spec-key { font-size: 11px; color: var(--text-3); font-weight: 600; padding-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .spec-val { font-size: 12px; color: var(--text-1); line-height: 1.6; }
+  .tier-potential {
+    padding: 14px 16px;
+    background: var(--green-bg);
+    border: 1px solid var(--green-border);
+    border-radius: 8px;
+  }
+  .tier-potential span { font-size: 12px; color: var(--green); }
+  .tier-potential b { font-size: 18px; font-weight: 800; color: var(--green); }
+
+  /* ── OPPORTUNITY MATRIX ── */
+  .matrix-wrap {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+  .matrix-table { width: 100%; border-collapse: collapse; }
+  .matrix-table th {
+    background: var(--gold-bg);
+    padding: 12px 16px;
+    font-size: 12px;
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold-border);
+    border-right: 1px solid var(--border);
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .matrix-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-2);
+  }
+  .matrix-table tr:last-child td { border-bottom: none; }
+  .matrix-table td:first-child { text-align: left; font-weight: 600; color: var(--text-1); }
+  .cell-empty { color: var(--text-3); }
+  .cell-redocean {
+    background: var(--red-bg);
+    color: var(--red);
+    font-weight: 700;
+    border-radius: 4px;
+  }
+  .cell-opportunity {
+    background: var(--green-bg);
+    color: var(--green);
+    font-weight: 700;
+    border: 1px solid var(--green-border) !important;
+    border-radius: 4px;
+  }
+  .cell-normal { color: var(--text-2); font-weight: 500; }
+
+  /* ── BARRIERS ── */
+  .barrier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .barrier-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.25s;
+  }
+  .barrier-card:hover { box-shadow: var(--shadow-md); }
+  .barrier-level {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    padding: 3px 12px; border-radius: 12px;
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
+  }
+  .bl-low { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .bl-mid { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-border); }
+  .bl-high { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+  .barrier-type { font-size: 14px; font-weight: 700; color: var(--text-1); margin-bottom: 8px; }
+  .barrier-data { font-size: 12px; color: var(--text-2); margin-bottom: 10px; line-height: 1.6; }
+  .barrier-cost { font-size: 11px; color: var(--text-3); padding: 8px 10px; background: var(--bg-alt); border-radius: 6px; line-height: 1.6; }
+
+  /* ── WARNINGS ── */
+  .warning-box {
+    background: var(--red-bg);
+    border: 1px solid var(--red-border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .warning-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .warning-title { font-size: 14px; font-weight: 700; color: var(--red); margin-bottom: 5px; }
+  .warning-text { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+  /* ── ROADMAP ── */
+  .roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  @media(max-width:768px){ .roadmap { grid-template-columns: 1fr; } }
+  .roadmap-phase {
+    padding: 28px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    position: relative;
+  }
+  .roadmap-phase:first-child { border-radius: 10px 0 0 10px; border-right: none; }
+  .roadmap-phase:last-child { border-radius: 0 10px 10px 0; }
+  .roadmap-phase:nth-child(2) { border-right: none; }
+  .roadmap-phase::after {
+    content: '→';
+    position: absolute;
+    right: -14px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold-border);
+    font-size: 20px;
+    z-index: 1;
+    font-weight: 700;
+  }
+  .roadmap-phase:last-child::after { display: none; }
+  .phase-label {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; margin-bottom: 8px;
+  }
+  .phase-title { font-size: 16px; font-weight: 700; color: var(--text-1); margin-bottom: 16px; }
+  .phase-items { display: flex; flex-direction: column; gap: 8px; }
+  .phase-item {
+    display: flex; gap: 8px; align-items: flex-start;
+    font-size: 12px; color: var(--text-2); line-height: 1.5;
+  }
+  .phase-item::before { content: '◆'; color: var(--gold-border); font-size: 8px; margin-top: 5px; flex-shrink: 0; }
+  .phase-target {
+    margin-top: 16px;
+    padding: 10px 12px;
+    background: var(--gold-bg);
+    border-radius: 6px;
+    border: 1px solid var(--gold-border);
+    font-size: 12px; color: var(--gold); font-weight: 600;
+  }
+
+  /* ── GO/NOGO ── */
+  .conditions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media(max-width:600px){ .conditions-grid { grid-template-columns: 1fr; } }
+  .conditions-card {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+  .conditions-card.go-card { border-color: var(--green-border); background: var(--green-bg); }
+  .conditions-card.nogo-card { border-color: var(--red-border); background: var(--red-bg); }
+  .conditions-title {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
+    margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+  }
+  .go-card .conditions-title { color: var(--green); border-bottom-color: var(--green-border); }
+  .nogo-card .conditions-title { color: var(--red); border-bottom-color: var(--red-border); }
+  .condition-item {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 13px; color: var(--text-2);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    line-height: 1.5;
+  }
+  .condition-item:last-child { border-bottom: none; }
+  .ci-icon { flex-shrink: 0; font-size: 14px; margin-top: 2px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    text-align: center;
+  }
+  .footer-logo {
+    font-size: 18px; font-weight: 800; color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .footer-info { font-size: 12px; color: var(--text-3); line-height: 2.2; }
+
+  /* ── CHARTS ── */
+  .chart-container { height: 320px; width: 100%; }
+  .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media(max-width:900px){ .chart-row { grid-template-columns: 1fr; } }
+  .chart-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .chart-title { font-size: 13px; color: var(--text-2); margin-bottom: 16px; font-weight: 600; }
+
+  /* ── SCROLL ANIMATION ── */
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* ── NAV ── */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    padding: 0 32px;
+    display: flex; align-items: center;
+    overflow-x: auto;
+  }
+  .nav-item {
+    padding: 16px 18px;
+    font-size: 12px; letter-spacing: 0.3px;
+    color: var(--text-3);
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2.5px solid transparent;
+    transition: all 0.2s;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .nav-item:hover { color: var(--gold); }
+  .nav-item.active { color: var(--gold); border-bottom-color: var(--gold); font-weight: 700; }
+
+  /* ── DIVIDER ── */
+  .gold-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
+    margin: 0;
+  }
+
+  .insight-box {
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-border);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.8;
+  }
+  .insight-box b { color: var(--gold); }
+
+  /* ── SCORE TOTAL CARD ── */
+  .score-total-card {
+    margin-top: 20px;
+    padding: 18px 20px;
+    background: var(--gold-bg);
+    border: 1.5px solid var(--gold-border);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .score-total-label { color: var(--text-2); font-size: 14px; font-weight: 600; }
+  .score-total-val { font-size: 40px; font-weight: 900; color: var(--gold); line-height: 1; }
+  .score-total-val span { font-size: 16px; color: var(--text-3); font-weight: 400; }
+  .score-total-verdict { margin-top: 6px; font-size: 12px; color: var(--text-3); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#market" class="nav-item">市场全景</a>
+  <a href="#competitors" class="nav-item">竞品矩阵</a>
+  <a href="#keywords" class="nav-item">关键词情报</a>
+  <a href="#voc" class="nav-item">用户声音VOC</a>
+  <a href="#opportunity" class="nav-item">机会矩阵</a>
+  <a href="#barriers" class="nav-item">进入壁垒</a>
+  <a href="#decision" class="nav-item">选品决策</a>
+  <a href="#product" class="nav-item">产品规划</a>
+  <a href="#roadmap" class="nav-item">执行路线</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">Amazon US · 全链路品类调研报告</div>
+    <h1><span>LED 光疗面罩</span><br>深度选品分析</h1>
+    <p class="hero-sub">LED Light Therapy Face Mask · Amazon United States · 2026.03.27</p>
+    <div class="hero-meta">
+      <span>数据来源 <b>Sorftime MCP</b></span>
+      <span>竞品分析 <b>TOP 5 ASIN</b></span>
+      <span>关键词库 <b>746 个</b></span>
+      <span>差评样本 <b>89 条</b></span>
+      <span>研究周期 <b>全链路五步</b></span>
+    </div>
+  </div>
+</div>
+
+<!-- VERDICT -->
+<div class="verdict-banner">
+  <div class="container" style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;">
+    <div>
+      <span class="verdict-score">7.03<sup>/10</sup></span>
+    </div>
+    <div class="verdict-label">
+      <span class="tag">🟡 谨慎进入</span>
+      <p>市场规模大、增长快，利润空间充足。核心挑战是$70-100段竞争拥挤，需以「质保+FSA认证+可调节贴合」差异化定位方可突破</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 1: MARKET ══════ -->
+<section id="market" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">01</div>
+      <div class="section-title-wrap">
+        <div class="section-title">市场全景</div>
+        <div class="section-subtitle">Market Overview · 基于 Sorftime MCP 产品搜索数据</div>
+        <div class="gold-line"></div>
+      </div>
+    </div>
+    <div class="stat-grid fade-in">
+      <div class="stat-card">
+        <div class="stat-value">$770万</div>
+        <div class="stat-label">估算月市场规模</div>
+        <div class="stat-desc">NVBOTY $215.99修正后重估，全市场外推</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">7,185</div>
+        <div class="stat-label">TOP1月销量（件）</div>
+        <div class="stat-desc">NVBOTY · 上线仅16个月</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">$82</div>
+        <div class="stat-label">中端均价</div>
+        <div class="stat-desc">剔除Shark $349高端异常值</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">2,518</div>
+        <div class="stat-label">最快新品月销（件）</div>
+        <div class="stat-desc">XSSNVV 仅95条评论即达此量级</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">65–75%</div>
+        <div class="stat-label">毛利率估算</div>
+        <div class="stat-desc">COGS约$18-28，定价$70-100</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">$100–200</div>
+        <div class="stat-label">最大机会价格段</div>
+        <div class="stat-desc">当前销量占比 0%，显著空白区间</div>
+      </div>
+    </div>
+    <div class="chart-row fade-in">
+      <div class="chart-card">
+        <div class="chart-title">▸ 价格区间销量分布</div>
+        <div id="priceChart" class="chart-container"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">▸ TOP5 月销额对比（万美元）</div>
+        <div id="revenueChart" class="chart-container"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════ SECTION 2: COMPETITORS ══════ -->
+<section id="competitors" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">02</div>
+      <div class="section-title-wrap">
+        <div class="section-title">竞品矩阵</div>
+        <div class="section-subtitle">TOP 5 Competitor Analysis · 全维度穿透</div>
+        <div class="gold-line"></div>
+      </div>
+    </div>
+    <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:14px 20px;margin-bottom:18px;font-size:13px;line-height:1.7;" class="fade-in">
+      <span style="color:#DC2626;font-weight:700;">⚠️ 数据质量备注</span>
+      <span style="color:#4B5563;margin-left:8px;">B0DGTFQNKJ（NVBOTY）：Sorftime <code style="background:#F3F4F6;padding:1px 6px;border-radius:4px;font-size:11px;color:#374151;border:1px solid #E5E7EB;">product_detail</code> 返回价格 <b style="color:#DC2626;">0.00</b>（采集失败，原因可能为多变体定价未解析或抓取时刻临时下架）。报告中已按<b style="color:#B8860B;">用户核实价格 $215.99</b> 修正，月销额同步从 $50.3万 修正为 $155.2万。其余4款产品价格由 Sorftime 正常返回，数据可信。</span>
+    </div>
+    <div class="table-wrap fade-in">
+      <table>
+        <thead>
+          <tr>
+            <th>排名</th>
+            <th>品牌 / ASIN</th>
+            <th>价格</th>
+            <th>月销量</th>
+            <th>月销额</th>
+            <th>评论数</th>
+            <th>评分</th>
+            <th>卖家</th>
+            <th>生命周期</th>
+            <th>核心痛点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rank-badge rank-1">1</span></td>
+            <td><div class="brand-name">NVBOTY</div><div class="asin-code">B0DGTFQNKJ</div></td>
+            <td class="price-tag" title="⚠️ Sorftime返回0.00（采集失败），价格来自用户核实">$215.99 ⚠️</td>
+            <td style="color:#16A34A;font-weight:700;">7,185</td>
+            <td style="font-weight:600;">$155.2万</td>
+            <td>705</td>
+            <td><span class="stars">★★★★★</span> 4.6</td>
+            <td>中国</td>
+            <td><span class="lifecycle-badge lc-growth">新品增长期</span></td>
+            <td style="font-size:11px;color:#DC2626;font-weight:600;">充电失效55%</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-2">2</span></td>
+            <td><div class="brand-name">INIA</div><div class="asin-code">B0F18BBHCC</div></td>
+            <td class="price-tag">$76.49</td>
+            <td style="color:#16A34A;font-weight:700;">5,239</td>
+            <td>$40.1万</td>
+            <td>682</td>
+            <td><span class="stars">★★★★★</span> 4.5</td>
+            <td>香港</td>
+            <td><span class="lifecycle-badge lc-stable">成长稳定期</span></td>
+            <td style="font-size:11px;color:#DC2626;font-weight:600;">贴合差43%</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-3">3</span></td>
+            <td><div class="brand-name">INTEO</div><div class="asin-code">B0FCMLZG9X</div></td>
+            <td class="price-tag">$93.49</td>
+            <td>3,033</td>
+            <td>$28.4万</td>
+            <td>629</td>
+            <td><span class="stars">★★★★★</span> 4.6</td>
+            <td>中国</td>
+            <td><span class="lifecycle-badge lc-stable">成长波动期</span></td>
+            <td style="font-size:11px;color:var(--text-3);">客服响应慢</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">4</span></td>
+            <td><div class="brand-name">Shark</div><div class="asin-code">B0DSGJCS47</div></td>
+            <td class="price-tag" style="font-size:15px;">$349</td>
+            <td>2,853</td>
+            <td style="color:#B8860B;font-weight:700;">$99.6万</td>
+            <td>722</td>
+            <td><span class="stars">★★★★★</span> 4.5</td>
+            <td>Amazon自营</td>
+            <td><span class="lifecycle-badge lc-boom">品牌旺季后稳定</span></td>
+            <td style="font-size:11px;color:var(--text-3);">高价效比争议</td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge rank-other">5</span></td>
+            <td><div class="brand-name">XSSNVV</div><div class="asin-code">B0FY5DNY9D</div></td>
+            <td class="price-tag">$93.99</td>
+            <td>2,518</td>
+            <td>$23.6万</td>
+            <td style="color:#DC2626;font-weight:700;">95</td>
+            <td><span class="stars">★★★★★</span> 4.5</td>
+            <td>中国</td>
+            <td><span class="lifecycle-badge lc-new">超新品爆发</span></td>
+            <td style="font-size:11px;color:var(--text-3);">数据尚少</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-box fade-in">
+      💡 <b>核心洞察</b>：XSSNVV 仅 95 条评论即达 2518/月，证明市场对新品吸收能力极强，<b>高评论数不是入场前提</b>。Shark $349 月销额$99.6万验证了<b>高端溢价天花板极高</b>，差异化路线长期可行。
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════ SECTION 3: KEYWORDS ══════ -->
+<section id="keywords" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">03</div>
+      <div class="section-title-wrap">
+        <div class="section-title">关键词情报</div>
+        <div class="section-subtitle">Keyword Intelligence · 746词 · LLM 8维分类</div>
+        <div class="gold-line"></div>
+      </div>
+    </div>
+    <div class="stat-grid fade-in" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));">
+      <div class="stat-card">
+        <div class="stat-value">536</div>
+        <div class="stat-label">LLM分类词总数</div>
+        <div class="stat-desc">746词去重后有效词库</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">110</div>
+        <div class="stat-label">核心产品词（CORE）</div>
+        <div class="stat-desc">均搜索量 22,199/月</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">418K</div>
+        <div class="stat-label">最大流量词月搜索</div>
+        <div class="stat-desc">red light therapy for face</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">72</div>
+        <div class="stat-label">否定词数量</div>
+        <div class="stat-desc">全身/牙齿/头皮/激光类必须否定</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">165</div>
+        <div class="stat-label">品牌竞品词</div>
+        <div class="stat-desc">月搜索合计 68.8万，拦截机会大</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">$3.47</div>
+        <div class="stat-label">精准词最高CPC</div>
+        <div class="stat-desc">red light therapy mask</div>
+      </div>
+    </div>
+    <div class="kw-grid fade-in">
+      <div class="kw-section-card">
+        <div class="kw-section-title">🔑 核心必投词 TOP 8</div>
+        <div class="kw-list">
+          <div class="kw-item"><span class="kw-name">red light therapy for face</span><span class="kw-vol">418,638</span><span class="kw-cpc">$3.38</span></div>
+          <div class="kw-item"><span class="kw-name">red light therapy mask</span><span class="kw-vol">102,273</span><span class="kw-cpc">$3.47</span></div>
+          <div class="kw-item"><span class="kw-name">led face mask light therapy</span><span class="kw-vol">67,974</span><span class="kw-cpc">$3.34</span></div>
+          <div class="kw-item"><span class="kw-name">red light mask</span><span class="kw-vol">80,676</span><span class="kw-cpc">$3.21</span></div>
+          <div class="kw-item"><span class="kw-name">red light therapy</span><span class="kw-vol">222,733</span><span class="kw-cpc">$2.17</span></div>
+          <div class="kw-item"><span class="kw-name">led face mask</span><span class="kw-vol">52,605</span><span class="kw-cpc">$1.56</span></div>
+          <div class="kw-item"><span class="kw-name">light therapy mask</span><span class="kw-vol">35,000</span><span class="kw-cpc">$2.90</span></div>
+          <div class="kw-item"><span class="kw-name">wireless led face mask</span><span class="kw-vol">28,000</span><span class="kw-cpc">$2.65</span></div>
+        </div>
+      </div>
+      <div class="kw-section-card">
+        <div class="kw-section-title">💎 差异化优势词（FSA/FDA）</div>
+        <div class="kw-list">
+          <div class="kw-item"><span class="kw-name">fda approved red light therapy</span><span class="kw-vol">~35,000</span><span class="kw-cpc">$2.85</span></div>
+          <div class="kw-item"><span class="kw-name">fsa red light therapy mask</span><span class="kw-vol">~18,000</span><span class="kw-cpc">$2.10</span></div>
+          <div class="kw-item"><span class="kw-name">fsa red light therapy</span><span class="kw-vol">~12,000</span><span class="kw-cpc">$2.10</span></div>
+          <div class="kw-item"><span class="kw-name">hsa red light therapy mask</span><span class="kw-vol">~8,000</span><span class="kw-cpc">$1.95</span></div>
+          <div class="kw-item"><span class="kw-name">medical grade red light therapy</span><span class="kw-vol">~7,500</span><span class="kw-cpc">$3.20</span></div>
+          <div class="kw-item"><span class="kw-name">850nm red light therapy</span><span class="kw-vol">~6,200</span><span class="kw-cpc">$2.40</span></div>
+          <div class="kw-item"><span class="kw-name">fda cleared red light therapy mask</span><span class="kw-vol">~4,500</span><span class="kw-cpc">$2.75</span></div>
+          <div class="kw-item"><span class="kw-name">cordless red light therapy</span><span class="kw-vol">~3,800</span><span class="kw-cpc">$2.20</span></div>
+        </div>
+      </div>
+      <div class="kw-section-card">
+        <div class="kw-section-title">🚫 必须否定词 TOP 10</div>
+        <div class="kw-list">
+          <div class="kw-item" style="border-left:3px solid #DC2626;background:#FEF2F2;"><span class="kw-name" style="color:#DC2626;font-weight:600;">red light therapy for body</span><span class="kw-vol" style="color:#DC2626;">292,759</span></div>
+          <div class="kw-item" style="border-left:3px solid #FECACA;"><span class="kw-name" style="color:var(--text-2);">red light therapy hat / cap</span><span class="kw-vol" style="color:var(--text-3);">—</span></div>
+          <div class="kw-item" style="border-left:3px solid #FECACA;"><span class="kw-name" style="color:var(--text-2);">red light therapy for scalp</span><span class="kw-vol" style="color:var(--text-3);">—</span></div>
+          <div class="kw-item" style="border-left:3px solid #FECACA;"><span class="kw-name" style="color:var(--text-2);">red light therapy for gums</span><span class="kw-vol" style="color:var(--text-3);">—</span></div>
+          <div class="kw-item" style="border-left:3px solid #FECACA;"><span class="kw-name" style="color:var(--text-2);">red light therapy for eyes</span><span class="kw-vol" style="color:var(--text-3);">—</span></div>
+          <div class="kw-item" style="border-left:3px solid #FECACA;"><span class="kw-name" style="color:var(--text-2);">laser mask / laser face mask</span><span class="kw-vol" style="color:var(--text-3);">—</span></div>
+          <div class="kw-item" style="border-left:3px solid #FECACA;"><span class="kw-name" style="color:var(--text-2);">blue contacts for eyes</span><span class="kw-vol" style="color:var(--text-3);">—</span></div>
+          <div class="kw-item" style="border-left:3px solid #FECACA;"><span class="kw-name" style="color:var(--text-2);">face fat / face fat reducer</span><span class="kw-vol" style="color:var(--text-3);">—</span></div>
+          <div class="kw-item" style="border-left:3px solid #FECACA;"><span class="kw-name" style="color:var(--text-2);">mask with voice changer</span><span class="kw-vol" style="color:var(--text-3);">—</span></div>
+          <div class="kw-item" style="border-left:3px solid #FECACA;"><span class="kw-name" style="color:var(--text-2);">red light therapy helmet</span><span class="kw-vol" style="color:var(--text-3);">—</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-row fade-in" style="margin-top:24px;">
+      <div class="chart-card">
+        <div class="chart-title">▸ 关键词分类分布（按词数）</div>
+        <div id="kwCatChart" class="chart-container"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">▸ 分类搜索量对比（月均）</div>
+        <div id="kwVolChart" class="chart-container"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════ SECTION 4: VOC ══════ -->
+<section id="voc" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">04</div>
+      <div class="section-title-wrap">
+        <div class="section-title">用户声音 VOC 分析</div>
+        <div class="section-subtitle">Voice of Customer · 89条差评 · 6维痛点框架</div>
+        <div class="gold-line"></div>
+      </div>
+    </div>
+
+    <div class="fade-in">
+      <div class="warning-box">
+        <div class="warning-icon">🔴</div>
+        <div>
+          <div class="warning-title">安全警示 #1：深色肌肤灼伤 / 色素沉着（极高风险）</div>
+          <div class="warning-text">至少3名深色肤色用户（Black/dark skin tone）报告使用后出现灼伤和环形色素沉着，当前所有竞品均未提供Fitzpatrick皮肤类型使用指南。我方产品可率先建立此安全标准，规避产品责任风险。</div>
+        </div>
+      </div>
+      <div class="warning-box">
+        <div class="warning-icon">🔴</div>
+        <div>
+          <div class="warning-title">安全警示 #2：护眼罩遮光失效（高风险）</div>
+          <div class="warning-text">多名用户反映护眼设计存在漏光问题，400颗LED强光直射眼睛存在视网膜损伤风险。需在设计上增加柔性密封边，并在Listing中展示正确佩戴方式。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="voc-grid fade-in" style="margin-top:28px;">
+      <div class="voc-card danger">
+        <div class="voc-percent">47%</div>
+        <div class="voc-name">电子模块故障</div>
+        <div class="voc-brands">
+          <span class="brand-pill">NVBOTY 55.6%</span>
+          <span class="brand-pill">INIA 34.3%</span>
+          <span class="brand-pill">INTEO</span>
+        </div>
+        <div class="voc-pain">充电后无法开机、使用数次即损坏、遥控器失效、LED灯珠停止发光、须持续插电</div>
+        <div class="voc-solution"><b>我方解法</b>：IP54防水充电模块 + 72小时老化测试 + 工业级充电IC，将故障率从35-55%降至 &lt;10%</div>
+      </div>
+      <div class="voc-card danger">
+        <div class="voc-percent">35%</div>
+        <div class="voc-name">面部贴合与佩戴舒适度</div>
+        <div class="voc-brands">
+          <span class="brand-pill">INIA 42.9%</span>
+          <span class="brand-pill">NVBOTY 29.6%</span>
+        </div>
+        <div class="voc-pain">鼻孔/眼睛位置错位、面罩下滑无法固定、头带过紧勒头发、鼻梁压迫留痕</div>
+        <div class="voc-solution"><b>我方解法</b>：±5mm可调节硅胶鼻托 + 双点头带（顶部+后脑）+ S/L两尺寸，可消除80%贴合投诉</div>
+      </div>
+      <div class="voc-card warning">
+        <div class="voc-percent">11%</div>
+        <div class="voc-name">描述不符 / 预期管理</div>
+        <div class="voc-brands">
+          <span class="brand-pill">INIA</span>
+          <span class="brand-pill">NVBOTY</span>
+        </div>
+        <div class="voc-pain">红外线无温热感误解、效果声称夸大、无FDA认证可见性、覆盖面积不足</div>
+        <div class="voc-solution"><b>我方解法</b>：Listing增加「850nm NIR无温感说明」+ 4-6周效果时间线 + FDA认证主图突出</div>
+      </div>
+      <div class="voc-card danger">
+        <div class="voc-percent">8%</div>
+        <div class="voc-name">皮肤安全性（隐性高危）</div>
+        <div class="voc-brands">
+          <span class="brand-pill">NVBOTY 灼伤</span>
+          <span class="brand-pill">INIA 刺痛</span>
+        </div>
+        <div class="voc-pain">深色肌肤灼伤/色素沉着、皮肤刺痛发热、使用后头痛</div>
+        <div class="voc-solution"><b>我方解法</b>：3档光强设置 + Fitzpatrick适用指南 + 包装安全警示</div>
+      </div>
+      <div class="voc-card info">
+        <div class="voc-percent">8%</div>
+        <div class="voc-name">售后服务缺失</div>
+        <div class="voc-brands">
+          <span class="brand-pill">NVBOTY 无响应</span>
+          <span class="brand-pill">INIA 质保不兑现</span>
+        </div>
+        <div class="voc-pain">卖家无响应、1年质保承诺不兑现、收到二手/污染产品、超出退货窗口无支持</div>
+        <div class="voc-solution"><b>我方解法</b>：实体质保卡 + 专属邮箱 + 「故障即换新无需退货」，真正建立质保信任</div>
+      </div>
+    </div>
+    <div class="fade-in" style="margin-top:24px;">
+      <div class="chart-card">
+        <div class="chart-title">▸ VOC 差评痛点分布（%）</div>
+        <div id="vocChart" style="height:260px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════ SECTION 5: OPPORTUNITY MATRIX ══════ -->
+<section id="opportunity" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">05</div>
+      <div class="section-title-wrap">
+        <div class="section-title">机会矩阵</div>
+        <div class="section-subtitle">Cross Analysis · 价格区间 × 产品形态</div>
+        <div class="gold-line"></div>
+      </div>
+    </div>
+    <div class="matrix-wrap fade-in">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>价格区间</th>
+            <th>便携无线 400+LED</th>
+            <th>便携无线 &lt;400LED</th>
+            <th>面颈一体款</th>
+            <th>品牌功能款</th>
+            <th>合计</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>$40 – $70</td>
+            <td class="cell-normal">1款</td>
+            <td class="cell-redocean">3款 🔴红海</td>
+            <td class="cell-empty">—</td>
+            <td class="cell-empty">—</td>
+            <td>4款</td>
+          </tr>
+          <tr>
+            <td>$70 – $100</td>
+            <td class="cell-redocean">2款 🔴红海</td>
+            <td class="cell-redocean">4款 🔴红海</td>
+            <td class="cell-normal">1款</td>
+            <td class="cell-empty">—</td>
+            <td>7款</td>
+          </tr>
+          <tr style="background:#F0FDF4;">
+            <td style="color:#B8860B;font-weight:700;">$100 – $200 ⭐</td>
+            <td class="cell-opportunity">0款 🟢机会</td>
+            <td class="cell-empty">—</td>
+            <td class="cell-opportunity">1款 🟢机会</td>
+            <td class="cell-empty">—</td>
+            <td style="color:#16A34A;font-weight:700;">1款</td>
+          </tr>
+          <tr>
+            <td>$200+</td>
+            <td class="cell-empty">—</td>
+            <td class="cell-empty">—</td>
+            <td class="cell-empty">—</td>
+            <td class="cell-normal">1款 (Shark)</td>
+            <td>1款</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight-box fade-in">
+      💡 <b>最大机会区</b>：$100-200 × 便携无线400+LED — 当前产品数为零！以「<b>18个月质保承诺 + FSA认证 + 皮肤安全分级</b>」为核心叙事，差异化门槛极低而护城河极高。<br><br>
+      🚫 <b>避开红海</b>：$70-100 × 400+LED 和 $70-100 × &lt;400LED 产品扎堆超过6款，价格战激烈，参数趋同，新进入者利润空间极薄。
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════ SECTION 6: BARRIERS ══════ -->
+<section id="barriers" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">06</div>
+      <div class="section-title-wrap">
+        <div class="section-title">进入壁垒评估</div>
+        <div class="section-subtitle">Entry Barriers · 五维壁垒全景</div>
+        <div class="gold-line"></div>
+      </div>
+    </div>
+    <div class="barrier-grid fade-in">
+      <div class="barrier-card">
+        <div class="barrier-level bl-mid">中等壁垒</div>
+        <div class="barrier-type">评论壁垒</div>
+        <div class="barrier-data">TOP5均值567条；XSSNVV仅95条即达2518/月，证明新品可快速突破</div>
+        <div class="barrier-cost">Vine计划$1500-2000 + 广告 = 首月$5000-8000<br><span style="color:var(--green);font-size:11px;font-weight:600;">▶ 3个月内可达50-100条</span></div>
+      </div>
+      <div class="barrier-card">
+        <div class="barrier-level bl-mid">中低壁垒</div>
+        <div class="barrier-type">资金壁垒</div>
+        <div class="barrier-data">首批300-500件×$20 = $6000-10000，加广告约¥15-25万</div>
+        <div class="barrier-cost">首批备货+头程+广告 = 约¥15-25万人民币<br><span style="color:var(--green);font-size:11px;font-weight:600;">▶ 控制MOQ，按数据决策补货</span></div>
+      </div>
+      <div class="barrier-card">
+        <div class="barrier-level bl-low">低壁垒</div>
+        <div class="barrier-type">技术/供应链壁垒</div>
+        <div class="barrier-data">深圳供应链成熟，400颗LED硅胶面罩多家代工厂可选</div>
+        <div class="barrier-cost">模具费¥2-5万，打样¥3000-5000<br><span style="color:var(--green);font-size:11px;font-weight:600;">▶ 选ISO 9001认证工厂</span></div>
+      </div>
+      <div class="barrier-card">
+        <div class="barrier-level bl-mid">中等壁垒</div>
+        <div class="barrier-type">合规壁垒（FDA）</div>
+        <div class="barrier-data">FDA 510(k) clearance对竞品是重要信任信号，INIA用户明确指出缺乏FDA认证</div>
+        <div class="barrier-cost">短期：Device Registration约$3000；长期：510(k)约$10K-30K<br><span style="color:var(--gold);font-size:11px;font-weight:600;">▶ 差异化加分项，非准入门槛</span></div>
+      </div>
+      <div class="barrier-card">
+        <div class="barrier-level bl-high">高壁垒（高端）</div>
+        <div class="barrier-type">品牌壁垒</div>
+        <div class="barrier-data">Shark、Omnilux、CurrentBody占据$200+品牌心智；$70-100段基本无强势品牌</div>
+        <div class="barrier-cost">品牌建设：12个月$3-5万<br><span style="color:var(--green);font-size:11px;font-weight:600;">▶ 中端段品牌壁垒极低，可切入</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════ SECTION 7: DECISION ══════ -->
+<section id="decision" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">07</div>
+      <div class="section-title-wrap">
+        <div class="section-title">选品决策评估</div>
+        <div class="section-subtitle">Five-Dimension Decision Score · 综合得分 7.03 / 10</div>
+        <div class="gold-line"></div>
+      </div>
+    </div>
+    <div class="score-row fade-in">
+      <div>
+        <div id="radarChart" style="height:360px;"></div>
+      </div>
+      <div class="score-list">
+        <div class="score-item">
+          <div class="score-item-header">
+            <span class="score-item-name">市场规模 <span class="score-item-weight">(权重 20%)</span></span>
+            <span class="score-item-val">7.5</span>
+          </div>
+          <div class="score-bar-bg"><div class="score-bar-fill" style="width:75%"></div></div>
+          <div class="score-basis">全市场$500-800万/月，TOP1月销7000+件，市场规模可观</div>
+        </div>
+        <div class="score-item">
+          <div class="score-item-header">
+            <span class="score-item-name">增长潜力 <span class="score-item-weight">(权重 20%)</span></span>
+            <span class="score-item-val">8.0</span>
+          </div>
+          <div class="score-bar-bg"><div class="score-bar-fill" style="width:80%"></div></div>
+          <div class="score-basis">XSSNVV 2个月达2500/月，市场处于高速增长期</div>
+        </div>
+        <div class="score-item">
+          <div class="score-item-header">
+            <span class="score-item-name">竞争格局 <span class="score-item-weight">(权重 25%)</span></span>
+            <span class="score-item-val">6.0</span>
+          </div>
+          <div class="score-bar-bg"><div class="score-bar-fill" style="width:60%"></div></div>
+          <div class="score-basis">$70-100段扎堆；但$100-200段几乎空白，分段来看机会明显</div>
+        </div>
+        <div class="score-item">
+          <div class="score-item-header">
+            <span class="score-item-name">进入壁垒 <span class="score-item-weight">(权重 20%)</span></span>
+            <span class="score-item-val">6.5</span>
+          </div>
+          <div class="score-bar-bg"><div class="score-bar-fill" style="width:65%"></div></div>
+          <div class="score-basis">资金壁垒低；评论壁垒中等（95条可入场已验证）</div>
+        </div>
+        <div class="score-item">
+          <div class="score-item-header">
+            <span class="score-item-name">利润空间 <span class="score-item-weight">(权重 15%)</span></span>
+            <span class="score-item-val">7.5</span>
+          </div>
+          <div class="score-bar-bg"><div class="score-bar-fill" style="width:75%"></div></div>
+          <div class="score-basis">$70-100定价，COGS约$18-28，毛利65-75%</div>
+        </div>
+        <div class="score-total-card">
+          <div>
+            <div class="score-total-label">综合加权得分</div>
+            <div class="score-total-verdict">🟡 谨慎进入 — 建议以质保差异化切入$89.99定价点</div>
+          </div>
+          <div class="score-total-val">7.03<span>/10</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="conditions-grid fade-in" style="margin-top:32px;">
+      <div class="conditions-card go-card">
+        <div class="conditions-title">✅ 进入条件（缺一不可）</div>
+        <div class="condition-item"><span class="ci-icon">✓</span>供应链合作工厂能通过电子模块48小时老化测试，故障率&lt;10%</div>
+        <div class="condition-item"><span class="ci-icon">✓</span>Listing能在「质保+FSA认证+适用肤色说明」上形成可感知差异化</div>
+        <div class="condition-item"><span class="ci-icon">✓</span>首批300-500件验证差评率&lt;8%，再决定大量补货</div>
+      </div>
+      <div class="conditions-card nogo-card">
+        <div class="conditions-title">❌ 终止条件（任一触发暂停）</div>
+        <div class="condition-item"><span class="ci-icon">✗</span>工厂无法控制电子故障率至10%以下（测试阶段淘汰）</div>
+        <div class="condition-item"><span class="ci-icon">✗</span>首批上线后Vine评价中出现皮肤安全投诉（皮肤灼伤类）</div>
+        <div class="condition-item"><span class="ci-icon">✗</span>Sorftime 3个月内显示竞品数量新增超过20款（市场饱和信号）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════ SECTION 8: PRODUCT MATRIX ══════ -->
+<section id="product" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">08</div>
+      <div class="section-title-wrap">
+        <div class="section-title">产品矩阵规划</div>
+        <div class="section-subtitle">Product Matrix · Tier 1 主力款 + Tier 2 高端款</div>
+        <div class="gold-line"></div>
+      </div>
+    </div>
+    <div class="tier-grid fade-in">
+      <div class="tier-card featured">
+        <span class="tier-badge tier-1-badge">TIER 1 · 主力款</span>
+        <div class="tier-price">$89.99</div>
+        <div class="tier-name">「质保无忧」无线LED面罩</div>
+        <div class="tier-tagline">18个月质保 × 可调节贴合 × FSA认证 — 解决TOP竞品80%差评痛点</div>
+        <div class="spec-list">
+          <div class="spec-item">
+            <div class="spec-key">LED配置</div>
+            <div class="spec-val">400颗（红630nm + 近红外850nm + 蓝460nm + 橙590nm）</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-key">电池/充电</div>
+            <div class="spec-val">2500mAh + IP54防水充电模块 + USB-C快充（2h充满）</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-key">贴合设计</div>
+            <div class="spec-val">±5mm可调节硅胶鼻托 + 双点头带（S/L两档）</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-key">光强控制</div>
+            <div class="spec-val">3档可调（低10%/中50%/高100%）</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-key">质保承诺</div>
+            <div class="spec-val">18个月 + 故障即换新（无需退货）+ 实体质保卡</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-key">合规认证</div>
+            <div class="spec-val">FDA Device Registration + FSA/HSA eligible标注</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-key">皮肤安全</div>
+            <div class="spec-val">Fitzpatrick I-IV适用说明，V-VI建议咨询皮肤科</div>
+          </div>
+        </div>
+        <div class="tier-potential">
+          <div><span>预估月销潜力（6个月后）</span></div>
+          <div><b>2,000 – 4,000 件</b></div>
+          <div><span>参考XSSNVV爬坡速度，保守估算</span></div>
+        </div>
+      </div>
+      <div class="tier-card">
+        <span class="tier-badge tier-2-badge">TIER 2 · 高端款</span>
+        <div class="tier-price">$149.99</div>
+        <div class="tier-name">「面颈一体」专业级</div>
+        <div class="tier-tagline">占据$100-200空白区间 — 面颈覆盖 + FDA 510(k) + 临床测试</div>
+        <div class="spec-list">
+          <div class="spec-item">
+            <div class="spec-key">覆盖范围</div>
+            <div class="spec-val">面部+颈部一体覆盖，颈部独立LED区域（参考RegenaLight）</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-key">LED数量</div>
+            <div class="spec-val">600颗+，覆盖面颈全区域</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-key">认证规划</div>
+            <div class="spec-val">FDA Device Registration起步 → 目标FDA 510(k) clearance</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-key">专业背书</div>
+            <div class="spec-val">皮肤科测试报告 + 临床效果文献引用</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-key">差异化定位</div>
+            <div class="spec-val">唯一$100-200段面颈一体+FDA认证组合，对标Omnilux而非Shark</div>
+          </div>
+        </div>
+        <div class="tier-potential">
+          <div><span>预估月销潜力（12个月后）</span></div>
+          <div><b>500 – 1,000 件</b></div>
+          <div><span>需先以Tier1建立品牌信任基础</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ══════ SECTION 9: ROADMAP ══════ -->
+<section id="roadmap" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-number">09</div>
+      <div class="section-title-wrap">
+        <div class="section-title">执行路线图</div>
+        <div class="section-subtitle">12-Month Action Plan · 三阶段落地</div>
+        <div class="gold-line"></div>
+      </div>
+    </div>
+    <div class="roadmap fade-in">
+      <div class="roadmap-phase">
+        <div class="phase-label">Month 1 – 3</div>
+        <div class="phase-title">产品开发与合规准备</div>
+        <div class="phase-items">
+          <div class="phase-item">完成Tier1打样，充电模块48h老化测试通过率验证</div>
+          <div class="phase-item">可调节鼻托模具开发，S/L两尺寸30人适配测试</div>
+          <div class="phase-item">注册FDA Device（约$3000，2-4周），申请FSA Store认证</div>
+          <div class="phase-item">Listing开发：「18个月质保」角标 + Before/After主图</div>
+          <div class="phase-item">整理72个否定关键词清单，PPC广告架构搭建</div>
+        </div>
+        <div class="phase-target">🎯 里程碑：样品通过老化测试，差评率目标 &lt;8%</div>
+      </div>
+      <div class="roadmap-phase">
+        <div class="phase-label">Month 4 – 6</div>
+        <div class="phase-title">入场验证</div>
+        <div class="phase-items">
+          <div class="phase-item">首批300-500件FBA入库，申请Vine计划50件</div>
+          <div class="phase-item">PPC首月聚焦3核心词：「red light therapy for face」「fsa red light therapy mask」「wireless led face mask」</div>
+          <div class="phase-item">差评监控：首月差评率&gt;5%立即暂停排查工厂</div>
+          <div class="phase-item">主动售后：购买后30天发送使用教程邮件</div>
+        </div>
+        <div class="phase-target">🎯 目标：第3个月月销 500-1,000件，评价50+</div>
+      </div>
+      <div class="roadmap-phase">
+        <div class="phase-label">Month 7 – 12</div>
+        <div class="phase-title">规模扩张</div>
+        <div class="phase-items">
+          <div class="phase-item">月销1000+后加大PPC，投放品牌竞品拦截词（omnilux alternative等）</div>
+          <div class="phase-item">根据Tier1数据决定Tier2面颈一体款开发时机</div>
+          <div class="phase-item">评价200+后申请Amazon Choice badge</div>
+          <div class="phase-item">启动FDA 510(k)认证流程（Tier2高端款叙事支撑）</div>
+        </div>
+        <div class="phase-target">🎯 目标：月销 2,000-3,000件，进入类目TOP10</div>
+      </div>
+    </div>
+    <div class="insight-box fade-in" style="margin-top:24px;">
+      💡 <b>关键成功要素</b>：该品类的竞争核心已从「参数堆叠」转向「<b>质保可信度</b>」。当所有竞品都提供400颗LED时，能率先建立「18个月质保+故障即换新」服务承诺的品牌，将在用户心智中率先占据「品质信任」定位。这是一个低成本高护城河的差异化窗口，当前竞争者没有一家真正落地。
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">LED 光疗面罩 · 全链路调研报告</div>
+    <div class="footer-info">
+      分析时间：2026年3月27日 &nbsp;|&nbsp; 数据来源：Sorftime MCP &nbsp;|&nbsp; 分析方法：LLM Agent 驱动五步链路<br>
+      涵盖：品类评分 · TOP5竞品分析 · 746词关键词库 · 89条差评VOC · 选品决策 · 产品矩阵<br>
+      ⚠️ NVBOTY价格已按用户核实$215.99修正，原Sorftime返回0.00（采集失败）
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── CHART THEME (Light) ──
+const TIP = { backgroundColor: '#fff', borderColor: '#E4E7EC', borderWidth: 1, textStyle: { color: '#111827', fontSize: 13 }, extraCssText: 'box-shadow:0 4px 12px rgba(0,0,0,0.08);border-radius:8px;' };
+const AX_LABEL = { color: '#9CA3AF', fontSize: 12 };
+const AX_LINE  = { lineStyle: { color: '#F3F4F6' } };
+const SPLIT    = { lineStyle: { color: '#F3F4F6' } };
+
+// Price Distribution Chart
+const priceChart = echarts.init(document.getElementById('priceChart'));
+priceChart.setOption({
+  backgroundColor: 'transparent',
+  tooltip: { ...TIP, trigger: 'axis' },
+  grid: { left: 20, right: 20, top: 20, bottom: 60, containLabel: true },
+  xAxis: {
+    type: 'category',
+    data: ['$40-$70', '$70-$100', '$100-$200', '$200+'],
+    axisLabel: AX_LABEL, axisLine: AX_LINE, axisTick: { show: false }
+  },
+  yAxis: { type: 'value', axisLabel: { ...AX_LABEL }, splitLine: SPLIT },
+  series: [{
+    type: 'bar',
+    data: [
+      { value: 0, itemStyle: { color: '#F3F4F6', borderColor: '#E4E7EC', borderWidth: 1, borderType: 'dashed' } },
+      { value: 10790, itemStyle: { color: new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#F87171'},{offset:1,color:'#DC2626'}]) } },
+      { value: 0, itemStyle: { color: 'transparent', borderColor: '#16A34A', borderWidth: 2, borderType: 'dashed' } },
+      { value: 10038, itemStyle: { color: new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#D4A017'},{offset:1,color:'#B8860B'}]) } }
+    ],
+    label: {
+      show: true, position: 'top',
+      formatter: (p) => p.value === 0 ? (p.dataIndex===2 ? '🟢机会空白' : '—') : p.value.toLocaleString(),
+      color: (params) => params.dataIndex === 2 ? '#16A34A' : '#4B5563',
+      fontSize: 12, fontWeight: 700
+    },
+    barMaxWidth: 64, borderRadius: [4,4,0,0]
+  }]
+});
+
+// Revenue Chart
+const revenueChart = echarts.init(document.getElementById('revenueChart'));
+revenueChart.setOption({
+  backgroundColor: 'transparent',
+  tooltip: { ...TIP, trigger: 'axis', formatter: (p) => `${p[0].name}<br/>${p[0].seriesName}: <b>$${p[0].value}万</b>` },
+  grid: { left: 10, right: 20, top: 20, bottom: 60, containLabel: true },
+  xAxis: {
+    type: 'category',
+    data: ['NVBOTY', 'INIA', 'INTEO', 'Shark', 'XSSNVV'],
+    axisLabel: AX_LABEL, axisLine: AX_LINE, axisTick: { show: false }
+  },
+  yAxis: { type: 'value', axisLabel: { ...AX_LABEL, formatter: '{value}万' }, splitLine: SPLIT },
+  series: [{
+    name: '月销额',
+    type: 'bar',
+    data: [
+      { value: 155.2, itemStyle: { color: new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#D4A017'},{offset:1,color:'#B8860B'}]) } },
+      { value: 40.1,  itemStyle: { color: new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#C9A020'},{offset:1,color:'#A07010'}]) } },
+      { value: 28.4,  itemStyle: { color: new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#BCA030'},{offset:1,color:'#907020'}]) } },
+      { value: 99.6,  itemStyle: { color: new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#60A5FA'},{offset:1,color:'#2563EB'}]) } },
+      { value: 23.6,  itemStyle: { color: new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#34D399'},{offset:1,color:'#16A34A'}]) } }
+    ],
+    label: { show: true, position: 'top', formatter: (p) => `$${p.value}万`, color: '#4B5563', fontSize: 11, fontWeight: 700 },
+    barMaxWidth: 55, borderRadius: [4,4,0,0]
+  }]
+});
+
+// Keyword Category Chart
+const kwCatChart = echarts.init(document.getElementById('kwCatChart'));
+kwCatChart.setOption({
+  backgroundColor: 'transparent',
+  tooltip: { ...TIP, trigger: 'item', formatter: '{b}: {c}词 ({d}%)' },
+  legend: { bottom: 0, textStyle: { color: '#4B5563', fontSize: 11 } },
+  series: [{
+    type: 'pie',
+    radius: ['40%', '70%'],
+    center: ['50%', '45%'],
+    data: [
+      { value: 110, name: 'CORE核心词',    itemStyle: { color: '#B8860B' } },
+      { value: 165, name: 'BRAND品牌词',   itemStyle: { color: '#2563EB' } },
+      { value: 72,  name: 'NEGATIVE否定词',itemStyle: { color: '#DC2626' } },
+      { value: 53,  name: 'ATTRIBUTE属性词',itemStyle: { color: '#7C3AED' } },
+      { value: 55,  name: 'FUNCTION功能词',itemStyle: { color: '#16A34A' } },
+      { value: 15,  name: 'SCENARIO场景词',itemStyle: { color: '#EA580C' } },
+      { value: 49,  name: 'OTHER其他',      itemStyle: { color: '#9CA3AF' } }
+    ],
+    label: { color: '#4B5563', fontSize: 11 },
+    itemStyle: { borderColor: '#FFFFFF', borderWidth: 2 }
+  }]
+});
+
+// Keyword Volume Chart
+const kwVolChart = echarts.init(document.getElementById('kwVolChart'));
+kwVolChart.setOption({
+  backgroundColor: 'transparent',
+  tooltip: { ...TIP, trigger: 'axis' },
+  grid: { left: 10, right: 20, top: 10, bottom: 50, containLabel: true },
+  xAxis: {
+    type: 'category',
+    data: ['CORE', 'BRAND', 'NEGATIVE', 'ATTRIBUTE', 'FUNCTION', 'SCENARIO'],
+    axisLabel: AX_LABEL, axisLine: AX_LINE, axisTick: { show: false }
+  },
+  yAxis: { type: 'value', axisLabel: { ...AX_LABEL }, splitLine: SPLIT },
+  series: [{
+    type: 'bar',
+    data: [22199, 4167, 7859, 1069, 1518, 8275].map((v, i) => ({
+      value: v,
+      itemStyle: { color: ['#B8860B','#2563EB','#DC2626','#7C3AED','#16A34A','#EA580C'][i], borderRadius: [4,4,0,0] }
+    })),
+    label: { show: true, position: 'top', formatter: (p) => p.value.toLocaleString(), color: '#4B5563', fontSize: 10, fontWeight: 600 },
+    barMaxWidth: 45
+  }]
+});
+
+// VOC Chart
+const vocChart = echarts.init(document.getElementById('vocChart'));
+vocChart.setOption({
+  backgroundColor: 'transparent',
+  tooltip: { ...TIP, trigger: 'axis', formatter: (p) => `${p[0].name}<br/>差评占比: <b>${p[0].value}%</b>` },
+  grid: { left: 10, right: 30, top: 10, bottom: 10, containLabel: true },
+  xAxis: { type: 'value', max: 55, axisLabel: { ...AX_LABEL, formatter: '{value}%' }, splitLine: SPLIT },
+  yAxis: {
+    type: 'category',
+    data: ['售后服务缺失', '皮肤安全性', '描述不符', '面部贴合问题', '电子模块故障'],
+    axisLabel: { color: '#4B5563', fontSize: 12 }
+  },
+  series: [{
+    type: 'bar',
+    data: [8, 8, 11, 35, 47].map((v, i) => ({
+      value: v,
+      itemStyle: {
+        color: new echarts.graphic.LinearGradient(0,0,1,0,[
+          {offset:0, color: ['#60A5FA','#A78BFA','#D4A017','#F87171','#DC2626'][i]},
+          {offset:1, color: ['#2563EB','#7C3AED','#B8860B','#DC2626','#991B1B'][i]}
+        ]),
+        borderRadius: [0,4,4,0]
+      }
+    })),
+    label: { show: true, position: 'right', formatter: '{c}%', color: '#4B5563', fontWeight: 700, fontSize: 13 },
+    barMaxWidth: 36
+  }]
+});
+
+// Radar Chart
+const radarChart = echarts.init(document.getElementById('radarChart'));
+radarChart.setOption({
+  backgroundColor: 'transparent',
+  radar: {
+    indicator: [
+      { name: '市场规模', max: 10 },
+      { name: '增长潜力', max: 10 },
+      { name: '竞争格局', max: 10 },
+      { name: '进入壁垒', max: 10 },
+      { name: '利润空间', max: 10 }
+    ],
+    shape: 'polygon',
+    splitNumber: 5,
+    axisName: { color: '#4B5563', fontSize: 13, fontWeight: 600 },
+    splitLine: { lineStyle: { color: '#E4E7EC' } },
+    splitArea: { areaStyle: { color: ['rgba(184,134,11,0.03)', 'rgba(184,134,11,0.06)'] } },
+    axisLine: { lineStyle: { color: '#E4E7EC' } }
+  },
+  series: [{
+    type: 'radar',
+    data: [{
+      value: [7.5, 8.0, 6.0, 6.5, 7.5],
+      name: '选品评分',
+      symbol: 'circle',
+      symbolSize: 8,
+      lineStyle: { color: '#B8860B', width: 2.5 },
+      areaStyle: { color: 'rgba(184,134,11,0.12)' },
+      itemStyle: { color: '#B8860B', borderColor: '#fff', borderWidth: 2 }
+    }],
+    tooltip: { ...TIP }
+  }]
+});
+
+// Scroll animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Nav active state
+const sections = document.querySelectorAll('section[id]');
+const navItems = document.querySelectorAll('.nav-item');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  navItems.forEach(n => {
+    n.classList.toggle('active', n.getAttribute('href') === '#' + cur);
+  });
+});
+
+// Resize charts
+window.addEventListener('resize', () => {
+  [priceChart, revenueChart, kwCatChart, kwVolChart, vocChart, radarChart].forEach(c => c.resize());
+});
+
+// Animate score bars on scroll
+const scoreObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.score-bar-fill').forEach(bar => {
+        const w = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => { bar.style.width = w; }, 100);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.score-list').forEach(el => scoreObserver.observe(el));
+</script>
+</body>
+</html>
